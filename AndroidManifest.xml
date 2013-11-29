@@ -22,6 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="pl.narfsoftware.thermometer2.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName="pl.narfsoftware.thermometer2.SensorsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pl.narfsoftware.thermometer2.SensorsActivity" />
+        </activity>
     </application>
 
 </manifest>

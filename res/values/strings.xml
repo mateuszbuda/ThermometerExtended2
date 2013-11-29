@@ -1,8 +1,262 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Thermometer2</string>
+    <string name="app_name">Thermometer Extended</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="prefs_header">Settings</string>
+    <string name="prefs_sensors">Sensors</string>
+    <string name="prefs_sensors_title">Choose sensors</string>
+    <string name="ambient_temp_title">Temperature</string>
+    <string name="relative_humidity_title">Relative Humidity</string>
+    <string name="absolute_humidity_title">Absolute Humidity</string>
+    <string name="pressure_title">Pressure</string>
+    <string name="dew_point_title">Dew Point</string>
+    <string name="light_title">Light</string>
+    <string name="magnetic_field_title">Magnetic Field</string>
+    <string name="ambient_temp_key">ambient_temprature</string>
+    <string name="relative_humidity_key">relative_humidity</string>
+    <string name="absolute_humidity_key">absolute_humidity</string>
+    <string name="pressure_key">pressure</string>
+    <string name="dew_point_key">dew_point</string>
+    <string name="light_key">light</string>
+    <string name="magnetic_field_key">magnetic_field</string>
+
+    <string-array name="prefs_temp_unit_keys">
+        <item>Degrees Celsius</item>
+        <item>Degrees Fahrenheit</item>
+        <item>Kelvin</item>
+    </string-array>
+    <string-array name="prefs_temp_unit_vals">
+        <item>celsius</item>
+        <item>fahrenheit</item>
+        <item>kelvin</item>
+    </string-array>
+
+    <string name="prefs_temp_unit_title">Temperature Unit</string>
+    <string name="prefs_temp_unit_key">temp_unit</string>
+
+    <string-array name="prefs_background_color_keys">
+        <item>Alice Blue</item>
+        <item>Aquamarine</item>
+        <item>Bisque</item>
+        <item>Cornsilk</item>
+        <item>Gainsboro</item>
+        <item>Green Yellow</item>
+        <item>Hot Pink</item>
+        <item>Lemon Chiffon</item>
+        <item>Light Coral</item>
+        <item>Light Cyan</item>
+        <item>Light Gray</item>
+        <item>Lime Green</item>
+        <item>Medium Orchid</item>
+        <item>Orange</item>
+        <item>Peach Puff</item>
+        <item>Pink</item>
+        <item>Plum</item>
+        <item>Sandy Brown</item>
+        <item>Sea Green</item>
+        <item>Snow</item>
+        <item>White</item>
+    </string-array>
+    <string-array name="prefs_background_color_vals">
+        <item>#FFF0F8FF</item>
+        <item>#667FFFD4</item>
+        <item>#FFFFE4C4</item>
+        <item>#FFFFF8DC</item>
+        <item>#FFDCDCDC</item>
+        <item>#88ADFF2F</item>
+        <item>#66FF69B4</item>
+        <item>#FFFFFACD</item>
+        <item>#88F08080</item>
+        <item>#FFE0FFFF</item>
+        <item>#88D3D3D3</item>
+        <item>#8832CD32</item>
+        <item>#66BA55D3</item>
+        <item>#88FFA500</item>
+        <item>#88FFDAB9</item>
+        <item>#88FFC0CB</item>
+        <item>#66DDA0DD</item>
+        <item>#66F4A460</item>
+        <item>#662E8B57</item>
+        <item>#FFFFFAFA</item>
+        <item>#FFFFFFFF</item>
+    </string-array>
+
+    <string name="prefs_background_color_title">Background Color</string>
+    <string name="prefs_background_color_key">background_color</string>
+    <string name="prefs_rest_title">Customize</string>
+    <string name="sensor_unavailable">Sensor unavailable</string>
+    <string name="sensor_no_data">No data</string>
+    <string name="prefs_save_data_key">save_data</string>
+    <string name="prefs_save_data_title">Save Data</string>
+    <string name="prefs_save_data_summary_on">Stop saving data</string>
+    <string name="prefs_save_data_summary_off">Start saving data</string>
+    <string name="action_clear_data">Erase History</string>
+    <string name="data_erased_success_toast">Data successfully erased</string>
+    <string name="data_erased_fail_toast">Failed to erase data :(</string>
+    <string name="data_erased_hint_toast">Stop saving data first.</string>
+    <string name="no_data_to_erase">No data to erase.</string>
+    <string name="no_data_info_toast">No data to display&#8230;</string>
+    <string name="no_data_hint_toast">This sensor is not working in save data mode.</string>
+    <string name="prefs_date_format_key">date_format</string>
+    <string name="prefs_date_format_title">Date Format</string>
+    <string name="prefs_time_format_key">time_format</string>
+    <string name="prefs_time_format_title">Time Format</string>
+
+    <string-array name="prefs_time_format_keys">
+        <item>24:30</item>
+        <item>12:30 AM</item>
+        <item>24:30 UTC</item>
+        <item>12:30 AM, UTC</item>
+        <item>24:30 UTC+00:00</item>
+        <item>12:30 AM, UTC+00:00</item>
+        <item>none</item>
+    </string-array>
+    <string-array name="prefs_time_format_vals">
+        <item>hh:mm</item>
+        <item>kk:mm a</item>
+        <item>hh:mm z</item>
+        <item>kk:mm a, z</item>
+        <item>hh:mm zzzz</item>
+        <item>kk:mm a, zzzz</item>
+        <item></item>
+    </string-array>
+    <string-array name="prefs_date_format_keys">
+        <item>Tuesday, 01 October</item>
+        <item>Tuesday, 1 October</item>
+        <item>Tuesday, 01 October 2013</item>
+        <item>Tuesday, 1 October 2013</item>
+        <item>Tue, 1 October</item>
+        <item>Tue, 1 October 2013</item>
+        <item>1 October</item>
+        <item>01 October</item>
+        <item>1 October 2013</item>
+        <item>01 October 2013</item>
+        <item>Tuesday, 01 Oct</item>
+        <item>Tuesday, 1 Oct</item>
+        <item>Tuesday, 01 Oct 2013</item>
+        <item>Tuesday, 1 Oct 2013</item>
+        <item>Tue, 1 Oct</item>
+        <item>Tue, 1 Oct 2013</item>
+        <item>1 Oct</item>
+        <item>01 Oct</item>
+        <item>1 Oct 2013</item>
+        <item>01 Oct 2013</item>
+        <item>01&#8211;10&#8211;2013</item>
+        <item>01&#8211;10&#8211;13</item>
+        <item>1&#8211;9&#8211;13</item>
+        <item>2013&#8211;10&#8211;01</item>
+        <item>13&#8211;10&#8211;01</item>
+        <item>13&#8211;9&#8211;1</item>
+        <item>Tuesday, 01&#8211;10&#8211;2013</item>
+        <item>Tuesday, 01&#8211;10&#8211;13</item>
+        <item>Sunday, 1&#8211;9&#8211;13</item>
+        <item>Tuesday, 2013&#8211;10&#8211;01</item>
+        <item>Tuesday, 13&#8211;10&#8211;01</item>
+        <item>Sunday, 13&#8211;9&#8211;1</item>
+        <item>Tuesday, 01/10/2013</item>
+        <item>Tuesday, 01/10/13</item>
+        <item>Sunday, 1/9/13</item>
+        <item>Tuesday, 2013/10/01</item>
+        <item>Tuesday, 13/10/01</item>
+        <item>Sunday, 13/9/1</item>
+        <item>Tue, 01&#8211;10&#8211;2013</item>
+        <item>Tue, 01&#8211;10&#8211;13</item>
+        <item>Sun, 1&#8211;9&#8211;13</item>
+        <item>Tue, 2013&#8211;10&#8211;01</item>
+        <item>Tue, 13&#8211;10&#8211;01</item>
+        <item>Sun, 13&#8211;9&#8211;1</item>
+        <item>Tue, 01/10/2013</item>
+        <item>Tue, 01/10/13</item>
+        <item>Sun, 1/9/13</item>
+        <item>Tue, 2013/10/01</item>
+        <item>Tue, 13/10/01</item>
+        <item>Sun, 13/9/1</item>
+        <item>none</item>
+    </string-array>
+    <string-array name="prefs_date_format_vals">
+        <item>EEEE, dd MMMM</item>
+        <item>EEEE, d MMMM</item>
+        <item>EEEE, dd MMMM y</item>
+        <item>EEEE, d MMMM y</item>
+        <item>E, d MMMM</item>
+        <item>E, d MMMM y</item>
+        <item>d MMMM</item>
+        <item>dd MMMM</item>
+        <item>d MMMM y</item>
+        <item>dd MMMM y</item>
+        <item>EEEE, dd MMM</item>
+        <item>EEEE, d MMM</item>
+        <item>EEEE, dd MMM y</item>
+        <item>EEEE, d MMM y</item>
+        <item>E, d MMM</item>
+        <item>E, d MMM y</item>
+        <item>d MMM</item>
+        <item>dd MMM</item>
+        <item>d MMM y</item>
+        <item>dd MMM y</item>
+        <item>dd&#8211;MM&#8211;y</item>
+        <item>dd&#8211;MM&#8211;yy</item>
+        <item>d&#8211;M&#8211;yy</item>
+        <item>y&#8211;MM&#8211;dd</item>
+        <item>yy&#8211;MM&#8211;dd</item>
+        <item>yy&#8211;M&#8211;d</item>
+        <item>EEEE, dd&#8211;MM&#8211;y</item>
+        <item>EEEE, dd&#8211;MM&#8211;yy</item>
+        <item>EEEE, d&#8211;M&#8211;yy</item>
+        <item>EEEE, y&#8211;MM&#8211;dd</item>
+        <item>EEEE, yy&#8211;MM&#8211;dd</item>
+        <item>EEEE, yy&#8211;M&#8211;d</item>
+        <item>EEEE, dd/MM/y</item>
+        <item>EEEE, dd/MM/yy</item>
+        <item>EEEE, d/M/yy</item>
+        <item>EEEE, y/MM/dd</item>
+        <item>EEEE, yy/MM/dd</item>
+        <item>EEEE, yy/M/d</item>
+        <item>E, dd&#8211;MM&#8211;y</item>
+        <item>E, dd&#8211;MM&#8211;yy</item>
+        <item>E, d&#8211;M&#8211;yy</item>
+        <item>E, y&#8211;MM&#8211;dd</item>
+        <item>E, yy&#8211;MM&#8211;dd</item>
+        <item>E, yy&#8211;M&#8211;d</item>
+        <item>E, dd/MM/y</item>
+        <item>E, dd/MM/y</item>
+        <item>E, d/M/yy</item>
+        <item>E, y/MM/dd</item>
+        <item>E, yy/MM/dd</item>
+        <item>E, yy/M/d</item>
+        <item></item>
+    </string-array>
+
+    <string name="title_activity_help">Help</string>
+    <string name="help_text">Sensors\nMain window displays chosen in settings sensors. If application is receiving data from particular senors, it is immediately displayed, otherwise you see \'No Data\'. Data accuracy depends on hardware quality. Application merely display received data. Another possibility is that your device simply do not support chosen sensor. If so, you get \'Sensor unavailable\' message.\n\nData Saving\nIn order to see data history graph you must enable saving data mode for particular sensor in main window by clicking on its icon. However be aware that it cause chosen sensors to stay active, even if you close application. That may drain device battery especially quickly. So always remember to stop saving data if you do not need it. By default this option is turned off.</string>
+    <string name="action_help_title">Help</string>
+    <string name="title_activity_about">About</string>
+    <string name="about_site_header">Visit developer\'s site</string>
+    <string name="about_site">www.narfsoftware.pl/en</string>
+    <string name="about_email_title">Contact developer</string>
+    <string name="about_email">info@narfsoftware.pl</string>
+    <string name="logo_description">NarfSoftware Logo</string>
+    <string name="action_about_title">About</string>
+    <string name="about_header">Thermometer Extended</string>
+    <string name="about_subheader">version 1.8</string>
+    <string name="about_text">We\'re looking forward to hearing from you. Email us to report bugs, suggest an improvement or if you want to add a translation. We will be glad if you decide to rate and comment on our apps on Market.</string>
+    <string name="alert_dialog_erase_data_text">Do you really want to clear history?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="toast_on_temperature_save_data">Saving temperature data turned on</string>
+    <string name="toast_off_temperature_save_data">Saving temperature data turned off</string>
+    <string name="toast_on_relative_humidity_save_data">Saving relative humidity data turned on</string>
+    <string name="toast_off_relative_humidity_save_data">Saving relative humidity data turned off</string>
+    <string name="toast_on_absolute_humidity_save_data">Saving absolute humidity data turned on</string>
+    <string name="toast_off_absolute_humidity_save_data">Saving absolute humidity data turned off</string>
+    <string name="toast_on_pressure_save_data">Saving pressure data turned on</string>
+    <string name="toast_off_pressure_save_data">Saving pressure data turned off</string>
+    <string name="toast_on_dew_point_save_data">Saving dew point data turned on</string>
+    <string name="toast_off_dew_point_save_data">Saving dew point data turned off</string>
+    <string name="toast_on_light_save_data">Saving light data turned on</string>
+    <string name="toast_off_light_save_data">Saving light data turned off</string>
+    <string name="toast_on_magnetic_field_save_data">Saving magnetic field data turned on</string>
+    <string name="toast_off_magnetic_field_save_data">Saving magnetic field data turned off</string>
 
 </resources>
