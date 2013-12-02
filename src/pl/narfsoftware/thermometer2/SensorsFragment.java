@@ -5,10 +5,12 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.ListFragment;
+import android.database.DataSetObserver;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -22,6 +24,8 @@ import android.widget.Toast;
 public class SensorsFragment extends ListFragment implements
 		OnItemClickListener, SensorEventListener {
 	static final String TAG = "SensorsFragment";
+
+	Activity activity;
 
 	static final double A = 6.112;
 	static final double M = 17.62;
@@ -42,13 +46,19 @@ public class SensorsFragment extends ListFragment implements
 	static final int S_MAGNETIC_FIELD = 4;
 	static final int SENSORS_COUNT = 5;
 
-	boolean showTemprature;
-	boolean showRelativeHumidity;
-	boolean showAbsoluteHumidity;
-	boolean showPressure;
-	boolean showDewPoint;
-	boolean showLight;
-	boolean showMagneticField;
+	boolean hasTempratureSensor = false;
+	boolean hasRelativeHumiditySensor = false;
+	boolean hasPressureSensor = false;
+	boolean hasLightSensor = false;
+	boolean hasMagneticFieldSensor = false;
+
+	boolean showTemprature = true;
+	boolean showRelativeHumidity = true;
+	boolean showAbsoluteHumidity = true;
+	boolean showPressure = true;
+	boolean showDewPoint = true;
+	boolean showLight = true;
+	boolean showMagneticField = true;
 
 	float temperature;
 	float relativeHumidity;
@@ -79,6 +89,7 @@ public class SensorsFragment extends ListFragment implements
 	OnSensorSelectedListener callback;
 
 	List<SensorRow> sensorsList;
+	SensorsListViewAdapter adapter;
 
 	// The container Activity must implement this interface so the frag can
 	// deliver messages
@@ -95,8 +106,20 @@ public class SensorsFragment extends ListFragment implements
 		for (int i = 0; i < SENSORS.length; i++)
 			sensorsList.add(new SensorRow(ICONS[i], SENSORS[i], VALUES[i]));
 
-		setListAdapter(new SensorsListViewAdapter(getActivity(),
-				R.layout.sensor_row, sensorsList));
+		adapter = new SensorsListViewAdapter(getActivity(),
+				R.layout.sensor_row, sensorsList);
+		setListAdapter(adapter);
+		adapter.registerDataSetObserver(new DataSetObserver() {
+		});
+
+		sensorManager = (SensorManager) activity
+				.getSystemService(android.content.Context.SENSOR_SERVICE);
+
+		getSensors();
+
+		checkSensorsAvailability();
+
+		Log.d(TAG, "onCreated");
 	}
 
 	@Override
@@ -113,9 +136,34 @@ public class SensorsFragment extends ListFragment implements
 	}
 
 	@Override
+	public void onResume() {
+		super.onResume();
+
+		sensorManager.unregisterListener(this);
+		Log.d(TAG, "Sensors unregistered");
+
+		registerChosenSensors();
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+
+		// unregister sensors, yet no longer needed
+		sensorManager.unregisterListener(this);
+		Log.d(TAG, "Sensors unregistered");
+	}
+
+	@Override
+	public void onDestroy() {
+		sensorManager.unregisterListener(this);
+		super.onDestroy();
+	}
+
+	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
-
+		this.activity = activity;
 		// This makes sure that the container activity has implemented
 		// the callback interface. If not, it throws an exception.
 		try {
@@ -144,6 +192,97 @@ public class SensorsFragment extends ListFragment implements
 		toast.show();
 	}
 
+	private void getSensors() {
+		if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+			sensors[S_TEMPRATURE] = sensorManager
+					.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
+		else
+			sensors[S_TEMPRATURE] = sensorManager
+					.getDefaultSensor(Sensor.TYPE_TEMPERATURE);
+
+		if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+			sensors[S_RELATIVE_HUMIDITY] = sensorManager
+					.getDefaultSensor(Sensor.TYPE_RELATIVE_HUMIDITY);
+
+		sensors[S_PRESSURE] = sensorManager
+				.getDefaultSensor(Sensor.TYPE_PRESSURE);
+
+		sensors[S_LIGHT] = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+
+		sensors[S_MAGNETIC_FIELD] = sensorManager
+				.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+	}
+
+	private void checkSensorsAvailability() {
+		try {
+			hasTempratureSensor = sensorManager.registerListener(this,
+					sensors[S_TEMPRATURE], SensorManager.SENSOR_DELAY_UI);
+		} catch (Exception e) {
+			hasTempratureSensor = false;
+		}
+		try {
+			hasRelativeHumiditySensor = sensorManager
+					.registerListener(this, sensors[S_RELATIVE_HUMIDITY],
+							SensorManager.SENSOR_DELAY_UI);
+		} catch (Exception e) {
+			hasRelativeHumiditySensor = false;
+		}
+		try {
+			hasPressureSensor = sensorManager.registerListener(this,
+					sensors[S_PRESSURE], SensorManager.SENSOR_DELAY_UI);
+			Log.d(TAG, "Pressure sensor registered");
+		} catch (Exception e) {
+			hasPressureSensor = false;
+		}
+		try {
+			hasLightSensor = sensorManager.registerListener(this,
+					sensors[S_LIGHT], SensorManager.SENSOR_DELAY_UI);
+			Log.d(TAG, "Light sensor registered");
+		} catch (Exception e) {
+			hasLightSensor = false;
+		}
+		try {
+			hasMagneticFieldSensor = sensorManager.registerListener(this,
+					sensors[S_MAGNETIC_FIELD], SensorManager.SENSOR_DELAY_UI);
+			Log.d(TAG, "Magnetic field sensor registered");
+		} catch (Exception e) {
+			hasMagneticFieldSensor = false;
+		}
+
+		sensorManager.unregisterListener(this);
+	}
+
+	private void registerChosenSensors() {
+		// TODO Register sensors on their own listener
+		if (hasTempratureSensor
+				&& (showTemprature || showAbsoluteHumidity || showDewPoint)) {
+			sensorManager.registerListener(this, sensors[S_TEMPRATURE],
+					SensorManager.SENSOR_DELAY_UI);
+			Log.d(TAG, "Temperature sensor registered");
+		}
+		if (hasRelativeHumiditySensor
+				&& (showRelativeHumidity || showAbsoluteHumidity || showDewPoint)) {
+			sensorManager.registerListener(this, sensors[S_RELATIVE_HUMIDITY],
+					SensorManager.SENSOR_DELAY_UI);
+			Log.d(TAG, "Relative humidity sensor registered");
+		}
+		if (hasPressureSensor && showPressure) {
+			sensorManager.registerListener(this, sensors[S_PRESSURE],
+					SensorManager.SENSOR_DELAY_UI);
+			Log.d(TAG, "Pressure sensor registered");
+		}
+		if (hasLightSensor && showLight) {
+			sensorManager.registerListener(this, sensors[S_LIGHT],
+					SensorManager.SENSOR_DELAY_UI);
+			Log.d(TAG, "Light sensor registered");
+		}
+		if (showMagneticField) {
+			sensorManager.registerListener(this, sensors[S_MAGNETIC_FIELD],
+					SensorManager.SENSOR_DELAY_UI);
+			Log.d(TAG, "Magnetic field sensor registered");
+		}
+	}
+
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
 		// TODO Auto-generated method stub
@@ -158,15 +297,15 @@ public class SensorsFragment extends ListFragment implements
 
 			if (temperatureUnit.equals(getResources().getStringArray(
 					R.array.prefs_temp_unit_vals)[CELSIUS]))
-				tvTemprature.setText(String.format("%.0f", temperature) + " "
-						+ (char) 0x00B0 + "C");
+				VALUES[ThermometerApp.temperatureIndex] = (String.format(
+						"%.0f", temperature) + " " + (char) 0x00B0 + "C");
 			else if (temperatureUnit.equals(getResources().getStringArray(
 					R.array.prefs_temp_unit_vals)[FAHRENHEIT]))
-				tvTemprature.setText(String.format("%.0f",
-						temperature * 9 / 5 + 32) + " " + (char) 0x00B0 + "F");
+				VALUES[ThermometerApp.temperatureIndex] = (String.format(
+						"%.0f", temperature * 9 / 5 + 32) + " " + (char) 0x00B0 + "F");
 			else
-				tvTemprature.setText(String.format("%.0f", temperature + 273)
-						+ " K");
+				VALUES[ThermometerApp.temperatureIndex] = (String.format(
+						"%.0f", temperature + 273) + " K");
 
 			Log.d(TAG, "Got temperature sensor event: " + temperature);
 		}
@@ -175,8 +314,8 @@ public class SensorsFragment extends ListFragment implements
 				&& event.sensor.equals(sensors[S_RELATIVE_HUMIDITY])) {
 			relativeHumidity = event.values[0];
 
-			tvRelativeHumidity.setText(String.format("%.0f", relativeHumidity)
-					+ " %");
+			VALUES[ThermometerApp.relativeHumidityIndex] = (String.format(
+					"%.0f", relativeHumidity) + " %");
 
 			Log.d(TAG, "Got relative humidity sensor event: "
 					+ relativeHumidity);
@@ -191,7 +330,8 @@ public class SensorsFragment extends ListFragment implements
 		if (showPressure && event.sensor.equals(sensors[S_PRESSURE])) {
 			pressure = event.values[0];
 
-			tvPressure.setText(String.format("%.0f", pressure) + " hPa");
+			VALUES[ThermometerApp.pressureIndex] = (String.format("%.0f",
+					pressure) + " hPa");
 
 			Log.d(TAG, "Got pressure sensor event: " + pressure);
 		}
@@ -205,7 +345,7 @@ public class SensorsFragment extends ListFragment implements
 		if (showLight && event.sensor.equals(sensors[S_LIGHT])) {
 			light = event.values[0];
 
-			tvLight.setText(String.format("%.0f", light) + " lx");
+			VALUES[ThermometerApp.lightIndex] = (String.format("%.0f", light) + " lx");
 
 			Log.d(TAG, "Got light sensor event: " + light);
 		}
@@ -216,11 +356,15 @@ public class SensorsFragment extends ListFragment implements
 			float magneticFieldZ = event.values[2];
 			magneticField = magneticFieldX + magneticFieldY + magneticFieldZ;
 
-			tvMagneticField.setText(String.format("%.0f", magneticField) + " "
-					+ (char) 0x03BC + "T");
+			VALUES[ThermometerApp.magneticFieldIndex] = (String.format("%.0f",
+					magneticField) + " " + (char) 0x03BC + "T");
 
 			Log.d(TAG, "Got magnetic field sensor event: " + magneticField);
 		}
+
+		for (int i = 0; i < SENSORS.length; i++)
+			adapter.getItem(i).setStringValue(VALUES[i]);
+		adapter.notifyDataSetChanged();
 	}
 
 	private void updateAbsoluteHumidity() {
@@ -229,8 +373,9 @@ public class SensorsFragment extends ListFragment implements
 				* A
 				* Math.exp(M * temperature / (TN + temperature)) / (ZERO_ABSOLUTE + temperature)));
 
-		tvAbsoluteHumidity.setText(Html.fromHtml(String.format("%.0f",
-				absoluteHumidity) + " g/m<sup><small>3</small></sup>"));
+		VALUES[ThermometerApp.absoluteHumidityIndex] = (Html.fromHtml(String
+				.format("%.0f", absoluteHumidity)
+				+ " g/m<sup><small>3</small></sup>")).toString();
 
 		Log.d(TAG, "Absolute humidity updated: " + absoluteHumidity);
 	}
@@ -242,16 +387,17 @@ public class SensorsFragment extends ListFragment implements
 
 		if (temperatureUnit.equals(getResources().getStringArray(
 				R.array.prefs_temp_unit_vals)[CELSIUS]))
-			tvDewPoint.setText(String.format("%.0f", dewPoint) + " "
-					+ (char) 0x00B0 + "C");
+			VALUES[ThermometerApp.dewPointIndex] = (String.format("%.0f",
+					dewPoint) + " " + (char) 0x00B0 + "C");
 		else if (temperatureUnit.equals(getResources().getStringArray(
 				R.array.prefs_temp_unit_vals)[FAHRENHEIT]))
-			tvDewPoint.setText(String.format("%.0f", dewPoint
-					* FAHRENHEIT_FACTOR + FAHRENHEIT_CONSTANT)
-					+ " " + (char) 0x00B0 + "F");
+			VALUES[ThermometerApp.dewPointIndex] = (String.format("%.0f",
+					dewPoint * FAHRENHEIT_FACTOR + FAHRENHEIT_CONSTANT)
+					+ " "
+					+ (char) 0x00B0 + "F");
 		else
-			tvDewPoint.setText(String.format("%.0f", dewPoint + ZERO_ABSOLUTE)
-					+ " K");
+			VALUES[ThermometerApp.dewPointIndex] = (String.format("%.0f",
+					dewPoint + ZERO_ABSOLUTE) + " K");
 
 		Log.d(TAG, "Dew point updated: " + dewPoint);
 	}
