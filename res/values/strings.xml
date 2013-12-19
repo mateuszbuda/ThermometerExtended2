@@ -4,7 +4,9 @@
     <string name="app_name">Thermometer Extended</string>
     <string name="action_settings">Settings</string>
     <string name="prefs_header">Settings</string>
+    <string name="title_activity_settings">Settings</string>
     <string name="prefs_sensors">Sensors</string>
+    <string name="pref_header_sensors">Ambient conditions</string>
     <string name="prefs_sensors_title">Choose sensors</string>
     <string name="ambient_temp_title">Temperature</string>
     <string name="relative_humidity_title">Relative Humidity</string>
@@ -20,6 +22,7 @@
     <string name="dew_point_key">dew_point</string>
     <string name="light_key">light</string>
     <string name="magnetic_field_key">magnetic_field</string>
+    <string name="pref_header_customization">Customization</string>
 
     <string-array name="prefs_temp_unit_keys">
         <item>Degrees Celsius</item>
