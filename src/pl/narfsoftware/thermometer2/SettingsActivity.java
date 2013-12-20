@@ -93,13 +93,13 @@ public class SettingsActivity extends PreferenceActivity {
 		getPreferenceScreen().addPreference(customizationHeader);
 		addPreferencesFromResource(R.xml.pref_customization);
 
-		// Bind the summaries of EditText/List/Dialog/Ringtone preferences to
-		// their values. When their values change, their summaries are updated
-		// to reflect the new value, per the Android Design guidelines.
-		// bindPreferenceSummaryToValue(findPreference("example_text"));
-		// bindPreferenceSummaryToValue(findPreference("example_list"));
-		// bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
-		// bindPreferenceSummaryToValue(findPreference("sync_frequency"));
+		// Bind the summaries of preferences to their values. When their values
+		// change, their summaries are updated to reflect the new value, per the
+		// Android Design guidelines.
+		bindPreferenceSummaryToValue(findPreference(getString(R.string.prefs_temp_unit_key)));
+		bindPreferenceSummaryToValue(findPreference(getString(R.string.prefs_date_format_key)));
+		bindPreferenceSummaryToValue(findPreference(getString(R.string.prefs_time_format_key)));
+		bindPreferenceSummaryToValue(findPreference(getString(R.string.prefs_background_color_key)));
 	}
 
 	/** {@inheritDoc} */
@@ -223,13 +223,6 @@ public class SettingsActivity extends PreferenceActivity {
 		public void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
 			addPreferencesFromResource(R.xml.pref_ambient_conditions);
-
-			// Bind the summaries of EditText/List/Dialog/Ringtone preferences
-			// to their values. When their values change, their summaries are
-			// updated to reflect the new value, per the Android Design
-			// guidelines.
-			// bindPreferenceSummaryToValue(findPreference("example_text"));
-			// bindPreferenceSummaryToValue(findPreference("example_list"));
 		}
 	}
 
@@ -238,17 +231,20 @@ public class SettingsActivity extends PreferenceActivity {
 	 * activity is showing a two-pane settings UI.
 	 */
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	public static class CustomizationPreferenceFragment extends PreferenceFragment {
+	public static class CustomizationPreferenceFragment extends
+			PreferenceFragment {
 		@Override
 		public void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
 			addPreferencesFromResource(R.xml.pref_customization);
 
-			// Bind the summaries of EditText/List/Dialog/Ringtone preferences
-			// to their values. When their values change, their summaries are
-			// updated to reflect the new value, per the Android Design
-			// guidelines.
-			// bindPreferenceSummaryToValue(findPreference("sync_frequency"));
+			// Bind the summaries of preferences to their values. When their values
+			// change, their summaries are updated to reflect the new value, per the
+			// Android Design guidelines.
+			bindPreferenceSummaryToValue(findPreference(getString(R.string.prefs_temp_unit_key)));
+			bindPreferenceSummaryToValue(findPreference(getString(R.string.prefs_date_format_key)));
+			bindPreferenceSummaryToValue(findPreference(getString(R.string.prefs_time_format_key)));
+			bindPreferenceSummaryToValue(findPreference(getString(R.string.prefs_background_color_key)));
 		}
 	}
 }
