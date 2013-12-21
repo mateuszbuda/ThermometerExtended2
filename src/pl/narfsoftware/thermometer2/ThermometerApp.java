@@ -31,8 +31,6 @@ public class ThermometerApp extends Application implements
 
 	boolean[] hasSensor = new boolean[SENSORS_COUNT];
 
-	boolean[] showAmbientCondition = new boolean[AMBIENT_CONDITIONS_COUNT];
-
 	private Sensor[] sensors = new Sensor[SENSORS_COUNT];
 
 	static final int S_TEMPRATURE = 0;
@@ -50,24 +48,7 @@ public class ThermometerApp extends Application implements
 				.getDefaultSharedPreferences(getApplicationContext());
 		preferences.registerOnSharedPreferenceChangeListener(this);
 
-		showAmbientCondition[TEMPERATURE_INDEX] = preferences.getBoolean(
-				getResources().getString(R.string.ambient_temp_key), true);
-
-		showAmbientCondition[RELATIVE_HUMIDITY_INDEX] = preferences.getBoolean(
-				getResources().getString(R.string.relative_humidity_key), true);
-		showAmbientCondition[ABSOLUTE_HUMIDITY_INDEX] = preferences
-				.getBoolean(
-						getResources()
-								.getString(R.string.absolute_humidity_key),
-						false);
-		showAmbientCondition[PRESSURE_INDEX] = preferences.getBoolean(
-				getResources().getString(R.string.pressure_key), true);
-		showAmbientCondition[DEW_POINT_INDEX] = preferences.getBoolean(
-				getResources().getString(R.string.dew_point_key), false);
-		showAmbientCondition[LIGHT_INDEX] = preferences.getBoolean(
-				getResources().getString(R.string.light_key), false);
-		showAmbientCondition[MAGNETIC_FIELD_INDEX] = preferences.getBoolean(
-				getResources().getString(R.string.magnetic_field_key), false);
+		// setAmbientConditionsToShow();
 
 		sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 		getSensors();
@@ -146,6 +127,27 @@ public class ThermometerApp extends Application implements
 		sensorManager.unregisterListener(this);
 	}
 
+	// private void setAmbientConditionsToShow() {
+	// showAmbientCondition[TEMPERATURE_INDEX] = preferences.getBoolean(
+	// getResources().getString(R.string.ambient_temp_key), true);
+	//
+	// showAmbientCondition[RELATIVE_HUMIDITY_INDEX] = preferences.getBoolean(
+	// getResources().getString(R.string.relative_humidity_key), true);
+	// showAmbientCondition[ABSOLUTE_HUMIDITY_INDEX] = preferences
+	// .getBoolean(
+	// getResources()
+	// .getString(R.string.absolute_humidity_key),
+	// false);
+	// showAmbientCondition[PRESSURE_INDEX] = preferences.getBoolean(
+	// getResources().getString(R.string.pressure_key), true);
+	// showAmbientCondition[DEW_POINT_INDEX] = preferences.getBoolean(
+	// getResources().getString(R.string.dew_point_key), false);
+	// showAmbientCondition[LIGHT_INDEX] = preferences.getBoolean(
+	// getResources().getString(R.string.light_key), false);
+	// showAmbientCondition[MAGNETIC_FIELD_INDEX] = preferences.getBoolean(
+	// getResources().getString(R.string.magnetic_field_key), false);
+	// }
+
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
 			String key) {
@@ -153,24 +155,7 @@ public class ThermometerApp extends Application implements
 		Log.d(TAG, "onSharedPreferenceChanged for key: " + key);
 
 		// get from preferences which sensors to show
-		showAmbientCondition[TEMPERATURE_INDEX] = preferences.getBoolean(
-				getResources().getString(R.string.ambient_temp_key), true);
-
-		showAmbientCondition[RELATIVE_HUMIDITY_INDEX] = preferences.getBoolean(
-				getResources().getString(R.string.relative_humidity_key), true);
-		showAmbientCondition[ABSOLUTE_HUMIDITY_INDEX] = preferences
-				.getBoolean(
-						getResources()
-								.getString(R.string.absolute_humidity_key),
-						false);
-		showAmbientCondition[PRESSURE_INDEX] = preferences.getBoolean(
-				getResources().getString(R.string.pressure_key), true);
-		showAmbientCondition[DEW_POINT_INDEX] = preferences.getBoolean(
-				getResources().getString(R.string.dew_point_key), false);
-		showAmbientCondition[LIGHT_INDEX] = preferences.getBoolean(
-				getResources().getString(R.string.light_key), false);
-		showAmbientCondition[MAGNETIC_FIELD_INDEX] = preferences.getBoolean(
-				getResources().getString(R.string.magnetic_field_key), false);
+		// setAmbientConditionsToShow();
 	}
 
 	Sensor getTemperatureSensor() {
