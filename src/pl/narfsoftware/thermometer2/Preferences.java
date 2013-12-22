@@ -31,6 +31,7 @@ public class Preferences implements OnSharedPreferenceChangeListener {
 		preferences = PreferenceManager.getDefaultSharedPreferences(context);
 		preferences.registerOnSharedPreferenceChangeListener(this);
 		setAmbientConditionsToShow();
+		setCustomizationPreferences();
 	}
 
 	private void setAmbientConditionsToShow() {
@@ -64,13 +65,7 @@ public class Preferences implements OnSharedPreferenceChangeListener {
 								R.string.magnetic_field_key), false);
 	}
 
-	@Override
-	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
-			String key) {
-		preferences = sharedPreferences;
-
-		setAmbientConditionsToShow();
-
+	private void setCustomizationPreferences() {
 		// set background color
 		backgroundColor = (Color.parseColor(preferences.getString(context
 				.getResources().getString(R.string.prefs_background_color_key),
@@ -93,6 +88,15 @@ public class Preferences implements OnSharedPreferenceChangeListener {
 				context.getResources()
 						.getString(R.string.prefs_time_format_key),
 				DEFAULT_TIME_FORMAT);
+	}
+
+	@Override
+	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
+			String key) {
+		preferences = sharedPreferences;
+		// TODO Set only setting with this particular key (?)
+		setAmbientConditionsToShow();
+		setCustomizationPreferences();
 	}
 
 }

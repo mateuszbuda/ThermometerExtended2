@@ -1,21 +1,35 @@
 package pl.narfsoftware.thermometer2;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class SensorsActivity extends Activity implements
 		SensorsFragment.OnSensorSelectedListener {
 	static final String TAG = "SensorsActivity";
 
+	Preferences preferences;
+	BroadcastReceiver minuteChangeReceiver;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.sensors_view);
+		preferences = new Preferences(this);
 
 		// Check whether the activity is using the layout version with
 		// the fragment_container FrameLayout. If so, we must add the first
@@ -45,9 +59,41 @@ public class SensorsActivity extends Activity implements
 	}
 
 	@Override
-	protected void onResume() {
+	protected void onStart() {
+		super.onStart();
 
+		minuteChangeReceiver = new BroadcastReceiver() {
+			@Override
+			public void onReceive(Context ctx, Intent intent) {
+				if (intent.getAction().compareTo(Intent.ACTION_TIME_TICK) == 0) {
+					Calendar calendar = Calendar.getInstance(Locale
+							.getDefault());
+					calendar.setTimeInMillis(new Date().getTime());
+
+					((TextView) findViewById(R.id.date)).setText(DateFormat
+							.format(preferences.dateFormat, calendar));
+					((TextView) findViewById(R.id.time)).setText(DateFormat
+							.format(preferences.timeFormat, calendar));
+				}
+			}
+		};
+
+		this.registerReceiver(minuteChangeReceiver, new IntentFilter(
+				Intent.ACTION_TIME_TICK));
+	}
+
+	@Override
+	protected void onResume() {
 		super.onResume();
+		LinearLayout backgroundLayout = (LinearLayout) findViewById(R.id.backgroundLayout);
+		backgroundLayout.setBackgroundColor(preferences.backgroundColor);
+	}
+
+	@Override
+	protected void onStop() {
+		super.onStop();
+		if (minuteChangeReceiver != null)
+			unregisterReceiver(minuteChangeReceiver);
 	}
 
 	@Override

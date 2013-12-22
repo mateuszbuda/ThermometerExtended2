@@ -1,6 +1,7 @@
 package pl.narfsoftware.thermometer2;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import android.app.Activity;
@@ -12,12 +13,15 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SensorsFragment extends ListFragment implements
@@ -41,16 +45,9 @@ public class SensorsFragment extends ListFragment implements
 	String sensorUnavailavle;
 
 	SensorRow[] sensorRows = new SensorRow[ThermometerApp.AMBIENT_CONDITIONS_COUNT];
-
-	String[] sensorTitles = { "Temperature", "Relative Humidity",
-			"Absolute Humidity", "Pressure", "DewPoint", "Light",
-			"Magnetic Field" };
-
-	String[] values = { noData, noData, noData, noData, noData, noData, noData };
-
-	Integer[] iconIds = { R.drawable.temprature, R.drawable.relative_humidity,
-			R.drawable.absolute_humidity, R.drawable.pressure,
-			R.drawable.dew_point, R.drawable.light, R.drawable.magnetic_field };
+	String[] sensorTitles = new String[ThermometerApp.AMBIENT_CONDITIONS_COUNT];
+	String[] values = new String[ThermometerApp.AMBIENT_CONDITIONS_COUNT];
+	Integer[] iconIds = new Integer[ThermometerApp.AMBIENT_CONDITIONS_COUNT];
 
 	OnSensorSelectedListener callback;
 
@@ -91,6 +88,95 @@ public class SensorsFragment extends ListFragment implements
 		init();
 
 		Log.d(TAG, "onCreated");
+	}
+
+	@Override
+	public void onStart() {
+		super.onStart();
+
+		// When in two-pane layout, set the listview to highlight the selected
+		// list item
+		// (We do this during onStart because at the point the listview is
+		// available.)
+		if (getFragmentManager().findFragmentById(R.id.sensors_fragment) != null) {
+			getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+		}
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+
+		sensorManager.unregisterListener(this);
+		Log.d(TAG, "Sensors unregistered");
+
+		initDateAndTime();
+		registerChosenSensors();
+		initIcons();
+		setAdapter();
+	}
+
+	private void initDateAndTime() {
+		((LinearLayout) activity.findViewById(R.id.dateAndTime))
+				.setVisibility(LinearLayout.VISIBLE);
+		if (preferences.dateFormat == "" && preferences.timeFormat == "")
+			((LinearLayout) activity.findViewById(R.id.dateAndTime))
+					.setVisibility(LinearLayout.GONE);
+
+		TextView date = (TextView) activity.findViewById(R.id.date);
+		TextView time = (TextView) activity.findViewById(R.id.time);
+
+		date.setText(DateFormat.format(preferences.dateFormat,
+				new Date().getTime()));
+		time.setText(DateFormat.format(preferences.timeFormat,
+				new Date().getTime()));
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+
+		// unregister sensors, yet no longer needed
+		sensorManager.unregisterListener(this);
+		Log.d(TAG, "Sensors unregistered");
+	}
+
+	@Override
+	public void onDestroy() {
+		sensorManager.unregisterListener(this);
+		super.onDestroy();
+	}
+
+	@Override
+	public void onListItemClick(ListView l, View v, int position, long id) {
+		// Notify the parent activity of selected item
+		callback.onSensorSelected(position);
+
+		// Set the item as checked to be highlighted when in two-pane layout
+		getListView().setItemChecked(position, true);
+	}
+
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+		Toast toast = Toast.makeText(getActivity(), "Item " + (position + 1)
+				+ ": " + sensorsList.get(position), Toast.LENGTH_SHORT);
+		toast.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+		toast.show();
+	}
+
+	private void setAdapter() {
+		sensorsList = new ArrayList<SensorRow>();
+		for (int i = 0; i < sensorTitles.length; i++)
+			if (preferences.showAmbientCondition[i])
+				sensorsList.add(sensorRows[i] = new SensorRow(iconIds[i],
+						sensorTitles[i], values[i]));
+
+		adapter = new SensorsListViewAdapter(getActivity(),
+				R.layout.sensor_row, sensorsList);
+		adapter.registerDataSetObserver(new DataSetObserver() {
+		});
+		setListAdapter(adapter);
 	}
 
 	private void init() {
@@ -150,76 +236,6 @@ public class SensorsFragment extends ListFragment implements
 				.getString(R.string.dew_point_title);
 		sensorTitles[ThermometerApp.MAGNETIC_FIELD_INDEX] = activity
 				.getResources().getString(R.string.magnetic_field_title);
-	}
-
-	@Override
-	public void onStart() {
-		super.onStart();
-
-		// When in two-pane layout, set the listview to highlight the selected
-		// list item
-		// (We do this during onStart because at the point the listview is
-		// available.)
-		if (getFragmentManager().findFragmentById(R.id.sensors_fragment) != null) {
-			getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-		}
-	}
-
-	@Override
-	public void onResume() {
-		super.onResume();
-
-		sensorManager.unregisterListener(this);
-		Log.d(TAG, "Sensors unregistered");
-
-		registerChosenSensors();
-		
-		initIcons();
-
-		sensorsList = new ArrayList<SensorRow>();
-		for (int i = 0; i < sensorTitles.length; i++)
-			if (preferences.showAmbientCondition[i])
-				sensorsList.add(sensorRows[i] = new SensorRow(iconIds[i],
-						sensorTitles[i], values[i]));
-
-		adapter = new SensorsListViewAdapter(getActivity(),
-				R.layout.sensor_row, sensorsList);
-		adapter.registerDataSetObserver(new DataSetObserver() {
-		});
-		setListAdapter(adapter);
-	}
-
-	@Override
-	public void onPause() {
-		super.onPause();
-
-		// unregister sensors, yet no longer needed
-		sensorManager.unregisterListener(this);
-		Log.d(TAG, "Sensors unregistered");
-	}
-
-	@Override
-	public void onDestroy() {
-		sensorManager.unregisterListener(this);
-		super.onDestroy();
-	}
-
-	@Override
-	public void onListItemClick(ListView l, View v, int position, long id) {
-		// Notify the parent activity of selected item
-		callback.onSensorSelected(position);
-
-		// Set the item as checked to be highlighted when in two-pane layout
-		getListView().setItemChecked(position, true);
-	}
-
-	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position,
-			long id) {
-		Toast toast = Toast.makeText(getActivity(), "Item " + (position + 1)
-				+ ": " + sensorsList.get(position), Toast.LENGTH_SHORT);
-		toast.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
-		toast.show();
 	}
 
 	private void registerChosenSensors() {
@@ -363,7 +379,9 @@ public class SensorsFragment extends ListFragment implements
 			float magneticFieldX = event.values[0];
 			float magneticFieldY = event.values[1];
 			float magneticFieldZ = event.values[2];
-			magneticField = magneticFieldX + magneticFieldY + magneticFieldZ;
+			magneticField = (float) Math.sqrt(magneticFieldX * magneticFieldX
+					+ magneticFieldY * magneticFieldY + magneticFieldZ
+					* magneticFieldZ);
 
 			values[ThermometerApp.MAGNETIC_FIELD_INDEX] = (String.format(
 					"%.0f", magneticField) + " " + (char) 0x03BC + "T");
