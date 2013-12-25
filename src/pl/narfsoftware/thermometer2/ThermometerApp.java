@@ -17,6 +17,7 @@ public class ThermometerApp extends Application implements
 
 	SharedPreferences preferences;
 	SensorManager sensorManager;
+	private SensorData sensorData;
 
 	static final int TEMPERATURE_INDEX = 0;
 	static final int RELATIVE_HUMIDITY_INDEX = 1;
@@ -127,27 +128,6 @@ public class ThermometerApp extends Application implements
 		sensorManager.unregisterListener(this);
 	}
 
-	// private void setAmbientConditionsToShow() {
-	// showAmbientCondition[TEMPERATURE_INDEX] = preferences.getBoolean(
-	// getResources().getString(R.string.ambient_temp_key), true);
-	//
-	// showAmbientCondition[RELATIVE_HUMIDITY_INDEX] = preferences.getBoolean(
-	// getResources().getString(R.string.relative_humidity_key), true);
-	// showAmbientCondition[ABSOLUTE_HUMIDITY_INDEX] = preferences
-	// .getBoolean(
-	// getResources()
-	// .getString(R.string.absolute_humidity_key),
-	// false);
-	// showAmbientCondition[PRESSURE_INDEX] = preferences.getBoolean(
-	// getResources().getString(R.string.pressure_key), true);
-	// showAmbientCondition[DEW_POINT_INDEX] = preferences.getBoolean(
-	// getResources().getString(R.string.dew_point_key), false);
-	// showAmbientCondition[LIGHT_INDEX] = preferences.getBoolean(
-	// getResources().getString(R.string.light_key), false);
-	// showAmbientCondition[MAGNETIC_FIELD_INDEX] = preferences.getBoolean(
-	// getResources().getString(R.string.magnetic_field_key), false);
-	// }
-
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
 			String key) {
@@ -176,6 +156,13 @@ public class ThermometerApp extends Application implements
 
 	Sensor getMagneticFieldSensor() {
 		return sensors[S_MAGNETIC_FIELD];
+	}
+
+	public SensorData getSensorData() {
+		if (sensorData == null)
+			sensorData = new SensorData(getApplicationContext());
+
+		return sensorData;
 	}
 
 	@Override
