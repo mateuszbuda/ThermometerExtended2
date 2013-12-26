@@ -10,10 +10,29 @@
     android:paddingTop="@dimen/plot_act_top_padding"
     tools:context=".PlotFragment" >
 
-    <TextView
-        android:id="@+id/tmpValue"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="" />
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tvUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="[uT]"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Switch
+            android:id="@+id/saveData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="@string/save_data_switch" />
+    </LinearLayout>
 
 </LinearLayout>

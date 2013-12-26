@@ -261,5 +261,6 @@
     <string name="toast_off_light_save_data">Saving light data turned off</string>
     <string name="toast_on_magnetic_field_save_data">Saving magnetic field data turned on</string>
     <string name="toast_off_magnetic_field_save_data">Saving magnetic field data turned off</string>
+    <string name="save_data_switch">"Save data: "</string>
 
 </resources>

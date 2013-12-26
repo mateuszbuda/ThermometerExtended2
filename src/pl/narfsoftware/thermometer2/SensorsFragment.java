@@ -24,8 +24,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SensorsFragment extends ListFragment implements
-		OnItemClickListener, SensorEventListener {
+public class SensorsFragment extends ListFragment implements SensorEventListener {
 	static final String TAG = "SensorsFragment";
 
 	Activity activity;
@@ -156,14 +155,6 @@ public class SensorsFragment extends ListFragment implements
 		getListView().setItemChecked(position, true);
 	}
 
-	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position,
-			long id) {
-		Toast toast = Toast.makeText(getActivity(), "Item " + (position + 1)
-				+ ": " + sensorsList.get(position), Toast.LENGTH_SHORT);
-		toast.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
-		toast.show();
-	}
 
 	private void setAdapter() {
 		sensorsList = new ArrayList<SensorRow>();

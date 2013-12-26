@@ -19,9 +19,7 @@ public class SensorService extends Service implements SensorEventListener {
 
 	ThermometerApp app;
 	Preferences preferences;
-
 	SensorData sensorData;
-
 	SensorManager sensorManager;
 	Sensor[] sensors = new Sensor[SENSORS_COUNT];
 
@@ -138,8 +136,8 @@ public class SensorService extends Service implements SensorEventListener {
 	public void onSensorChanged(SensorEvent event) {
 		Date date = new Date();
 
-		if ((preferences.showAmbientCondition[ThermometerApp.TEMPERATURE_INDEX]
-				|| preferences.showAmbientCondition[ThermometerApp.DEW_POINT_INDEX] || preferences.showAmbientCondition[ThermometerApp.ABSOLUTE_HUMIDITY_INDEX])
+		if ((app.saveAmbientConditionData[ThermometerApp.TEMPERATURE_INDEX]
+				|| app.saveAmbientConditionData[ThermometerApp.DEW_POINT_INDEX] || app.saveAmbientConditionData[ThermometerApp.ABSOLUTE_HUMIDITY_INDEX])
 				&& event.sensor.equals(app.getTemperatureSensor())) {
 			temperature = event.values[0];
 
@@ -149,8 +147,8 @@ public class SensorService extends Service implements SensorEventListener {
 			Log.d(TAG, "Got temperature sensor event: " + temperature);
 		}
 
-		if ((preferences.showAmbientCondition[ThermometerApp.RELATIVE_HUMIDITY_INDEX]
-				|| preferences.showAmbientCondition[ThermometerApp.DEW_POINT_INDEX] || preferences.showAmbientCondition[ThermometerApp.ABSOLUTE_HUMIDITY_INDEX])
+		if ((app.saveAmbientConditionData[ThermometerApp.RELATIVE_HUMIDITY_INDEX]
+				|| app.saveAmbientConditionData[ThermometerApp.DEW_POINT_INDEX] || app.saveAmbientConditionData[ThermometerApp.ABSOLUTE_HUMIDITY_INDEX])
 				&& event.sensor.equals(app.getRelativeHumiditySensor())) {
 			relativeHumidity = event.values[0];
 
@@ -161,13 +159,13 @@ public class SensorService extends Service implements SensorEventListener {
 					+ relativeHumidity);
 		}
 
-		if (preferences.showAmbientCondition[ThermometerApp.ABSOLUTE_HUMIDITY_INDEX]
+		if (app.saveAmbientConditionData[ThermometerApp.ABSOLUTE_HUMIDITY_INDEX]
 				&& (event.sensor.equals(app.getTemperatureSensor()) || event.sensor
 						.equals(app.getRelativeHumiditySensor()))) {
 			updateAbsoluteHumidity();
 		}
 
-		if (preferences.showAmbientCondition[ThermometerApp.PRESSURE_INDEX]
+		if (app.saveAmbientConditionData[ThermometerApp.PRESSURE_INDEX]
 				&& event.sensor.equals(app.getPressureSensor())) {
 			pressure = event.values[0];
 
@@ -177,13 +175,13 @@ public class SensorService extends Service implements SensorEventListener {
 			Log.d(TAG, "Got pressure sensor event: " + pressure);
 		}
 
-		if (preferences.showAmbientCondition[ThermometerApp.DEW_POINT_INDEX]
+		if (app.saveAmbientConditionData[ThermometerApp.DEW_POINT_INDEX]
 				&& (event.sensor.equals(app.getTemperatureSensor()) || event.sensor
 						.equals(app.getRelativeHumiditySensor()))) {
 			updateDewPoint();
 		}
 
-		if (preferences.showAmbientCondition[ThermometerApp.LIGHT_INDEX]
+		if (app.saveAmbientConditionData[ThermometerApp.LIGHT_INDEX]
 				&& event.sensor.equals(app.getLightSensor())) {
 			light = event.values[0];
 
@@ -193,7 +191,7 @@ public class SensorService extends Service implements SensorEventListener {
 			Log.d(TAG, "Got light sensor event: " + light);
 		}
 
-		if (preferences.showAmbientCondition[ThermometerApp.MAGNETIC_FIELD_INDEX]
+		if (app.saveAmbientConditionData[ThermometerApp.MAGNETIC_FIELD_INDEX]
 				&& event.sensor.equals(app.getMagneticFieldSensor())) {
 			float magneticFieldX = event.values[0];
 			float magneticFieldY = event.values[1];
