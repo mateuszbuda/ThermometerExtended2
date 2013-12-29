@@ -5,17 +5,15 @@ import java.util.Date;
 import java.util.Locale;
 
 import pl.narfsoftware.thermometer2.R;
-import pl.narfsoftware.thermometer2.R.id;
-import pl.narfsoftware.thermometer2.R.layout;
-import pl.narfsoftware.thermometer2.R.menu;
-import pl.narfsoftware.thermometer2.ui.SensorsFragment.OnSensorSelectedListener;
+import pl.narfsoftware.thermometer2.ThermometerApp;
 import pl.narfsoftware.thermometer2.utils.Preferences;
-
-
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -25,6 +23,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SensorsActivity extends Activity implements
 		SensorsFragment.OnSensorSelectedListener {
@@ -32,9 +31,11 @@ public class SensorsActivity extends Activity implements
 
 	Preferences preferences;
 	BroadcastReceiver minuteChangeReceiver;
-	
+
 	SensorsFragment sensorsFragment;
 	PlotFragment plotFragment;
+
+	private AlertDialog eraseDataDialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -127,15 +128,45 @@ public class SensorsActivity extends Activity implements
 			return true;
 
 		case R.id.action_help:
-			// startActivity(new Intent(this, HelpActivity.class));
+			startActivity(new Intent(this, HelpActivity.class));
 			return true;
 
 		case R.id.action_about:
-			// startActivity(new Intent(this, AboutActivity.class));
+			startActivity(new Intent(this, AboutActivity.class));
 			return true;
 
 		case R.id.action_clear_data:
+			AlertDialog.Builder builder = new Builder(this);
+			builder.setTitle(R.string.action_clear_data)
+					.setMessage(R.string.alert_dialog_erase_data_text)
+					.setPositiveButton(R.string.yes,
+							new DialogInterface.OnClickListener() {
+								@Override
+								public void onClick(DialogInterface dialog,
+										int which) {
+									((ThermometerApp) getApplication())
+											.getSensorData().deleteAll();
+									Toast.makeText(
+											getBaseContext(),
+											getResources()
+													.getString(
+															R.string.data_erased_success_toast),
+											Toast.LENGTH_SHORT).show();
+								}
+							})
+					.setNegativeButton(R.string.no,
+							new DialogInterface.OnClickListener() {
 
+								@Override
+								public void onClick(DialogInterface dialog,
+										int which) {
+									eraseDataDialog.cancel();
+								}
+							});
+
+			eraseDataDialog = builder.create();
+			eraseDataDialog.setCanceledOnTouchOutside(false);
+			eraseDataDialog.show();
 			return true;
 
 		default:
@@ -148,8 +179,8 @@ public class SensorsActivity extends Activity implements
 		// The user selected the sensor from the SensorsFragment
 
 		// Capture the plot fragment from the activity layout
-		plotFragment = (PlotFragment) getFragmentManager()
-				.findFragmentById(R.id.plot_fragment);
+		plotFragment = (PlotFragment) getFragmentManager().findFragmentById(
+				R.id.plot_fragment);
 
 		if (plotFragment != null) {
 			// If plot frag is available, we're in two-pane layout...

@@ -125,17 +125,6 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 		saveData = false;
 		tableName = DbHelper.TABLE_NAMES[currentIndex];
 		saveData = app.saveAmbientConditionData[currentIndex];
-		// :D
-		// if (backgroundLayout != null)
-		// backgroundLayout
-		// .setBackgroundColor(Color
-		// .parseColor(PreferenceManager
-		// .getDefaultSharedPreferences(activity)
-		// .getString(
-		// getResources()
-		// .getString(
-		// R.string.prefs_background_color_key),
-		// Integer.toString(Preferences.BACKGROUND_DEFAULT_COLOR))));
 		tableName = DbHelper.TABLE_NAMES[currentIndex];
 		dataSeries = new GraphViewSeries(sensorData.query(tableName));
 		if (dataSeries.getValues().length <= 1) {
@@ -248,9 +237,11 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 		saveData = app.saveAmbientConditionData[currentIndex] = isChecked;
 		refresher.setSaveDate(isChecked);
 		timer.setSaveDate(isChecked);
-		((SensorsActivity) activity).sensorsFragment.initIcons();
-		((SensorsActivity) activity).sensorsFragment.adapter
-				.notifyDataSetChanged();
+		if (((SensorsActivity) activity).sensorsFragment != null) {
+			((SensorsActivity) activity).sensorsFragment.initIcons();
+			((SensorsActivity) activity).sensorsFragment.adapter
+					.notifyDataSetChanged();
+		}
 		activity.stopService(new Intent(activity, SensorService.class));
 		if (app.saveAnyAmbientCondition())
 			activity.startService(new Intent(activity, SensorService.class));

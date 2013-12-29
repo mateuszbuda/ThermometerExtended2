@@ -34,6 +34,23 @@
 
         <service android:name="pl.narfsoftware.thermometer2.SensorService" >
         </service>
+
+        <activity
+            android:name="pl.narfsoftware.thermometer2.ui.HelpActivity"
+            android:label="@string/title_activity_help"
+            android:parentActivityName="pl.narfsoftware.thermometer2.ui.SensorsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pl.narfsoftware.thermometer2.ui.SensorsActivity" />
+        </activity>
+        <activity
+            android:name="pl.narfsoftware.thermometer2.ui.AboutActivity"
+            android:label="@string/title_activity_about"
+            android:parentActivityName="pl.narfsoftware.thermometer2.ui.SensorsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pl.narfsoftware.thermometer2.ui.SensorsActivity" />
+        </activity>
     </application>
 
 </manifest>
