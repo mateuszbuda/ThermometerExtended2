@@ -1,5 +1,6 @@
-package pl.narfsoftware.thermometer2;
+package pl.narfsoftware.thermometer2.utils;
 
+import pl.narfsoftware.thermometer2.db.SensorData;
 import android.os.Handler;
 
 import com.jjoe64.graphview.GraphView;
@@ -32,6 +33,10 @@ public class TimerRunnable implements Runnable {
 			graphView.scrollToEnd();
 		}
 		handler.postDelayed(this, Constants.ONE_SECOND);
+	}
+
+	public void setSaveDate(boolean saveData) {
+		this.saveData = saveData;
 	}
 
 }

@@ -1,8 +1,9 @@
-package pl.narfsoftware.thermometer2;
+package pl.narfsoftware.thermometer2.utils;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 
 import com.jjoe64.graphview.CustomLabelFormatter;
 import com.jjoe64.graphview.GraphViewSeries;

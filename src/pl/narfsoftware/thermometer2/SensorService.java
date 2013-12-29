@@ -3,6 +3,10 @@ package pl.narfsoftware.thermometer2;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import pl.narfsoftware.thermometer2.db.DbHelper;
+import pl.narfsoftware.thermometer2.db.SensorData;
+import pl.narfsoftware.thermometer2.utils.Constants;
+import pl.narfsoftware.thermometer2.utils.Preferences;
 import android.app.Service;
 import android.content.Intent;
 import android.hardware.Sensor;
@@ -74,34 +78,34 @@ public class SensorService extends Service implements SensorEventListener {
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		// register chosen sensors
 		if (app.hasSensor[ThermometerApp.S_TEMPRATURE]
-				&& (preferences.showAmbientCondition[ThermometerApp.TEMPERATURE_INDEX]
-						|| preferences.showAmbientCondition[ThermometerApp.ABSOLUTE_HUMIDITY_INDEX] || preferences.showAmbientCondition[ThermometerApp.DEW_POINT_INDEX])) {
+				&& (app.saveAmbientConditionData[ThermometerApp.TEMPERATURE_INDEX]
+						|| app.saveAmbientConditionData[ThermometerApp.ABSOLUTE_HUMIDITY_INDEX] || app.saveAmbientConditionData[ThermometerApp.DEW_POINT_INDEX])) {
 			sensorManager.registerListener(this, app.getTemperatureSensor(),
 					SensorManager.SENSOR_DELAY_UI);
 			Log.d(TAG, "Temperature sensor registered");
 		}
 		if (app.hasSensor[ThermometerApp.S_RELATIVE_HUMIDITY]
-				&& (preferences.showAmbientCondition[ThermometerApp.RELATIVE_HUMIDITY_INDEX]
-						|| preferences.showAmbientCondition[ThermometerApp.ABSOLUTE_HUMIDITY_INDEX] || preferences.showAmbientCondition[ThermometerApp.DEW_POINT_INDEX])) {
+				&& (app.saveAmbientConditionData[ThermometerApp.RELATIVE_HUMIDITY_INDEX]
+						|| app.saveAmbientConditionData[ThermometerApp.ABSOLUTE_HUMIDITY_INDEX] || app.saveAmbientConditionData[ThermometerApp.DEW_POINT_INDEX])) {
 			sensorManager.registerListener(this,
 					app.getRelativeHumiditySensor(),
 					SensorManager.SENSOR_DELAY_UI);
 			Log.d(TAG, "Relative humidity sensor registered");
 		}
 		if (app.hasSensor[ThermometerApp.S_PRESSURE]
-				&& preferences.showAmbientCondition[ThermometerApp.PRESSURE_INDEX]) {
+				&& app.saveAmbientConditionData[ThermometerApp.PRESSURE_INDEX]) {
 			sensorManager.registerListener(this, app.getPressureSensor(),
 					SensorManager.SENSOR_DELAY_UI);
 			Log.d(TAG, "Pressure sensor registered");
 		}
 		if (app.hasSensor[ThermometerApp.S_LIGHT]
-				&& preferences.showAmbientCondition[ThermometerApp.LIGHT_INDEX]) {
+				&& app.saveAmbientConditionData[ThermometerApp.LIGHT_INDEX]) {
 			sensorManager.registerListener(this, app.getLightSensor(),
 					SensorManager.SENSOR_DELAY_UI);
 			Log.d(TAG, "Light sensor registered");
 		}
 		if (app.hasSensor[ThermometerApp.S_MAGNETIC_FIELD]
-				&& preferences.showAmbientCondition[ThermometerApp.MAGNETIC_FIELD_INDEX]) {
+				&& app.saveAmbientConditionData[ThermometerApp.MAGNETIC_FIELD_INDEX]) {
 			sensorManager.registerListener(this, app.getMagneticFieldSensor(),
 					SensorManager.SENSOR_DELAY_UI);
 			Log.d(TAG, "Magnetic field sensor registered");

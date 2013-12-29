@@ -1,5 +1,7 @@
-package pl.narfsoftware.thermometer2;
+package pl.narfsoftware.thermometer2.utils;
 
+import pl.narfsoftware.thermometer2.R;
+import pl.narfsoftware.thermometer2.ThermometerApp;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -11,22 +13,23 @@ public class Preferences implements OnSharedPreferenceChangeListener {
 	Context context;
 	SharedPreferences preferences;
 
-	String timeFormat = DEFAULT_TIME_FORMAT;
-	String dateFormat = DEFAULT_DATE_FORMAT;
-	static final String DEFAULT_TIME_FORMAT = "kk:mm a";
-	static final String DEFAULT_DATE_FORMAT = "EEEE, dd MMMM";
+	public String timeFormat = DEFAULT_TIME_FORMAT;
+	public String dateFormat = DEFAULT_DATE_FORMAT;
+	public static final String DEFAULT_TIME_FORMAT = "kk:mm a";
+	public static final String DEFAULT_DATE_FORMAT = "EEEE, dd MMMM";
 
-	String temperatureUnit;
-	static final int CELSIUS = 0;
-	static final int FAHRENHEIT = 1;
-	static final int KELVIN = 2;
+	public String temperatureUnit;
+	public static final int CELSIUS = 0;
+	public static final int FAHRENHEIT = 1;
+	public static final int KELVIN = 2;
 
-	int backgroundColor;
-	static final int BACKGROUND_DEFAULT_COLOR = Color.parseColor("#FFF0F8FF");
+	public int backgroundColor;
+	public static final int BACKGROUND_DEFAULT_COLOR = Color
+			.parseColor("#FFF0F8FF");
 
-	boolean[] showAmbientCondition = new boolean[ThermometerApp.AMBIENT_CONDITIONS_COUNT];
+	public boolean[] showAmbientCondition = new boolean[ThermometerApp.AMBIENT_CONDITIONS_COUNT];
 
-	Preferences(Context context) {
+	public Preferences(Context context) {
 		this.context = context;
 		preferences = PreferenceManager.getDefaultSharedPreferences(context);
 		preferences.registerOnSharedPreferenceChangeListener(this);

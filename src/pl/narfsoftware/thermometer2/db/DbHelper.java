@@ -1,12 +1,11 @@
-package pl.narfsoftware.thermometer2;
+package pl.narfsoftware.thermometer2.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class DbHelper extends SQLiteOpenHelper
-{
+public class DbHelper extends SQLiteOpenHelper {
 	static final String TAG = "DbHelper";
 
 	static final String DB_NAME = "sensors_data.db";
@@ -20,20 +19,22 @@ public class DbHelper extends SQLiteOpenHelper
 	public static final String TABLE_LIGHT = "Light";
 	public static final String TABLE_MAGNETIC_FIELD = "MagneticField";
 
+	public static final String[] TABLE_NAMES = { TABLE_TEMPERATUE,
+			TABLE_RELATIVE_HUMIDITY, TABLE_ABSOLUTE_HUMIDITY, TABLE_PRESSURE,
+			TABLE_DEW_POINT, TABLE_LIGHT, TABLE_MAGNETIC_FIELD };
+
 	public static final String C_ID = "_id";
 	public static final String C_TIMESTAMP = "timestamp";
 	public static final String C_VALUE = "value";
 
 	private SQLiteDatabase db;
 
-	public DbHelper(Context context)
-	{
+	public DbHelper(Context context) {
 		super(context, DB_NAME, null, DB_VER);
 	}
 
 	@Override
-	public void onCreate(SQLiteDatabase db)
-	{
+	public void onCreate(SQLiteDatabase db) {
 		String sqlCreate = "create table if not exists %s "
 				+ "(%s int primary key not null, %s int, %s real)";
 		String sql;
@@ -74,8 +75,7 @@ public class DbHelper extends SQLiteOpenHelper
 	}
 
 	@Override
-	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
-	{
+	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		db.execSQL("drop table if exists " + TABLE_TEMPERATUE);
 		db.execSQL("drop table if exists " + TABLE_RELATIVE_HUMIDITY);
 		db.execSQL("drop table if exists " + TABLE_ABSOLUTE_HUMIDITY);

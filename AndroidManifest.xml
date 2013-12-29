@@ -15,7 +15,7 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Holo.Light" >
         <activity
-            android:name="pl.narfsoftware.thermometer2.SensorsActivity"
+            android:name="pl.narfsoftware.thermometer2.ui.SensorsActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,13 +24,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="pl.narfsoftware.thermometer2.SettingsActivity"
+            android:name="pl.narfsoftware.thermometer2.ui.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName="pl.narfsoftware.thermometer2.SensorsActivity" >
+            android:parentActivityName="pl.narfsoftware.thermometer2.ui.SensorsActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="pl.narfsoftware.thermometer2.SensorsActivity" />
+                android:value="pl.narfsoftware.thermometer2.ui.SensorsActivity" />
         </activity>
+
+        <service android:name="pl.narfsoftware.thermometer2.SensorService" >
+        </service>
     </application>
 
 </manifest>

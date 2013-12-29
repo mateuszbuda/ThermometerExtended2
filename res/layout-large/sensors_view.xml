@@ -10,16 +10,50 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin" >
 
-    <fragment
-        android:id="@+id/sensors_fragment"
-        android:name="pl.narfsoftware.thermometer2.SensorsFragment"
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/dateAndTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="10/10/2010"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="10:10 pm"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dip"
+                android:layout_marginBottom="@dimen/row_padding_bottom"
+                android:layout_marginTop="@dimen/row_padding_top"
+                android:background="@color/dividing_line_color" />
+        </LinearLayout>
+
+        <fragment
+            android:id="@+id/sensors_fragment"
+            android:name="pl.narfsoftware.thermometer2.ui.SensorsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
     <fragment
         android:id="@+id/plot_fragment"
-        android:name="pl.narfsoftware.thermometer2.PlotFragment"
+        android:name="pl.narfsoftware.thermometer2.ui.PlotFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="2" />

@@ -1,8 +1,16 @@
-package pl.narfsoftware.thermometer2;
+package pl.narfsoftware.thermometer2.ui;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+
+import pl.narfsoftware.thermometer2.R;
+import pl.narfsoftware.thermometer2.R.id;
+import pl.narfsoftware.thermometer2.R.layout;
+import pl.narfsoftware.thermometer2.R.menu;
+import pl.narfsoftware.thermometer2.ui.SensorsFragment.OnSensorSelectedListener;
+import pl.narfsoftware.thermometer2.utils.Preferences;
+
 
 import android.app.Activity;
 import android.app.FragmentTransaction;
@@ -24,6 +32,9 @@ public class SensorsActivity extends Activity implements
 
 	Preferences preferences;
 	BroadcastReceiver minuteChangeReceiver;
+	
+	SensorsFragment sensorsFragment;
+	PlotFragment plotFragment;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +55,7 @@ public class SensorsActivity extends Activity implements
 			}
 
 			// Create an instance of SensorsFragment
-			SensorsFragment sensorsFragment = new SensorsFragment();
+			sensorsFragment = new SensorsFragment();
 
 			// In case this activity was started with special instructions from
 			// an Intent, pass the Intent's extras to the fragment as arguments
@@ -70,10 +81,15 @@ public class SensorsActivity extends Activity implements
 							.getDefault());
 					calendar.setTimeInMillis(new Date().getTime());
 
-					((TextView) findViewById(R.id.date)).setText(DateFormat
-							.format(preferences.dateFormat, calendar));
-					((TextView) findViewById(R.id.time)).setText(DateFormat
-							.format(preferences.timeFormat, calendar));
+					TextView date = (TextView) findViewById(R.id.date);
+					TextView time = (TextView) findViewById(R.id.time);
+
+					if (date != null)
+						date.setText(DateFormat.format(preferences.dateFormat,
+								calendar));
+					if (time != null)
+						time.setText(DateFormat.format(preferences.timeFormat,
+								calendar));
 				}
 			}
 		};
@@ -128,18 +144,18 @@ public class SensorsActivity extends Activity implements
 	}
 
 	@Override
-	public void onSensorSelected(int position) {
+	public void onSensorSelected(int index) {
 		// The user selected the sensor from the SensorsFragment
 
 		// Capture the plot fragment from the activity layout
-		PlotFragment plotFrag = (PlotFragment) getFragmentManager()
+		plotFragment = (PlotFragment) getFragmentManager()
 				.findFragmentById(R.id.plot_fragment);
 
-		if (plotFrag != null) {
+		if (plotFragment != null) {
 			// If plot frag is available, we're in two-pane layout...
 
 			// Call a method in the PlotFragment to update its content
-			plotFrag.updatePlotFragment(position);
+			plotFragment.updatePlotFragment(index);
 
 		} else {
 			// If the frag is not available, we're in the one-pane layout and
@@ -148,7 +164,7 @@ public class SensorsActivity extends Activity implements
 			// Create fragment and give it an argument for the selected sensor
 			PlotFragment newFragment = new PlotFragment();
 			Bundle args = new Bundle();
-			args.putInt(PlotFragment.ARG_POSITION, position);
+			args.putInt(PlotFragment.ARG_INDEX, index);
 			newFragment.setArguments(args);
 			FragmentTransaction transaction = getFragmentManager()
 					.beginTransaction();

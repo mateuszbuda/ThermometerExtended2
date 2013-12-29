@@ -1,9 +1,15 @@
-package pl.narfsoftware.thermometer2;
+package pl.narfsoftware.thermometer2.ui;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import pl.narfsoftware.thermometer2.R;
+import pl.narfsoftware.thermometer2.SensorRow;
+import pl.narfsoftware.thermometer2.SensorsListViewAdapter;
+import pl.narfsoftware.thermometer2.ThermometerApp;
+import pl.narfsoftware.thermometer2.utils.Constants;
+import pl.narfsoftware.thermometer2.utils.Preferences;
 import android.app.Activity;
 import android.app.ListFragment;
 import android.database.DataSetObserver;
@@ -15,16 +21,13 @@ import android.os.Bundle;
 import android.text.Html;
 import android.text.format.DateFormat;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class SensorsFragment extends ListFragment implements SensorEventListener {
+public class SensorsFragment extends ListFragment implements
+		SensorEventListener {
 	static final String TAG = "SensorsFragment";
 
 	Activity activity;
@@ -109,35 +112,25 @@ public class SensorsFragment extends ListFragment implements SensorEventListener
 		sensorManager.unregisterListener(this);
 		Log.d(TAG, "Sensors unregistered");
 
-		initDateAndTime();
 		registerChosenSensors();
 		initIcons();
+		initDateAndTime();
 		setAdapter();
-	}
-
-	private void initDateAndTime() {
-		((LinearLayout) activity.findViewById(R.id.dateAndTime))
-				.setVisibility(LinearLayout.VISIBLE);
-		if (preferences.dateFormat == "" && preferences.timeFormat == "")
-			((LinearLayout) activity.findViewById(R.id.dateAndTime))
-					.setVisibility(LinearLayout.GONE);
-
-		TextView date = (TextView) activity.findViewById(R.id.date);
-		TextView time = (TextView) activity.findViewById(R.id.time);
-
-		date.setText(DateFormat.format(preferences.dateFormat,
-				new Date().getTime()));
-		time.setText(DateFormat.format(preferences.timeFormat,
-				new Date().getTime()));
 	}
 
 	@Override
 	public void onPause() {
 		super.onPause();
-
 		// unregister sensors, yet no longer needed
 		sensorManager.unregisterListener(this);
 		Log.d(TAG, "Sensors unregistered");
+	}
+
+	@Override
+	public void onStop() {
+		((LinearLayout) getActivity().findViewById(R.id.dateAndTime))
+				.setVisibility(LinearLayout.GONE);
+		super.onStop();
 	}
 
 	@Override
@@ -149,12 +142,19 @@ public class SensorsFragment extends ListFragment implements SensorEventListener
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		// Notify the parent activity of selected item
-		callback.onSensorSelected(position);
+		int index = -1;
+		SensorRow selected = (SensorRow) getListView().getItemAtPosition(
+				position);
+		for (int i = 0; i < sensorRows.length; i++)
+			if (sensorRows[i] == selected) {
+				index = i;
+				break;
+			}
 
+		callback.onSensorSelected(index);
 		// Set the item as checked to be highlighted when in two-pane layout
 		getListView().setItemChecked(position, true);
 	}
-
 
 	private void setAdapter() {
 		sensorsList = new ArrayList<SensorRow>();
@@ -173,10 +173,9 @@ public class SensorsFragment extends ListFragment implements SensorEventListener
 	private void init() {
 		initSensorTitles();
 		initValues();
-		initIcons();
 	}
 
-	private void initIcons() {
+	void initIcons() {
 		iconIds[ThermometerApp.TEMPERATURE_INDEX] = app.saveAmbientConditionData[ThermometerApp.TEMPERATURE_INDEX] ? R.drawable.temprature
 				: R.drawable.temprature_disabled;
 		iconIds[ThermometerApp.ABSOLUTE_HUMIDITY_INDEX] = app.saveAmbientConditionData[ThermometerApp.ABSOLUTE_HUMIDITY_INDEX] ? R.drawable.absolute_humidity
@@ -227,6 +226,29 @@ public class SensorsFragment extends ListFragment implements SensorEventListener
 				.getString(R.string.dew_point_title);
 		sensorTitles[ThermometerApp.MAGNETIC_FIELD_INDEX] = activity
 				.getResources().getString(R.string.magnetic_field_title);
+	}
+
+	private void initDateAndTime() {
+		LinearLayout dateAndTime = ((LinearLayout) activity
+				.findViewById(R.id.dateAndTime));
+		TextView date = (TextView) activity.findViewById(R.id.date);
+		TextView time = (TextView) activity.findViewById(R.id.time);
+		// For me this should not work
+		if (preferences.dateFormat.equals("")
+				&& preferences.timeFormat.equals("")) {
+			dateAndTime.setVisibility(LinearLayout.GONE);
+			return;
+		} else if (preferences.dateFormat.equals(""))
+			date.setVisibility(LinearLayout.GONE);
+		else if (preferences.timeFormat.equals(""))
+			time.setVisibility(LinearLayout.GONE);
+
+		dateAndTime.setVisibility(LinearLayout.VISIBLE);
+
+		date.setText(DateFormat.format(preferences.dateFormat,
+				new Date().getTime()));
+		time.setText(DateFormat.format(preferences.timeFormat,
+				new Date().getTime()));
 	}
 
 	private void registerChosenSensors() {

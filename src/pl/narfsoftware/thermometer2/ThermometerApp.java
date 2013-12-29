@@ -1,5 +1,6 @@
 package pl.narfsoftware.thermometer2;
 
+import pl.narfsoftware.thermometer2.db.SensorData;
 import android.app.Application;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -19,27 +20,27 @@ public class ThermometerApp extends Application implements
 	SensorManager sensorManager;
 	private SensorData sensorData;
 
-	static final int TEMPERATURE_INDEX = 0;
-	static final int RELATIVE_HUMIDITY_INDEX = 1;
-	static final int ABSOLUTE_HUMIDITY_INDEX = 2;
-	static final int PRESSURE_INDEX = 3;
-	static final int DEW_POINT_INDEX = 4;
-	static final int LIGHT_INDEX = 5;
-	static final int MAGNETIC_FIELD_INDEX = 6;
-	static final int AMBIENT_CONDITIONS_COUNT = 7;
+	public static final int TEMPERATURE_INDEX = 0;
+	public static final int RELATIVE_HUMIDITY_INDEX = 1;
+	public static final int ABSOLUTE_HUMIDITY_INDEX = 2;
+	public static final int PRESSURE_INDEX = 3;
+	public static final int DEW_POINT_INDEX = 4;
+	public static final int LIGHT_INDEX = 5;
+	public static final int MAGNETIC_FIELD_INDEX = 6;
+	public static final int AMBIENT_CONDITIONS_COUNT = 7;
 
-	boolean[] saveAmbientConditionData = new boolean[AMBIENT_CONDITIONS_COUNT];
+	public boolean[] saveAmbientConditionData = new boolean[AMBIENT_CONDITIONS_COUNT];
 
-	boolean[] hasSensor = new boolean[SENSORS_COUNT];
+	public boolean[] hasSensor = new boolean[SENSORS_COUNT];
 
 	private Sensor[] sensors = new Sensor[SENSORS_COUNT];
 
-	static final int S_TEMPRATURE = 0;
-	static final int S_RELATIVE_HUMIDITY = 1;
-	static final int S_PRESSURE = 2;
-	static final int S_LIGHT = 3;
-	static final int S_MAGNETIC_FIELD = 4;
-	static final int SENSORS_COUNT = 5;
+	public static final int S_TEMPRATURE = 0;
+	public static final int S_RELATIVE_HUMIDITY = 1;
+	public static final int S_PRESSURE = 2;
+	public static final int S_LIGHT = 3;
+	public static final int S_MAGNETIC_FIELD = 4;
+	public static final int SENSORS_COUNT = 5;
 
 	@Override
 	public void onCreate() {
@@ -138,23 +139,23 @@ public class ThermometerApp extends Application implements
 		// setAmbientConditionsToShow();
 	}
 
-	Sensor getTemperatureSensor() {
+	public Sensor getTemperatureSensor() {
 		return sensors[S_TEMPRATURE];
 	}
 
-	Sensor getRelativeHumiditySensor() {
+	public Sensor getRelativeHumiditySensor() {
 		return sensors[S_RELATIVE_HUMIDITY];
 	}
 
-	Sensor getPressureSensor() {
+	public Sensor getPressureSensor() {
 		return sensors[S_PRESSURE];
 	}
 
-	Sensor getLightSensor() {
+	public Sensor getLightSensor() {
 		return sensors[S_LIGHT];
 	}
 
-	Sensor getMagneticFieldSensor() {
+	public Sensor getMagneticFieldSensor() {
 		return sensors[S_MAGNETIC_FIELD];
 	}
 

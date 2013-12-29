@@ -1,7 +1,8 @@
-package pl.narfsoftware.thermometer2;
+package pl.narfsoftware.thermometer2.db;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 import android.content.ContentValues;
 import android.content.Context;

@@ -1,7 +1,8 @@
-package pl.narfsoftware.thermometer2;
+package pl.narfsoftware.thermometer2.ui;
 
 import java.util.List;
 
+import pl.narfsoftware.thermometer2.R;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -42,7 +43,7 @@ public class SettingsActivity extends PreferenceActivity {
 	private static final boolean ALWAYS_SIMPLE_PREFS = false;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setupActionBar();
 	}
@@ -62,7 +63,7 @@ public class SettingsActivity extends PreferenceActivity {
 	}
 
 	@Override
-	protected void onPostCreate(Bundle savedInstanceState) {
+	public void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
 
 		setupSimplePreferencesScreen();
@@ -238,8 +239,10 @@ public class SettingsActivity extends PreferenceActivity {
 			super.onCreate(savedInstanceState);
 			addPreferencesFromResource(R.xml.pref_customization);
 
-			// Bind the summaries of preferences to their values. When their values
-			// change, their summaries are updated to reflect the new value, per the
+			// Bind the summaries of preferences to their values. When their
+			// values
+			// change, their summaries are updated to reflect the new value, per
+			// the
 			// Android Design guidelines.
 			bindPreferenceSummaryToValue(findPreference(getString(R.string.prefs_temp_unit_key)));
 			bindPreferenceSummaryToValue(findPreference(getString(R.string.prefs_date_format_key)));
