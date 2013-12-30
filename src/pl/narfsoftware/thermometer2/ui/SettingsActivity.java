@@ -101,6 +101,7 @@ public class SettingsActivity extends PreferenceActivity {
 		bindPreferenceSummaryToValue(findPreference(getString(R.string.prefs_date_format_key)));
 		bindPreferenceSummaryToValue(findPreference(getString(R.string.prefs_time_format_key)));
 		bindPreferenceSummaryToValue(findPreference(getString(R.string.prefs_background_color_key)));
+		bindPreferenceSummaryToValue(findPreference(getString(R.string.prefs_font_key)));
 	}
 
 	/** {@inheritDoc} */
@@ -240,14 +241,13 @@ public class SettingsActivity extends PreferenceActivity {
 			addPreferencesFromResource(R.xml.pref_customization);
 
 			// Bind the summaries of preferences to their values. When their
-			// values
-			// change, their summaries are updated to reflect the new value, per
-			// the
-			// Android Design guidelines.
+			// values change, their summaries are updated to reflect the new
+			// value, per the Android Design guidelines.
 			bindPreferenceSummaryToValue(findPreference(getString(R.string.prefs_temp_unit_key)));
 			bindPreferenceSummaryToValue(findPreference(getString(R.string.prefs_date_format_key)));
 			bindPreferenceSummaryToValue(findPreference(getString(R.string.prefs_time_format_key)));
 			bindPreferenceSummaryToValue(findPreference(getString(R.string.prefs_background_color_key)));
+			bindPreferenceSummaryToValue(findPreference(getString(R.string.prefs_font_key)));
 		}
 	}
 }

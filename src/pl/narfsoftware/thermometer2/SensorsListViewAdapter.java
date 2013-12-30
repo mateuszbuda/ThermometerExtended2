@@ -2,9 +2,10 @@ package pl.narfsoftware.thermometer2;
 
 import java.util.List;
 
-
+import pl.narfsoftware.thermometer2.utils.Preferences;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +48,12 @@ public class SensorsListViewAdapter extends ArrayAdapter<SensorRow> {
 			convertView.setTag(holder);
 		} else
 			holder = (ViewHolder) convertView.getTag();
+
+		Preferences prefs = new Preferences(context);
+		holder.sensorType.setTypeface(Typeface.createFromAsset(
+				context.getAssets(), prefs.fontTypeface));
+		holder.sensorData.setTypeface(Typeface.createFromAsset(
+				context.getAssets(), prefs.fontTypeface));
 
 		holder.sensorData.setText(sensorRow.getStringValue());
 		holder.sensorType.setText(sensorRow.getSensorName());

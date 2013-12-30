@@ -45,7 +45,7 @@ public class SensorRow {
 		this.value = value;
 	}
 
-	public Float getIntValue() {
+	public Float getFloatValue() {
 		try {
 			return Float.parseFloat(value);
 		} catch (NumberFormatException e) {

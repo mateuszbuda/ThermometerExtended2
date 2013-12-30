@@ -15,6 +15,7 @@ import pl.narfsoftware.thermometer2.utils.Preferences;
 import android.app.Activity;
 import android.app.ListFragment;
 import android.database.DataSetObserver;
+import android.graphics.Typeface;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -235,6 +236,10 @@ public class SensorsFragment extends ListFragment implements
 				.findViewById(R.id.dateAndTime));
 		TextView date = (TextView) activity.findViewById(R.id.date);
 		TextView time = (TextView) activity.findViewById(R.id.time);
+		date.setTypeface(Typeface.createFromAsset(activity.getAssets(),
+				preferences.fontTypeface));
+		time.setTypeface(Typeface.createFromAsset(activity.getAssets(),
+				preferences.fontTypeface));
 
 		if (preferences.dateFormat.equals("")
 				&& preferences.timeFormat.equals("")) {

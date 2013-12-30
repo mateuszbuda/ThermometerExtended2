@@ -27,6 +27,9 @@ public class Preferences implements OnSharedPreferenceChangeListener {
 	public int backgroundColor;
 	static final int BACKGROUND_DEFAULT_COLOR = Color.parseColor("#FFF0F8FF");
 
+	public String fontTypeface;
+	static final String DEFAULT_FONT_TYPEFACE = "Roboto.ttf";
+
 	public boolean[] showAmbientCondition = new boolean[ThermometerApp.AMBIENT_CONDITIONS_COUNT];
 
 	public Preferences(Context context) {
@@ -91,6 +94,11 @@ public class Preferences implements OnSharedPreferenceChangeListener {
 				context.getResources()
 						.getString(R.string.prefs_time_format_key),
 				DEFAULT_TIME_FORMAT);
+
+		// set font typeface
+		fontTypeface = preferences.getString(
+				context.getResources().getString(R.string.prefs_font_key),
+				DEFAULT_FONT_TYPEFACE);
 	}
 
 	@Override
