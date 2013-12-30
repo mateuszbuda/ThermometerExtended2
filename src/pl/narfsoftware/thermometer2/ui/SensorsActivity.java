@@ -25,7 +25,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class SensorsActivity extends Activity implements
-		SensorsFragment.OnSensorSelectedListener {
+		SensorsFragment.OnSensorSelectedListener,
+		PlotFragment.OnSensorDataSaveStateChangedListener {
 	static final String TAG = "SensorsActivity";
 
 	Preferences preferences;
@@ -205,6 +206,28 @@ public class SensorsActivity extends Activity implements
 
 			// Commit the transaction
 			transaction.commit();
+		}
+	}
+
+	@Override
+	public void onSensorDataSaveStateChanged(int index) {
+		// The user changed checked state of dataSave switch from the
+		// PlotFragment
+
+		// Capture the sensors fragment from the activity layout
+		sensorsFragment = (SensorsFragment) getFragmentManager()
+				.findFragmentById(R.id.sensors_fragment);
+
+		if (sensorsFragment != null) {
+			// If sensors frag is available, we're in two-pane layout...
+
+			// Call a method in the SensorsFragment to update its content
+			sensorsFragment.updateSensorsFragment(index);
+
+		} else {
+			// If the frag is not available, we're in the one-pane layout and
+			// take no action
+			return;
 		}
 	}
 

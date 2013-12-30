@@ -12,16 +12,18 @@ public class RefresherRunnable implements Runnable {
 	boolean saveData;
 	GraphViewSeries dataSeries;
 	TextView tvUnit;
+	String unit;
 	int verticalLabelsWidth;
 	GraphView graphView;
 	Label label;
 	Handler handler;
 
 	public RefresherRunnable(boolean sd, GraphViewSeries ds, TextView tv,
-			int vlw, GraphView gv, Handler h) {
+			String u, int vlw, GraphView gv, Handler h) {
 		saveData = sd;
 		dataSeries = ds;
 		tvUnit = tv;
+		unit = u;
 		verticalLabelsWidth = vlw;
 		graphView = gv;
 		handler = h;
@@ -30,6 +32,7 @@ public class RefresherRunnable implements Runnable {
 	@Override
 	public void run() {
 		if (saveData && dataSeries.getValues().length > 1) {
+			tvUnit.setText(unit);
 			graphView.getGraphViewStyle().setVerticalLabelsColor(Color.BLACK);
 			graphView.getGraphViewStyle().setVerticalLabelsWidth(
 					verticalLabelsWidth);
@@ -45,7 +48,7 @@ public class RefresherRunnable implements Runnable {
 			handler.postDelayed(this, Constants.ONE_SECOND);
 	}
 
-	public void setSaveDate(boolean saveData) {
+	public void setSaveData(boolean saveData) {
 		this.saveData = saveData;
 	}
 

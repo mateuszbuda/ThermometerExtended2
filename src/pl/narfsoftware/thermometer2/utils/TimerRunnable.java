@@ -35,7 +35,7 @@ public class TimerRunnable implements Runnable {
 		handler.postDelayed(this, Constants.ONE_SECOND);
 	}
 
-	public void setSaveDate(boolean saveData) {
+	public void setSaveData(boolean saveData) {
 		this.saveData = saveData;
 	}
 

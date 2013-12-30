@@ -61,6 +61,27 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 	private TimerRunnable timer;
 	private RefresherRunnable refresher;
 
+	OnSensorDataSaveStateChangedListener callback;
+
+	public interface OnSensorDataSaveStateChangedListener {
+		/** Called by PlotFragment when a dataSave switch checked state changes */
+		public void onSensorDataSaveStateChanged(int index);
+	}
+
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		this.activity = activity;
+		// This makes sure that the container activity has implemented
+		// the callback interface. If not, it throws an exception.
+		try {
+			callback = (OnSensorDataSaveStateChangedListener) activity;
+		} catch (ClassCastException e) {
+			throw new ClassCastException(activity.toString()
+					+ " must implement OnSensorDataSaveStateChangedListener");
+		}
+	}
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -122,6 +143,7 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 		super.onResume();
 
 		saveData = false;
+		tvUnit.setText("");
 		tableName = DbHelper.TABLE_NAMES[currentIndex];
 		saveData = app.saveAmbientConditionData[currentIndex];
 		tableName = DbHelper.TABLE_NAMES[currentIndex];
@@ -156,13 +178,14 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 
 		graphView.setScrollable(true);
 		// add graph view
-		if (backgroundLayout != null)
+		if (backgroundLayout != null && graphView.getParent() == null)
 			backgroundLayout.addView(graphView);
 
 		timer = new TimerRunnable(saveData, dataSeries, sensorData, tableName,
 				graphView, handler);
 		refresher = new RefresherRunnable(saveData, dataSeries, tvUnit,
-				verticalLabelsWidth, graphView, handler);
+				Constants.UNITS[currentIndex], verticalLabelsWidth, graphView,
+				handler);
 
 		handler.postDelayed(timer, Constants.ONE_SECOND);
 		handler.postDelayed(refresher, Constants.ONE_SECOND);
@@ -193,10 +216,11 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 	}
 
 	public void updatePlotFragment(int index) {
-		tvUnit = (TextView) activity.findViewById(R.id.tvUnit);
 		currentIndex = index;
-		tableName = DbHelper.TABLE_NAMES[currentIndex];
-		tvUnit.setText(Constants.UNITS[currentIndex]);
+		// O.o'? TODO
+		this.onPause();
+		this.onStop();
+		this.onResume();
 	}
 
 	@Override
@@ -226,13 +250,14 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 	@Override
 	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 		saveData = app.saveAmbientConditionData[currentIndex] = isChecked;
-		refresher.setSaveDate(isChecked);
-		timer.setSaveDate(isChecked);
+		refresher.setSaveData(isChecked);
+		timer.setSaveData(isChecked);
 		if (((SensorsActivity) activity).sensorsFragment != null) {
 			((SensorsActivity) activity).sensorsFragment.initIcons();
 			((SensorsActivity) activity).sensorsFragment.adapter
 					.notifyDataSetChanged();
 		}
+		callback.onSensorDataSaveStateChanged(currentIndex);
 		activity.stopService(new Intent(activity, SensorService.class));
 		if (app.saveAnyAmbientCondition())
 			activity.startService(new Intent(activity, SensorService.class));

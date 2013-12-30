@@ -61,7 +61,7 @@ public class SensorsFragment extends ListFragment implements
 	// deliver messages
 	public interface OnSensorSelectedListener {
 		/** Called by SensorsFragment when a list item is selected */
-		public void onSensorSelected(int position);
+		public void onSensorSelected(int index);
 	}
 
 	@Override
@@ -434,6 +434,10 @@ public class SensorsFragment extends ListFragment implements
 				.format("%.0f", absoluteHumidity)
 				+ " g/m<sup><small>3</small></sup>")).toString();
 
+		adapter.getItem(
+				adapter.getPosition(sensorRows[ThermometerApp.ABSOLUTE_HUMIDITY_INDEX]))
+				.setStringValue(values[ThermometerApp.ABSOLUTE_HUMIDITY_INDEX]);
+
 		Log.d(TAG, "Absolute humidity updated: " + absoluteHumidity);
 	}
 
@@ -457,7 +461,41 @@ public class SensorsFragment extends ListFragment implements
 			values[ThermometerApp.DEW_POINT_INDEX] = (String.format("%.0f",
 					dewPoint + Constants.ZERO_ABSOLUTE) + " K");
 
+		adapter.getItem(
+				adapter.getPosition(sensorRows[ThermometerApp.DEW_POINT_INDEX]))
+				.setStringValue(values[ThermometerApp.DEW_POINT_INDEX]);
+
 		Log.d(TAG, "Dew point updated: " + dewPoint);
 	}
 
+	public void updateSensorsFragment(int index) {
+		updateIcon(index);
+	}
+
+	private void updateIcon(int index) {
+		int iconId = 0;
+		if (index == ThermometerApp.TEMPERATURE_INDEX)
+			iconId = app.saveAmbientConditionData[ThermometerApp.TEMPERATURE_INDEX] ? R.drawable.temprature
+					: R.drawable.temprature_disabled;
+		else if (index == ThermometerApp.RELATIVE_HUMIDITY_INDEX)
+			iconId = app.saveAmbientConditionData[ThermometerApp.TEMPERATURE_INDEX] ? R.drawable.relative_humidity
+					: R.drawable.relative_humidity_disabled;
+		else if (index == ThermometerApp.ABSOLUTE_HUMIDITY_INDEX)
+			iconId = app.saveAmbientConditionData[ThermometerApp.ABSOLUTE_HUMIDITY_INDEX] ? R.drawable.absolute_humidity
+					: R.drawable.absolute_humidity_disabled;
+		else if (index == ThermometerApp.PRESSURE_INDEX)
+			iconId = app.saveAmbientConditionData[ThermometerApp.PRESSURE_INDEX] ? R.drawable.pressure
+					: R.drawable.pressure_disabled;
+		else if (index == ThermometerApp.DEW_POINT_INDEX)
+			iconId = app.saveAmbientConditionData[ThermometerApp.DEW_POINT_INDEX] ? R.drawable.dew_point
+					: R.drawable.dew_point_disabled;
+		else if (index == ThermometerApp.LIGHT_INDEX)
+			iconId = app.saveAmbientConditionData[ThermometerApp.LIGHT_INDEX] ? R.drawable.light
+					: R.drawable.light_disabled;
+		else if (index == ThermometerApp.MAGNETIC_FIELD_INDEX)
+			iconId = app.saveAmbientConditionData[ThermometerApp.MAGNETIC_FIELD_INDEX] ? R.drawable.magnetic_field
+					: R.drawable.magnetic_field_disabled;
+		adapter.getItem(adapter.getPosition(sensorRows[index])).setIcon(iconId);
+		adapter.notifyDataSetChanged();
+	}
 }
