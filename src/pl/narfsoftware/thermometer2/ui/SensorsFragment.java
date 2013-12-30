@@ -26,6 +26,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SensorsFragment extends ListFragment implements
 		SensorEventListener {
@@ -304,8 +305,22 @@ public class SensorsFragment extends ListFragment implements
 
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
-		// TODO Auto-generated method stub
+		String text = sensor.getName();
+		if (accuracy == SensorManager.SENSOR_STATUS_ACCURACY_HIGH)
+			text += getResources().getString(R.string.accuracy_high_toast_text);
+		else if (accuracy == SensorManager.SENSOR_STATUS_ACCURACY_MEDIUM)
+			text += getResources().getString(
+					R.string.accuracy_medium_toast_text);
+		else if (accuracy == SensorManager.SENSOR_STATUS_ACCURACY_LOW)
+			text += getResources().getString(R.string.accuracy_low_toast_text);
+		else if (accuracy == SensorManager.SENSOR_STATUS_UNRELIABLE)
+			text = getResources().getString(
+					R.string.accuracy_unreliable_toast_text_part_1)
+					+ sensor.getName()
+					+ getResources().getString(
+							R.string.accuracy_unreliable_toast_text_part_2);
 
+		Toast.makeText(activity, text, Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
