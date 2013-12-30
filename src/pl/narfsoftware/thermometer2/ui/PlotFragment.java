@@ -16,7 +16,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -128,16 +127,8 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 		tableName = DbHelper.TABLE_NAMES[currentIndex];
 		dataSeries = new GraphViewSeries(sensorData.query(tableName));
 		if (dataSeries.getValues().length <= 1) {
-			graphView
-					.getGraphViewStyle()
-					.setVerticalLabelsColor(
-							Color.parseColor(PreferenceManager
-									.getDefaultSharedPreferences(activity)
-									.getString(
-											getResources()
-													.getString(
-															R.string.prefs_background_color_key),
-											Integer.toString(Preferences.BACKGROUND_DEFAULT_COLOR))));
+			graphView.getGraphViewStyle().setVerticalLabelsColor(
+					new Preferences(activity).backgroundColor);
 			graphView.getGraphViewStyle().setVerticalLabelsWidth(1);
 			String toastText = getResources().getString(
 					R.string.no_data_info_toast);

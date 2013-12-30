@@ -1,8 +1,10 @@
 package pl.narfsoftware.thermometer2.ui;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import pl.narfsoftware.thermometer2.R;
 import pl.narfsoftware.thermometer2.SensorRow;
@@ -19,7 +21,6 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.text.Html;
-import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -233,22 +234,35 @@ public class SensorsFragment extends ListFragment implements
 				.findViewById(R.id.dateAndTime));
 		TextView date = (TextView) activity.findViewById(R.id.date);
 		TextView time = (TextView) activity.findViewById(R.id.time);
-		// For me this should not work
+
 		if (preferences.dateFormat.equals("")
 				&& preferences.timeFormat.equals("")) {
 			dateAndTime.setVisibility(LinearLayout.GONE);
 			return;
-		} else if (preferences.dateFormat.equals(""))
+		} else if (preferences.dateFormat.equals("")
+				&& !preferences.timeFormat.equals("")) {
+			dateAndTime.setVisibility(LinearLayout.VISIBLE);
 			date.setVisibility(LinearLayout.GONE);
-		else if (preferences.timeFormat.equals(""))
+			time.setText(new SimpleDateFormat(preferences.timeFormat, Locale
+					.getDefault()).format(new Date().getTime()));
+			return;
+		} else if (preferences.timeFormat.equals("")
+				&& !preferences.dateFormat.equals("")) {
+			dateAndTime.setVisibility(LinearLayout.VISIBLE);
 			time.setVisibility(LinearLayout.GONE);
+			date.setText(new SimpleDateFormat(preferences.dateFormat, Locale
+					.getDefault()).format(new Date().getTime()));
+			return;
+		}
 
 		dateAndTime.setVisibility(LinearLayout.VISIBLE);
+		time.setVisibility(LinearLayout.VISIBLE);
+		date.setVisibility(LinearLayout.VISIBLE);
 
-		date.setText(DateFormat.format(preferences.dateFormat,
-				new Date().getTime()));
-		time.setText(DateFormat.format(preferences.timeFormat,
-				new Date().getTime()));
+		time.setText(new SimpleDateFormat(preferences.timeFormat, Locale
+				.getDefault()).format(new Date().getTime()));
+		date.setText(new SimpleDateFormat(preferences.dateFormat, Locale
+				.getDefault()).format(new Date().getTime()));
 	}
 
 	private void registerChosenSensors() {

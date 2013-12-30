@@ -1,6 +1,6 @@
 package pl.narfsoftware.thermometer2.ui;
 
-import java.util.Calendar;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
@@ -17,7 +17,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -78,19 +77,17 @@ public class SensorsActivity extends Activity implements
 			@Override
 			public void onReceive(Context ctx, Intent intent) {
 				if (intent.getAction().compareTo(Intent.ACTION_TIME_TICK) == 0) {
-					Calendar calendar = Calendar.getInstance(Locale
-							.getDefault());
-					calendar.setTimeInMillis(new Date().getTime());
-
 					TextView date = (TextView) findViewById(R.id.date);
 					TextView time = (TextView) findViewById(R.id.time);
 
 					if (date != null)
-						date.setText(DateFormat.format(preferences.dateFormat,
-								calendar));
+						date.setText(new SimpleDateFormat(
+								preferences.dateFormat, Locale.getDefault())
+								.format(new Date().getTime()));
 					if (time != null)
-						time.setText(DateFormat.format(preferences.timeFormat,
-								calendar));
+						time.setText(new SimpleDateFormat(
+								preferences.timeFormat, Locale.getDefault())
+								.format(new Date().getTime()));
 				}
 			}
 		};

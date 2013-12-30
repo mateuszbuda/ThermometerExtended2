@@ -13,10 +13,11 @@ public class Preferences implements OnSharedPreferenceChangeListener {
 	Context context;
 	SharedPreferences preferences;
 
+	// TODO getters and setters
 	public String timeFormat = DEFAULT_TIME_FORMAT;
 	public String dateFormat = DEFAULT_DATE_FORMAT;
-	public static final String DEFAULT_TIME_FORMAT = "kk:mm a";
-	public static final String DEFAULT_DATE_FORMAT = "EEEE, dd MMMM";
+	static final String DEFAULT_TIME_FORMAT = "kk:mm a";
+	static final String DEFAULT_DATE_FORMAT = "EEEE, dd MMMM";
 
 	public String temperatureUnit;
 	public static final int CELSIUS = 0;
@@ -24,8 +25,7 @@ public class Preferences implements OnSharedPreferenceChangeListener {
 	public static final int KELVIN = 2;
 
 	public int backgroundColor;
-	public static final int BACKGROUND_DEFAULT_COLOR = Color
-			.parseColor("#FFF0F8FF");
+	static final int BACKGROUND_DEFAULT_COLOR = Color.parseColor("#FFF0F8FF");
 
 	public boolean[] showAmbientCondition = new boolean[ThermometerApp.AMBIENT_CONDITIONS_COUNT];
 
