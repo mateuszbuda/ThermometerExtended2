@@ -5,7 +5,6 @@ import java.util.List;
 import pl.narfsoftware.thermometer2.utils.Preferences;
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +16,13 @@ public class SensorsListViewAdapter extends ArrayAdapter<SensorRow> {
 	static final String TAG = "SensorsListViewAdapter";
 
 	Context context;
+	Preferences prefs;
 
 	public SensorsListViewAdapter(Context context, int resource,
 			List<SensorRow> objects) {
 		super(context, resource, objects);
 		this.context = context;
+		prefs = new Preferences(context);
 	}
 
 	private class ViewHolder {
@@ -46,14 +47,10 @@ public class SensorsListViewAdapter extends ArrayAdapter<SensorRow> {
 			holder.sensorIcon = (ImageView) convertView
 					.findViewById(R.id.sensorIcon);
 			convertView.setTag(holder);
+			holder.sensorData.setTypeface(prefs.typeface);
+			holder.sensorType.setTypeface(prefs.typeface);
 		} else
 			holder = (ViewHolder) convertView.getTag();
-
-		Preferences prefs = new Preferences(context);
-		holder.sensorType.setTypeface(Typeface.createFromAsset(
-				context.getAssets(), prefs.fontTypeface));
-		holder.sensorData.setTypeface(Typeface.createFromAsset(
-				context.getAssets(), prefs.fontTypeface));
 
 		holder.sensorData.setText(sensorRow.getStringValue());
 		holder.sensorType.setText(sensorRow.getSensorName());

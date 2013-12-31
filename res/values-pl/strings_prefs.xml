@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="prefs_background_color_title">Background Color</string>
+    <string name="prefs_background_color_title">Kolor tła</string>
     <string name="prefs_background_color_key">background_color</string>
-    <string name="pref_header_customization">Customization</string>
-    <string name="prefs_rest_title">Customize</string>
+    <string name="prefs_rest_title">Dostosowanie</string>
     <string name="prefs_date_format_key">date_format</string>
-    <string name="prefs_date_format_title">Date Format</string>
+    <string name="prefs_date_format_title">Format daty</string>
     <string name="prefs_time_format_key">time_format</string>
-    <string name="prefs_time_format_title">Time Format</string>
-    <string name="prefs_font_title">Font style</string>
+    <string name="prefs_time_format_title">Format godziny</string>
+    <string name="prefs_font_title">Czcionka</string>
     <string name="prefs_font_key">font</string>
-    <string name="prefs_temp_unit_title">Temperature Unit</string>
+    <string name="prefs_temp_unit_title">Jednostka Temperatury</string>
     <string name="prefs_temp_unit_key">temp_unit</string>
 
     <string-array name="prefs_temp_unit_keys">
-        <item>Degrees Celsius</item>
-        <item>Degrees Fahrenheit</item>
-        <item>Kelvin</item>
+        <item>Stopnie Celsjusza</item>
+        <item>Stopnie Fahrenheita</item>
+        <item>Kelwiny</item>
     </string-array>
     <string-array name="prefs_temp_unit_vals">
         <item>celsius</item>
@@ -53,27 +52,27 @@
         <item>terminatortwo.ttf</item>
     </string-array>
     <string-array name="prefs_background_color_keys">
-        <item>Alice Blue</item>
-        <item>Aquamarine</item>
-        <item>Bisque</item>
-        <item>Cornsilk</item>
-        <item>Gainsboro</item>
-        <item>Green Yellow</item>
-        <item>Hot Pink</item>
-        <item>Lemon Chiffon</item>
-        <item>Light Coral</item>
-        <item>Light Cyan</item>
-        <item>Light Gray</item>
-        <item>Lime Green</item>
-        <item>Medium Orchid</item>
-        <item>Orange</item>
-        <item>Peach Puff</item>
-        <item>Pink</item>
-        <item>Plum</item>
-        <item>Sandy Brown</item>
-        <item>Sea Green</item>
-        <item>Snow</item>
-        <item>White</item>
+        <item>Bladobłekitny</item>
+        <item>Seledynowy</item>
+        <item>Kremowy</item>
+        <item>Kukurydziany</item>
+        <item>Jasnoniebieskoszary</item>
+        <item>Zielonożółty</item>
+        <item>Ciemnoróżowy</item>
+        <item>Żółtoszyfonowy</item>
+        <item>Jasnokoralowy</item>
+        <item>Jasnoniebieskozielony</item>
+        <item>Jasnoszary</item>
+        <item>Limonkowozielony</item>
+        <item>Purpurowy</item>
+        <item>Pomarańczowy</item>
+        <item>Jasnobrzoskwiniowy</item>
+        <item>Różowy</item>
+        <item>Śliwkowy</item>
+        <item>Piaskowobrązowy</item>
+        <item>Morski</item>
+        <item>Śnieżny</item>
+        <item>Biały</item>
     </string-array>
     <string-array name="prefs_background_color_vals">
         <item>#FFF0F8FF</item>
@@ -121,56 +120,56 @@
         <item></item>
     </string-array>
     <string-array name="prefs_date_format_keys">
-        <item>Tuesday, 01 October</item>
-        <item>Tuesday, 1 October</item>
-        <item>Tuesday, 01 October 2013</item>
-        <item>Tuesday, 1 October 2013</item>
-        <item>Tue, 1 October</item>
-        <item>Tue, 1 October 2013</item>
-        <item>1 October</item>
-        <item>01 October</item>
-        <item>1 October 2013</item>
-        <item>01 October 2013</item>
-        <item>Tuesday, 01 Oct</item>
-        <item>Tuesday, 1 Oct</item>
-        <item>Tuesday, 01 Oct 2013</item>
-        <item>Tuesday, 1 Oct 2013</item>
-        <item>Tue, 1 Oct</item>
-        <item>Tue, 1 Oct 2013</item>
-        <item>1 Oct</item>
-        <item>01 Oct</item>
-        <item>1 Oct 2013</item>
-        <item>01 Oct 2013</item>
+        <item>czwartek, 01 października</item>
+        <item>czwartek, 1 października</item>
+        <item>czwartek, 01 października 2013</item>
+        <item>czwartek, 1 października 2013</item>
+        <item>czw., 1 października</item>
+        <item>czw., 1 października 2013</item>
+        <item>1 października</item>
+        <item>01 października</item>
+        <item>1 października 2013</item>
+        <item>01 października 2013</item>
+        <item>czwartek, 01 paź</item>
+        <item>czwartek, 1 paź</item>
+        <item>czwartek, 01 paź 2013</item>
+        <item>czwartek, 1 paź 2013</item>
+        <item>czw., 1 paź</item>
+        <item>czw., 1 paź 2013</item>
+        <item>1 paź</item>
+        <item>01 paź</item>
+        <item>1 paź 2013</item>
+        <item>01 paź 2013</item>
         <item>01&#8211;10&#8211;2013</item>
         <item>01&#8211;10&#8211;13</item>
         <item>1&#8211;9&#8211;13</item>
         <item>2013&#8211;10&#8211;01</item>
         <item>13&#8211;10&#8211;01</item>
         <item>13&#8211;9&#8211;1</item>
-        <item>Tuesday, 01&#8211;10&#8211;2013</item>
-        <item>Tuesday, 01&#8211;10&#8211;13</item>
-        <item>Sunday, 1&#8211;9&#8211;13</item>
-        <item>Tuesday, 2013&#8211;10&#8211;01</item>
-        <item>Tuesday, 13&#8211;10&#8211;01</item>
-        <item>Sunday, 13&#8211;9&#8211;1</item>
-        <item>Tuesday, 01/10/2013</item>
-        <item>Tuesday, 01/10/13</item>
-        <item>Sunday, 1/9/13</item>
-        <item>Tuesday, 2013/10/01</item>
-        <item>Tuesday, 13/10/01</item>
-        <item>Sunday, 13/9/1</item>
-        <item>Tue, 01&#8211;10&#8211;2013</item>
-        <item>Tue, 01&#8211;10&#8211;13</item>
-        <item>Sun, 1&#8211;9&#8211;13</item>
-        <item>Tue, 2013&#8211;10&#8211;01</item>
-        <item>Tue, 13&#8211;10&#8211;01</item>
-        <item>Sun, 13&#8211;9&#8211;1</item>
-        <item>Tue, 01/10/2013</item>
-        <item>Tue, 01/10/13</item>
-        <item>Sun, 1/9/13</item>
-        <item>Tue, 2013/10/01</item>
-        <item>Tue, 13/10/01</item>
-        <item>Sun, 13/9/1</item>
+        <item>czwartek, 01&#8211;10&#8211;2013</item>
+        <item>czwartek, 01&#8211;10&#8211;13</item>
+        <item>sobota, 1&#8211;9&#8211;13</item>
+        <item>czwartek, 2013&#8211;10&#8211;01</item>
+        <item>czwartek, 13&#8211;10&#8211;01</item>
+        <item>sobota, 13&#8211;9&#8211;1</item>
+        <item>czwartek, 01/10/2013</item>
+        <item>czwartek, 01/10/13</item>
+        <item>sobota, 1/9/13</item>
+        <item>czwartek, 2013/10/01</item>
+        <item>czwartek, 13/10/01</item>
+        <item>sobota, 13/9/1</item>
+        <item>czw., 01&#8211;10&#8211;2013</item>
+        <item>czw., 01&#8211;10&#8211;13</item>
+        <item>sob., 1&#8211;9&#8211;13</item>
+        <item>czw., 2013&#8211;10&#8211;01</item>
+        <item>czw., 13&#8211;10&#8211;01</item>
+        <item>sob., 13&#8211;9&#8211;1</item>
+        <item>czw., 01/10/2013</item>
+        <item>czw., 01/10/13</item>
+        <item>sob., 1/9/13</item>
+        <item>czw., 2013/10/01</item>
+        <item>czw., 13/10/01</item>
+        <item>sob., 13/9/1</item>
         <item>none</item>
     </string-array>
     <string-array name="prefs_date_format_vals">

@@ -133,13 +133,13 @@ public class SensorService extends Service implements SensorEventListener {
 
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
-		// TODO Auto-generated method stub
+		// handled in SensorsFragment
 	}
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
 		Date date = new Date();
-
+		// TODO similar code in SensorsFragment
 		if ((app.saveAmbientConditionData[ThermometerApp.TEMPERATURE_INDEX]
 				|| app.saveAmbientConditionData[ThermometerApp.DEW_POINT_INDEX] || app.saveAmbientConditionData[ThermometerApp.ABSOLUTE_HUMIDITY_INDEX])
 				&& event.sensor.equals(app.getTemperatureSensor())) {

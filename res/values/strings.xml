@@ -22,7 +22,6 @@
     <string name="dew_point_key">dew_point</string>
     <string name="light_key">light</string>
     <string name="magnetic_field_key">magnetic_field</string>
-    <string name="pref_header_customization">Customization</string>
     <string name="sensor_unavailable">Sensor unavailable</string>
     <string name="sensor_no_data">No data</string>
     <string name="action_clear_data">Erase History</string>
@@ -31,9 +30,9 @@
     <string name="data_erased_hint_toast">Stop saving data first.</string>
     <string name="no_data_to_erase">No data to erase.</string>
     <string name="no_data_info_toast">No data to display&#8230;</string>
-    <string name="no_data_hint_toast">This sensor is not working in save data mode.</string>
+    <string name="no_data_hint_toast">Save data mode for this sensor is turned off.</string>
     <string name="title_activity_help">Help</string>
-    <string name="help_text">Sensors\nMain window displays chosen in settings sensors. If application is receiving data from particular senors, it is immediately displayed, otherwise you see \'No Data\'. Data accuracy depends on hardware quality. Application merely display received data. Another possibility is that your device simply do not support chosen sensor. If so, you get \'Sensor unavailable\' message.\n\nData Saving\nIn order to see data history graph you must enable saving data mode for particular sensor in main window by clicking on its icon. However be aware that it cause chosen sensors to stay active, even if you close application. That may drain device battery especially quickly. So always remember to stop saving data if you do not need it. By default this option is turned off.</string>
+    <string name="help_text">Ambient condition indicators\nMain window displays chosen in settings ambient condition indicators. If application is receiving data from particular senors, it is immediately displayed, otherwise you see \'No Data\'. Data accuracy depends on hardware quality. Application merely display received data. Another possibility is that your device simply do not support chosen sensor. If so, you get \'Sensor unavailable\' message.\n\nData Saving\nIn order to see data history graph you must turn saving data mode on for particular sensor in its plot window. However be aware that it cause chosen sensors to stay active, even if you close application. That may drain device battery especially quickly. So always remember to stop saving data if you do not need it. By default this option is turned off. If particular sensor is working in data saving mode its icon is blue. Otherwise its greyed.</string>
     <string name="action_help_title">Help</string>
     <string name="title_activity_about">About</string>
     <string name="about_site_header">Visit developer\'s site</string>
@@ -43,9 +42,9 @@
     <string name="logo_description">NarfSoftware Logo</string>
     <string name="action_about_title">About</string>
     <string name="about_header">Thermometer Extended</string>
-    <string name="about_subheader">version 1.8</string>
+    <string name="about_subheader">version 2.0</string>
     <string name="about_text">We\'re looking forward to hearing from you. Email us to report bugs, suggest an improvement or if you want to add a translation. We will be glad if you decide to rate and comment on our apps on Market.</string>
-    <string name="alert_dialog_erase_data_text">Do you really want to clear history?</string>
+    <string name="alert_dialog_erase_data_text">Are you sure you want to clear history?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="toast_on_temperature_save_data">Saving temperature data turned on</string>

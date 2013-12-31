@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.preference.PreferenceManager;
 
 public class Preferences implements OnSharedPreferenceChangeListener {
@@ -16,7 +17,7 @@ public class Preferences implements OnSharedPreferenceChangeListener {
 	// TODO getters and setters
 	public String timeFormat = DEFAULT_TIME_FORMAT;
 	public String dateFormat = DEFAULT_DATE_FORMAT;
-	static final String DEFAULT_TIME_FORMAT = "kk:mm a";
+	static final String DEFAULT_TIME_FORMAT = "KK:mm a";
 	static final String DEFAULT_DATE_FORMAT = "EEEE, dd MMMM";
 
 	public String temperatureUnit;
@@ -26,9 +27,11 @@ public class Preferences implements OnSharedPreferenceChangeListener {
 
 	public int backgroundColor;
 	static final int BACKGROUND_DEFAULT_COLOR = Color.parseColor("#FFF0F8FF");
+	private final String BACKGROUND_DEFAULT_COLOR_STRING = "#FFF0F8FF";
 
 	public String fontTypeface;
 	static final String DEFAULT_FONT_TYPEFACE = "Roboto.ttf";
+	public Typeface typeface;
 
 	public boolean[] showAmbientCondition = new boolean[ThermometerApp.AMBIENT_CONDITIONS_COUNT];
 
@@ -75,7 +78,7 @@ public class Preferences implements OnSharedPreferenceChangeListener {
 		// set background color
 		backgroundColor = (Color.parseColor(preferences.getString(context
 				.getResources().getString(R.string.prefs_background_color_key),
-				String.valueOf(BACKGROUND_DEFAULT_COLOR))));
+				BACKGROUND_DEFAULT_COLOR_STRING)));
 
 		// set temperature unit
 		temperatureUnit = preferences
@@ -99,6 +102,8 @@ public class Preferences implements OnSharedPreferenceChangeListener {
 		fontTypeface = preferences.getString(
 				context.getResources().getString(R.string.prefs_font_key),
 				DEFAULT_FONT_TYPEFACE);
+
+		typeface = Typeface.createFromAsset(context.getAssets(), fontTypeface);
 	}
 
 	@Override

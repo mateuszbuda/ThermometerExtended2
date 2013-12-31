@@ -14,7 +14,6 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -36,6 +35,7 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 
 	Activity activity;
 	ThermometerApp app;
+	Preferences preferences;
 	final static String ARG_INDEX = "sensor_index";
 	/**
 	 * Index of ambient condition as in ThermometerApp, not index on the list in
@@ -88,6 +88,7 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 		super.onCreate(savedInstanceState);
 
 		activity = getActivity();
+		preferences = new Preferences(activity);
 		textSize = getResources().getInteger(R.integer.plot_label_text_size);
 		verticalLabelsWidth = getResources().getInteger(
 				R.integer.plot_vertical_labels_widht);
@@ -107,6 +108,7 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 		backgroundLayout = (LinearLayout) inflatedView.findViewById(R.id.graph);
 		saveDataSwitch = (Switch) inflatedView.findViewById(R.id.saveData);
 		tvUnit = (TextView) inflatedView.findViewById(R.id.tvUnit);
+
 		saveDataSwitch.setOnCheckedChangeListener(this);
 
 		// If activity recreated (such as from screen rotate), restore
@@ -145,6 +147,8 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 
 		saveData = false;
 		tvUnit.setText("");
+		tvUnit.setTypeface(preferences.typeface);
+		saveDataSwitch.setTypeface(preferences.typeface);
 		tableName = DbHelper.TABLE_NAMES[currentIndex];
 		saveData = app.saveAmbientConditionData[currentIndex];
 		tableName = DbHelper.TABLE_NAMES[currentIndex];

@@ -134,35 +134,7 @@ public class SensorsActivity extends Activity implements
 			return true;
 
 		case R.id.action_clear_data:
-			AlertDialog.Builder builder = new Builder(this);
-			builder.setTitle(R.string.action_clear_data)
-					.setMessage(R.string.alert_dialog_erase_data_text)
-					.setPositiveButton(R.string.yes,
-							new DialogInterface.OnClickListener() {
-								@Override
-								public void onClick(DialogInterface dialog,
-										int which) {
-									((ThermometerApp) getApplication())
-											.getSensorData().deleteAll();
-									Toast.makeText(
-											getBaseContext(),
-											getResources()
-													.getString(
-															R.string.data_erased_success_toast),
-											Toast.LENGTH_SHORT).show();
-								}
-							})
-					.setNegativeButton(R.string.no,
-							new DialogInterface.OnClickListener() {
-
-								@Override
-								public void onClick(DialogInterface dialog,
-										int which) {
-									eraseDataDialog.cancel();
-								}
-							});
-
-			eraseDataDialog = builder.create();
+			eraseDataDialog = getBuilder().create();
 			eraseDataDialog.setCanceledOnTouchOutside(false);
 			eraseDataDialog.show();
 			return true;
@@ -229,6 +201,37 @@ public class SensorsActivity extends Activity implements
 			// take no action
 			return;
 		}
+	}
+
+	private AlertDialog.Builder getBuilder() {
+		AlertDialog.Builder builder = new Builder(this);
+		builder.setTitle(R.string.action_clear_data)
+				.setMessage(R.string.alert_dialog_erase_data_text)
+				.setPositiveButton(R.string.yes,
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								((ThermometerApp) getApplication())
+										.getSensorData().deleteAll();
+								Toast.makeText(
+										getBaseContext(),
+										getResources()
+												.getString(
+														R.string.data_erased_success_toast),
+										Toast.LENGTH_SHORT).show();
+							}
+						})
+				.setNegativeButton(R.string.no,
+						new DialogInterface.OnClickListener() {
+
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								eraseDataDialog.cancel();
+							}
+						});
+		return builder;
 	}
 
 }

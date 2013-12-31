@@ -25,16 +25,16 @@
         android:entryValues="@array/prefs_date_format_vals"
         android:icon="@android:drawable/ic_menu_today"
         android:key="@string/prefs_date_format_key"
-        android:order="94"
+        android:order="93"
         android:title="@string/prefs_date_format_title" />
     <ListPreference
-        android:defaultValue="kk:mm a"
+        android:defaultValue="KK:mm a"
         android:dialogTitle="@string/prefs_time_format_title"
         android:entries="@array/prefs_time_format_keys"
         android:entryValues="@array/prefs_time_format_vals"
         android:icon="@drawable/ic_dialog_time"
         android:key="@string/prefs_time_format_key"
-        android:order="93"
+        android:order="94"
         android:title="@string/prefs_time_format_title" />
     <ListPreference
         android:defaultValue="Roboto.ttf"

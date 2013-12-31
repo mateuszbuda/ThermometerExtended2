@@ -15,7 +15,6 @@ import pl.narfsoftware.thermometer2.utils.Preferences;
 import android.app.Activity;
 import android.app.ListFragment;
 import android.database.DataSetObserver;
-import android.graphics.Typeface;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -236,10 +235,8 @@ public class SensorsFragment extends ListFragment implements
 				.findViewById(R.id.dateAndTime));
 		TextView date = (TextView) activity.findViewById(R.id.date);
 		TextView time = (TextView) activity.findViewById(R.id.time);
-		date.setTypeface(Typeface.createFromAsset(activity.getAssets(),
-				preferences.fontTypeface));
-		time.setTypeface(Typeface.createFromAsset(activity.getAssets(),
-				preferences.fontTypeface));
+		date.setTypeface(preferences.typeface);
+		time.setTypeface(preferences.typeface);
 
 		if (preferences.dateFormat.equals("")
 				&& preferences.timeFormat.equals("")) {
@@ -311,6 +308,7 @@ public class SensorsFragment extends ListFragment implements
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
 		String text = sensor.getName();
+		// TODO switch (?)
 		if (accuracy == SensorManager.SENSOR_STATUS_ACCURACY_HIGH)
 			text += getResources().getString(R.string.accuracy_high_toast_text);
 		else if (accuracy == SensorManager.SENSOR_STATUS_ACCURACY_MEDIUM)
@@ -330,6 +328,7 @@ public class SensorsFragment extends ListFragment implements
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
+		// TODO similar code in SensorService
 		if ((preferences.showAmbientCondition[ThermometerApp.TEMPERATURE_INDEX]
 				|| preferences.showAmbientCondition[ThermometerApp.DEW_POINT_INDEX] || preferences.showAmbientCondition[ThermometerApp.ABSOLUTE_HUMIDITY_INDEX])
 				&& event.sensor.equals(app.getTemperatureSensor())) {

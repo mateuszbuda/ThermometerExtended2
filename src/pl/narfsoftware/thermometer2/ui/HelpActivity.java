@@ -3,11 +3,13 @@ package pl.narfsoftware.thermometer2.ui;
 import pl.narfsoftware.thermometer2.R;
 import pl.narfsoftware.thermometer2.utils.Preferences;
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 public class HelpActivity extends Activity {
 	Preferences prefs;
@@ -27,15 +29,15 @@ public class HelpActivity extends Activity {
 
 		((ScrollView) findViewById(R.id.scrollViewHelp))
 				.setBackgroundColor(prefs.backgroundColor);
+		((TextView) findViewById(R.id.textViewHelp)).setTypeface(Typeface
+				.createFromAsset(getAssets(), prefs.fontTypeface));
 	}
 
 	/**
 	 * Set up the {@link android.app.ActionBar}.
 	 */
 	private void setupActionBar() {
-
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-
 	}
 
 	@Override
