@@ -16,7 +16,7 @@
         android:entryValues="@array/prefs_background_color_vals"
         android:icon="@drawable/ic_menu_emoticons"
         android:key="@string/prefs_background_color_key"
-        android:order="95"
+        android:order="96"
         android:title="@string/prefs_background_color_title" />
     <ListPreference
         android:defaultValue="EEEE, dd MMMM"
@@ -43,7 +43,16 @@
         android:entryValues="@array/prefs_font_vals"
         android:icon="@drawable/ic_menu_edit"
         android:key="@string/prefs_font_key"
-        android:order="96"
+        android:order="97"
         android:title="@string/prefs_font_title" />
+    <ListPreference
+        android:defaultValue=""
+        android:dialogTitle="@string/prefs_theme_title"
+        android:entries="@array/prefs_theme_keys"
+        android:entryValues="@array/prefs_theme_vals"
+        android:icon="@drawable/ic_menu_gallery"
+        android:key="@string/prefs_theme_key"
+        android:order="95"
+        android:title="@string/prefs_theme_title" />
 
 </PreferenceScreen>

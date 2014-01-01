@@ -3,10 +3,10 @@
     <!-- These settings headers are only used on tablets. -->
 
     <header
-        android:fragment="pl.narfsoftware.thermometer2.ui.SettingsActivity$SensorsPreferenceFragment"
+        android:fragment="pl.narfsoftware.thermometer.ui.SettingsActivity$SensorsPreferenceFragment"
         android:title="@string/pref_header_sensors" />
     <header
-        android:fragment="pl.narfsoftware.thermometer2.ui.SettingsActivity$CustomizationPreferenceFragment"
+        android:fragment="pl.narfsoftware.thermometer.ui.SettingsActivity$CustomizationPreferenceFragment"
         android:title="@string/pref_header_customization" />
 
 </preference-headers>

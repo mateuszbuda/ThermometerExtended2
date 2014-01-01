@@ -62,10 +62,11 @@
     <string name="toast_on_magnetic_field_save_data">Saving magnetic field data turned on</string>
     <string name="toast_off_magnetic_field_save_data">Saving magnetic field data turned off</string>
     <string name="save_data_switch">"Save data"</string>
-    <string name="accuracy_high_toast_text"> is reporting data with maximum accuracy</string>
-    <string name="accuracy_medium_toast_text"> is reporting data with an average level of accuracy</string>
-    <string name="accuracy_low_toast_text"> is reporting data with low accuracy</string>
-    <string name="accuracy_unreliable_toast_text_part_1">The values returned by </string>
-    <string name="accuracy_unreliable_toast_text_part_2"> cannot be trusted</string>
+    <string name="accuracy_high_toast_text">is reporting data with maximum accuracy</string>
+    <string name="accuracy_medium_toast_text">is reporting data with an average level of accuracy</string>
+    <string name="accuracy_low_toast_text">is reporting data with low accuracy</string>
+    <string name="accuracy_unreliable_toast_text_part_1">The values returned by</string>
+    <string name="accuracy_unreliable_toast_text_part_2">cannot be trusted</string>
+    <string name="out_of_memory_error_toast">Your device is out of memory for this application and drawabale could not be loaded. You had better set theme to \'None\'.</string>
 
 </resources>

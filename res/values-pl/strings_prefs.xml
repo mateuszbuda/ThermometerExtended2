@@ -3,6 +3,7 @@
 
     <string name="prefs_background_color_title">Kolor tła</string>
     <string name="prefs_background_color_key">background_color</string>
+    <string name="pref_header_customization">Dostosowanie</string>
     <string name="prefs_rest_title">Dostosowanie</string>
     <string name="prefs_date_format_key">date_format</string>
     <string name="prefs_date_format_title">Format daty</string>
@@ -12,6 +13,8 @@
     <string name="prefs_font_key">font</string>
     <string name="prefs_temp_unit_title">Jednostka Temperatury</string>
     <string name="prefs_temp_unit_key">temp_unit</string>
+    <string name="prefs_theme_title">Motyw</string>
+    <string name="prefs_theme_key">theme</string>
 
     <string-array name="prefs_temp_unit_keys">
         <item>Stopnie Celsjusza</item>
@@ -22,6 +25,22 @@
         <item>celsius</item>
         <item>fahrenheit</item>
         <item>kelvin</item>
+    </string-array>
+    <string-array name="prefs_theme_keys">
+        <item>Abstrakcja</item>
+        <item>Papirus</item>
+        <item>Gradient</item>
+        <item>Lato</item>
+        <item>Vintage</item>
+        <item>Brak</item>
+    </string-array>
+    <string-array name="prefs_theme_vals">
+        <item>bgimage_abstraction</item>
+        <item>bgimage_paper</item>
+        <item>bgimage_simple_gradient</item>
+        <item>bgimage_summer</item>
+        <item>bgimage_vintage</item>
+        <item></item>
     </string-array>
     <string-array name="prefs_font_keys">
         <item>Roboto</item>
@@ -106,7 +125,7 @@
         <item>01:30 PM, +00:00</item>
         <item>13:30 UTC+00:00</item>
         <item>01:30 PM, UTC+00:00</item>
-        <item>none</item>
+        <item>Brak</item>
     </string-array>
     <string-array name="prefs_time_format_vals">
         <item>HH:mm</item>
@@ -170,7 +189,7 @@
         <item>czw., 2013/10/01</item>
         <item>czw., 13/10/01</item>
         <item>sob., 13/9/1</item>
-        <item>none</item>
+        <item>Brak</item>
     </string-array>
     <string-array name="prefs_date_format_vals">
         <item>EEEE, dd MMMM</item>

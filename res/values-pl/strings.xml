@@ -62,10 +62,11 @@
     <string name="toast_on_magnetic_field_save_data">Zapis danych dla pola magnetyczniego włączony</string>
     <string name="toast_off_magnetic_field_save_data">Zapis danych dla pola magnetycznego wyłączony</string>
     <string name="save_data_switch">"Save data"</string>
-    <string name="accuracy_high_toast_text"> przesyła dane z najwyższą dokładnością.</string>
-    <string name="accuracy_medium_toast_text"> przesyła dane z przeciętną dokładnością</string>
-    <string name="accuracy_low_toast_text"> przesyła dane z niską dokładnością</string>
-    <string name="accuracy_unreliable_toast_text_part_1">Wartości odpierane od </string>
-    <string name="accuracy_unreliable_toast_text_part_2"> są niemiarodajne</string>
+    <string name="accuracy_high_toast_text">przesyła dane z najwyższą dokładnością.</string>
+    <string name="accuracy_medium_toast_text">przesyła dane z przeciętną dokładnością</string>
+    <string name="accuracy_low_toast_text">przesyła dane z niską dokładnością</string>
+    <string name="accuracy_unreliable_toast_text_part_1">Wartości odpierane od</string>
+    <string name="accuracy_unreliable_toast_text_part_2">są niemiarodajne</string>
+    <string name="out_of_memory_error_toast">Twojemu urządzeniu brakuje pamięci i nie może załadować wybranego motywu. Powinieneś zrezygnować z tej opcji i ustawić ją na \"Brak\".</string>
 
 </resources>
