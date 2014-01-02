@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <integer name="plot_label_text_size">10</integer>
-    <integer name="plot_vertical_labels_widht">46</integer>
-
-</resources>
