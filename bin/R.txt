@@ -76,9 +76,7 @@ int layout activity_help 0x7f030001
 int layout plot_view 0x7f030002
 int layout sensor_row 0x7f030003
 int layout sensors_view 0x7f030004
-int menu about 0x7f0b0000
-int menu help 0x7f0b0001
-int menu sensors 0x7f0b0002
+int menu sensors 0x7f0b0000
 int string about_email 0x7f080025
 int string about_email_title 0x7f080024
 int string about_header 0x7f080028
