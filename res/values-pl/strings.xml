@@ -31,9 +31,6 @@
     <string name="no_data_to_erase">Brak danych do usunięcia.</string>
     <string name="no_data_info_toast">Brak danych&#8230;</string>
     <string name="no_data_hint_toast">Wybrany sensor nie działa w trybie zapisu danych.</string>
-    <string name="title_activity_help">Pomoc</string>
-    <string name="help_text">Wskaźniki warunków otoczenia\nEkran główny wyświtla wybrane w ustawieniach wskaźniki warunków otoczenia. Jeśli aplikacja odbiera dane z odpowiedniego sensora, są one wyświetlane. W przeciwnym wypadku wyświetla się \"Brak danych\". Dokładność danych zależy od jakości urządzeń. Aplikacja tylko wyświetla otrzymywane dane. Istnieje również taka możliwość, że twoje urządzenie nie posiada wybranego sensora. W takim wypadku wyświtli się wiadomość \"Sensor niedostępny\"\n\nZapis danych\nŻeby móc zobaczyć historię odebranych danych na wykresie musisz najpierw uaktywnić opcję ich zapisu w oknie wykresu historii danych wybranego wskaźnika. Jadnak musisz być świadom tego, że spowoduje to utrzymywanie sensora aktywnym, nawet jeśli aplikacja będzie zamknięta. W efekcie doprowadzi to do wysokiego zużycia baterii. Pamiętaj więc, żeby zawsze wyłączyć opcję zapisu danych jeśli nie będziesz już dłużej tego potrzebował. Domyślnie opcja ta jest wyłączona. Dla sensorów, które działają w trybie zapisu danych ikona jest niebieska, dla pozostałych wyszarzona.</string>
-    <string name="action_help_title">Pomoc</string>
     <string name="title_activity_about">Informacje</string>
     <string name="about_site_header">Odwiedź naszą stronę</string>
     <string name="about_site">www.narfsoftware.pl</string>
@@ -61,12 +58,15 @@
     <string name="toast_off_light_save_data">Zapis danych dla oświetlenia wyłączony</string>
     <string name="toast_on_magnetic_field_save_data">Zapis danych dla pola magnetyczniego włączony</string>
     <string name="toast_off_magnetic_field_save_data">Zapis danych dla pola magnetycznego wyłączony</string>
-    <string name="save_data_switch">"Save data"</string>
+    <string name="save_data_switch">"Zapis danych"</string>
     <string name="accuracy_high_toast_text">przesyła dane z najwyższą dokładnością.</string>
     <string name="accuracy_medium_toast_text">przesyła dane z przeciętną dokładnością</string>
     <string name="accuracy_low_toast_text">przesyła dane z niską dokładnością</string>
     <string name="accuracy_unreliable_toast_text_part_1">Wartości odpierane od</string>
     <string name="accuracy_unreliable_toast_text_part_2">są niemiarodajne</string>
     <string name="out_of_memory_error_toast">Twojemu urządzeniu brakuje pamięci i nie może załadować wybranego motywu. Powinieneś zrezygnować z tej opcji i ustawić ją na \"Brak\".</string>
+    <string name="title_activity_help">Pomoc</string>
+    <string name="help_text">Wskaźniki warunków otoczenia\nEkran główny wyświtla wybrane w ustawieniach wskaźniki warunków otoczenia. Jeśli aplikacja odbiera dane z odpowiedniego sensora, są one wyświetlane. W przeciwnym wypadku wyświetla się \"Brak danych\". Dokładność danych zależy od jakości urządzeń. Aplikacja tylko wyświetla otrzymywane dane. Istnieje również taka możliwość, że twoje urządzenie nie posiada wybranego sensora. W takim wypadku wyświtli się wiadomość \"Sensor niedostępny\"\n\nZapis danych\nŻeby móc zobaczyć historię odebranych danych na wykresie musisz najpierw uaktywnić opcję ich zapisu w oknie wykresu historii danych wybranego wskaźnika. Jadnak musisz być świadom tego, że spowoduje to utrzymywanie sensora aktywnym, nawet jeśli aplikacja będzie zamknięta. W efekcie doprowadzi to do wysokiego zużycia baterii. Pamiętaj więc, żeby zawsze wyłączyć opcję zapisu danych jeśli nie będziesz już dłużej tego potrzebował. Domyślnie opcja ta jest wyłączona. Dla sensorów, które działają w trybie zapisu danych ikona jest niebieska, dla pozostałych wyszarzona.</string>
+    <string name="action_help_title">Pomoc</string>
 
 </resources>

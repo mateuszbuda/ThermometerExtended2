@@ -32,7 +32,31 @@ public class HelpActivity extends Activity {
 		else
 			backgroundLayout.setBackgroundDrawable(prefs.themeDrawable);
 
-		((TextView) findViewById(R.id.textViewHelp))
+		((TextView) findViewById(R.id.textViewHelpAbsoluteHumidity))
+				.setTypeface(prefs.typeface);
+		((TextView) findViewById(R.id.textViewHelpAbsoluteHumidityHeader))
+				.setTypeface(prefs.typeface);
+		((TextView) findViewById(R.id.textViewHelpDewPoint))
+				.setTypeface(prefs.typeface);
+		((TextView) findViewById(R.id.textViewHelpDewPointHeader))
+				.setTypeface(prefs.typeface);
+		((TextView) findViewById(R.id.textViewHelpLight))
+				.setTypeface(prefs.typeface);
+		((TextView) findViewById(R.id.textViewHelpLightHeader))
+				.setTypeface(prefs.typeface);
+		((TextView) findViewById(R.id.textViewHelpMain))
+				.setTypeface(prefs.typeface);
+		((TextView) findViewById(R.id.textViewHelpMainHeader))
+				.setTypeface(prefs.typeface);
+		((TextView) findViewById(R.id.textViewHelpRelativeHumidity))
+				.setTypeface(prefs.typeface);
+		((TextView) findViewById(R.id.textViewHelpRelativeHumidityHeader))
+				.setTypeface(prefs.typeface);
+		((TextView) findViewById(R.id.textViewHelpSaveAndDisplayData))
+				.setTypeface(prefs.typeface);
+		((TextView) findViewById(R.id.textViewHelpSaveAndDisplayDataHeader))
+				.setTypeface(prefs.typeface);
+		((TextView) findViewById(R.id.textViewHelpSource))
 				.setTypeface(prefs.typeface);
 	}
 

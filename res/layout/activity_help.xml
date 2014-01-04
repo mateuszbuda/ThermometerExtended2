@@ -10,12 +10,130 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".HelpActivity" >
 
-    <TextView
-        android:id="@+id/textViewHelp"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="@string/help_text"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textViewHelpMainHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/help_text_main_header"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/textViewHelpMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/help_text_bottom_margin"
+            android:gravity="center_horizontal"
+            android:text="@string/help_text_main"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/textViewHelpSaveAndDisplayDataHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/help_text_save_and_display_data_header"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/textViewHelpSaveAndDisplayData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/help_text_bottom_margin"
+            android:gravity="center_horizontal"
+            android:text="@string/help_text_save_and_display_data"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/textViewHelpRelativeHumidityHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/help_text_relative_humidity_header"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/textViewHelpRelativeHumidity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/help_text_bottom_margin"
+            android:gravity="center_horizontal"
+            android:text="@string/help_text_relative_humidity"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/textViewHelpAbsoluteHumidityHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/help_text_absolute_humidity_header"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/textViewHelpAbsoluteHumidity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/help_text_bottom_margin"
+            android:gravity="center_horizontal"
+            android:text="@string/help_text_absolute_humidity"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/textViewHelpDewPointHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/help_text_dew_point_header"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/textViewHelpDewPoint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/help_text_bottom_margin"
+            android:gravity="center_horizontal"
+            android:text="@string/help_text_dew_point"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/help_text_bottom_margin"
+            android:contentDescription="@string/dew_point_title"
+            android:scaleType="fitCenter"
+            android:src="@drawable/dewpoint" />
+
+        <TextView
+            android:id="@+id/textViewHelpLightHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/help_text_light_header"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/textViewHelpLight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/help_text_bottom_margin"
+            android:gravity="center_horizontal"
+            android:text="@string/help_text_light"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/textViewHelpSource"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/help_text_bottom_margin"
+            android:layout_marginTop="@dimen/help_text_bottom_margin"
+            android:gravity="center_horizontal"
+            android:text="@string/help_text_source"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+    </LinearLayout>
 
 </ScrollView>

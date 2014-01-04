@@ -44,31 +44,11 @@
     </string-array>
     <string-array name="prefs_font_keys">
         <item>Roboto</item>
-        <item>Gothic</item>
         <item>Special Elite</item>
-        <item>3Dumb</item>
-        <item>Destroy</item>
-        <item>Harry Potter</item>
-        <item>Chopin Script</item>
-        <item>Blood Of Dracula</item>
-        <item>Brooklyn Kid</item>
-        <item>Aladdin</item>
-        <item>Catholic School Girls</item>
-        <item>Terminator</item>
     </string-array>
     <string-array name="prefs_font_vals">
         <item>Roboto.ttf</item>
-        <item>Gothic.otf</item>
         <item>SpecialElite.ttf</item>
-        <item>3Dumb.ttf</item>
-        <item>DESTROY_.ttf</item>
-        <item>harryp.ttf</item>
-        <item>ChopinScript.ttf</item>
-        <item>Bloodrac.TTF</item>
-        <item>brooklynkid.ttf</item>
-        <item>aladdin.ttf</item>
-        <item>catholicschoolgirls.TTF</item>
-        <item>terminatortwo.ttf</item>
     </string-array>
     <string-array name="prefs_background_color_keys">
         <item>Bladobłekitny</item>
