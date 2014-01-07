@@ -39,7 +39,7 @@
     <string name="logo_description">NarfSoftware Logo</string>
     <string name="action_about_title">About</string>
     <string name="about_header">Thermometer Extended</string>
-    <string name="about_subheader">version 2.2</string>
+    <string name="about_subheader">version 2.3</string>
     <string name="about_text">We\'re looking forward to hearing from you. Email us to report bugs, suggest an improvement or if you want to add a translation. We will be glad if you decide to rate and comment on our apps on Market.</string>
     <string name="alert_dialog_erase_data_text">Are you sure you want to clear history?</string>
     <string name="yes">Yes</string>

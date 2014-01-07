@@ -45,10 +45,16 @@
     <string-array name="prefs_font_keys">
         <item>Roboto</item>
         <item>Special Elite</item>
+        <item>Mosaic</item>
+        <item>Elegant</item>
+        <item>Smooth</item>
     </string-array>
     <string-array name="prefs_font_vals">
         <item>Roboto.ttf</item>
         <item>SpecialElite.ttf</item>
+        <item>Mosaicleaf086.ttf</item>
+        <item>Sreda.ttf</item>
+        <item>ZnikomitNo25.otf</item>
     </string-array>
     <string-array name="prefs_background_color_keys">
         <item>Bladobłekitny</item>

@@ -255,8 +255,10 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 	@Override
 	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 		saveData = app.saveAmbientConditionData[currentIndex] = isChecked;
-		refresher.setSaveData(isChecked);
-		timer.setSaveData(isChecked);
+		if (refresher != null)
+			refresher.setSaveData(isChecked);
+		if (timer != null)
+			timer.setSaveData(isChecked);
 		if (((SensorsActivity) activity).sensorsFragment != null) {
 			((SensorsActivity) activity).sensorsFragment.initIcons();
 			((SensorsActivity) activity).sensorsFragment.adapter
