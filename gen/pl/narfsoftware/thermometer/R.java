@@ -9,18 +9,20 @@ package pl.narfsoftware.thermometer;
 
 public final class R {
     public static final class array {
-        public static final int prefs_background_color_keys=0x7f090006;
-        public static final int prefs_background_color_vals=0x7f090007;
-        public static final int prefs_date_format_keys=0x7f09000a;
-        public static final int prefs_date_format_vals=0x7f09000b;
-        public static final int prefs_font_keys=0x7f090004;
-        public static final int prefs_font_vals=0x7f090005;
-        public static final int prefs_temp_unit_keys=0x7f090000;
-        public static final int prefs_temp_unit_vals=0x7f090001;
-        public static final int prefs_theme_keys=0x7f090002;
-        public static final int prefs_theme_vals=0x7f090003;
-        public static final int prefs_time_format_keys=0x7f090008;
-        public static final int prefs_time_format_vals=0x7f090009;
+        public static final int help_details=0x7f090000;
+        public static final int help_titles=0x7f090001;
+        public static final int prefs_background_color_keys=0x7f090008;
+        public static final int prefs_background_color_vals=0x7f090009;
+        public static final int prefs_date_format_keys=0x7f09000c;
+        public static final int prefs_date_format_vals=0x7f09000d;
+        public static final int prefs_font_keys=0x7f090006;
+        public static final int prefs_font_vals=0x7f090007;
+        public static final int prefs_temp_unit_keys=0x7f090002;
+        public static final int prefs_temp_unit_vals=0x7f090003;
+        public static final int prefs_theme_keys=0x7f090004;
+        public static final int prefs_theme_vals=0x7f090005;
+        public static final int prefs_time_format_keys=0x7f09000a;
+        public static final int prefs_time_format_vals=0x7f09000b;
     }
     public static final class attr {
     }
@@ -78,38 +80,32 @@ public final class R {
         public static final int temprature_disabled=0x7f02001b;
     }
     public static final class id {
-        public static final int action_about=0x7f0c001f;
-        public static final int action_clear_data=0x7f0c001d;
-        public static final int action_help=0x7f0c001e;
-        public static final int action_settings=0x7f0c001c;
-        public static final int backgroundLayout=0x7f0c0015;
-        public static final int date=0x7f0c0017;
-        public static final int dateAndTime=0x7f0c0016;
-        public static final int fragment_container=0x7f0c0019;
+        public static final int action_about=0x7f0c0019;
+        public static final int action_clear_data=0x7f0c0017;
+        public static final int action_help=0x7f0c0018;
+        public static final int action_settings=0x7f0c0016;
+        public static final int backgroundLayout=0x7f0c0007;
+        public static final int backgroundLayoutHelp=0x7f0c0005;
+        public static final int date=0x7f0c0011;
+        public static final int dateAndTime=0x7f0c0010;
         public static final int goToMarket=0x7f0c0000;
-        public static final int graph=0x7f0c000f;
-        public static final int plot_fragment=0x7f0c001b;
-        public static final int saveData=0x7f0c0011;
-        public static final int scrollViewHelp=0x7f0c0001;
-        public static final int sensorData=0x7f0c0014;
-        public static final int sensorIcon=0x7f0c0012;
-        public static final int sensorType=0x7f0c0013;
-        public static final int sensors_fragment=0x7f0c001a;
-        public static final int textViewHelpAbsoluteHumidity=0x7f0c0009;
-        public static final int textViewHelpAbsoluteHumidityHeader=0x7f0c0008;
-        public static final int textViewHelpDewPoint=0x7f0c000b;
-        public static final int textViewHelpDewPointHeader=0x7f0c000a;
-        public static final int textViewHelpLight=0x7f0c000d;
-        public static final int textViewHelpLightHeader=0x7f0c000c;
-        public static final int textViewHelpMain=0x7f0c0003;
-        public static final int textViewHelpMainHeader=0x7f0c0002;
-        public static final int textViewHelpRelativeHumidity=0x7f0c0007;
-        public static final int textViewHelpRelativeHumidityHeader=0x7f0c0006;
-        public static final int textViewHelpSaveAndDisplayData=0x7f0c0005;
-        public static final int textViewHelpSaveAndDisplayDataHeader=0x7f0c0004;
-        public static final int textViewHelpSource=0x7f0c000e;
-        public static final int time=0x7f0c0018;
-        public static final int tvUnit=0x7f0c0010;
+        public static final int graph=0x7f0c000a;
+        public static final int helpTitle=0x7f0c0004;
+        public static final int help_details_fragment=0x7f0c0009;
+        public static final int help_fragment_container=0x7f0c0006;
+        public static final int help_titles_fragment=0x7f0c0008;
+        public static final int imageHelp=0x7f0c0002;
+        public static final int plot_fragment=0x7f0c0015;
+        public static final int saveData=0x7f0c000c;
+        public static final int sensorData=0x7f0c000f;
+        public static final int sensorIcon=0x7f0c000d;
+        public static final int sensorType=0x7f0c000e;
+        public static final int sensors_fragment=0x7f0c0014;
+        public static final int sensors_fragment_container=0x7f0c0013;
+        public static final int textViewHelpContent=0x7f0c0001;
+        public static final int textViewHelpSource=0x7f0c0003;
+        public static final int time=0x7f0c0012;
+        public static final int tvUnit=0x7f0c000b;
     }
     public static final class integer {
         public static final int plot_label_text_size=0x7f070000;
@@ -117,10 +113,12 @@ public final class R {
     }
     public static final class layout {
         public static final int activity_about=0x7f030000;
-        public static final int activity_help=0x7f030001;
-        public static final int plot_view=0x7f030002;
-        public static final int sensor_row=0x7f030003;
-        public static final int sensors_view=0x7f030004;
+        public static final int help_details_view=0x7f030001;
+        public static final int help_title_row=0x7f030002;
+        public static final int help_view=0x7f030003;
+        public static final int plot_view=0x7f030004;
+        public static final int sensor_row=0x7f030005;
+        public static final int sensors_view=0x7f030006;
     }
     public static final class menu {
         public static final int sensors=0x7f0b0000;
@@ -142,7 +140,7 @@ public final class R {
         public static final int accuracy_unreliable_toast_text_part_2=0x7f08003e;
         public static final int action_about_title=0x7f080024;
         public static final int action_clear_data=0x7f080017;
-        public static final int action_help_title=0x7f08004f;
+        public static final int action_help_title=0x7f080042;
         public static final int action_settings=0x7f080001;
         public static final int alert_dialog_erase_data_text=0x7f080028;
         public static final int ambient_temp_key=0x7f08000e;
@@ -153,20 +151,8 @@ public final class R {
         public static final int data_erased_success_toast=0x7f080018;
         public static final int dew_point_key=0x7f080012;
         public static final int dew_point_title=0x7f08000b;
-        public static final int help_text=0x7f080041;
-        public static final int help_text_absolute_humidity=0x7f080049;
-        public static final int help_text_absolute_humidity_header=0x7f080048;
-        public static final int help_text_dew_point=0x7f08004b;
-        public static final int help_text_dew_point_header=0x7f08004a;
-        public static final int help_text_light=0x7f08004d;
-        public static final int help_text_light_header=0x7f08004c;
-        public static final int help_text_main=0x7f080043;
-        public static final int help_text_main_header=0x7f080042;
-        public static final int help_text_relative_humidity=0x7f080047;
-        public static final int help_text_relative_humidity_header=0x7f080046;
-        public static final int help_text_save_and_display_data=0x7f080045;
-        public static final int help_text_save_and_display_data_header=0x7f080044;
-        public static final int help_text_source=0x7f08004e;
+        public static final int help_text=0x7f080043;
+        public static final int help_text_source=0x7f080041;
         public static final int light_key=0x7f080013;
         public static final int light_title=0x7f08000c;
         public static final int logo_description=0x7f080023;
@@ -177,24 +163,24 @@ public final class R {
         public static final int no_data_info_toast=0x7f08001c;
         public static final int no_data_to_erase=0x7f08001b;
         public static final int out_of_memory_error_toast=0x7f08003f;
-        public static final int pref_header_customization=0x7f080052;
+        public static final int pref_header_customization=0x7f080046;
         public static final int pref_header_sensors=0x7f080005;
-        public static final int prefs_background_color_key=0x7f080051;
-        public static final int prefs_background_color_title=0x7f080050;
-        public static final int prefs_date_format_key=0x7f080054;
-        public static final int prefs_date_format_title=0x7f080055;
-        public static final int prefs_font_key=0x7f080059;
-        public static final int prefs_font_title=0x7f080058;
+        public static final int prefs_background_color_key=0x7f080045;
+        public static final int prefs_background_color_title=0x7f080044;
+        public static final int prefs_date_format_key=0x7f080048;
+        public static final int prefs_date_format_title=0x7f080049;
+        public static final int prefs_font_key=0x7f08004d;
+        public static final int prefs_font_title=0x7f08004c;
         public static final int prefs_header=0x7f080002;
-        public static final int prefs_rest_title=0x7f080053;
+        public static final int prefs_rest_title=0x7f080047;
         public static final int prefs_sensors=0x7f080004;
         public static final int prefs_sensors_title=0x7f080006;
-        public static final int prefs_temp_unit_key=0x7f08005b;
-        public static final int prefs_temp_unit_title=0x7f08005a;
-        public static final int prefs_theme_key=0x7f08005d;
-        public static final int prefs_theme_title=0x7f08005c;
-        public static final int prefs_time_format_key=0x7f080056;
-        public static final int prefs_time_format_title=0x7f080057;
+        public static final int prefs_temp_unit_key=0x7f08004f;
+        public static final int prefs_temp_unit_title=0x7f08004e;
+        public static final int prefs_theme_key=0x7f080051;
+        public static final int prefs_theme_title=0x7f080050;
+        public static final int prefs_time_format_key=0x7f08004a;
+        public static final int prefs_time_format_title=0x7f08004b;
         public static final int pressure_key=0x7f080011;
         public static final int pressure_title=0x7f08000a;
         public static final int relative_humidity_key=0x7f08000f;

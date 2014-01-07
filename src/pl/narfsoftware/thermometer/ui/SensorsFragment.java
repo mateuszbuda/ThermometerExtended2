@@ -505,6 +505,7 @@ public class SensorsFragment extends ListFragment implements
 	}
 
 	private void updateIcon(int index) {
+		// :/
 		int iconId = 0;
 		if (index == ThermometerApp.TEMPERATURE_INDEX)
 			iconId = app.saveAmbientConditionData[ThermometerApp.TEMPERATURE_INDEX] ? R.drawable.temprature

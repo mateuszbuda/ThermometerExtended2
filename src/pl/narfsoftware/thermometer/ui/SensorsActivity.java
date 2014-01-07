@@ -46,7 +46,7 @@ public class SensorsActivity extends Activity implements
 		// Check whether the activity is using the layout version with
 		// the fragment_container FrameLayout. If so, we must add the first
 		// fragment
-		if (findViewById(R.id.fragment_container) != null) {
+		if (findViewById(R.id.sensors_fragment_container) != null) {
 
 			// However, if we're being restored from a previous state,
 			// then we don't need to do anything and should return or else
@@ -64,7 +64,8 @@ public class SensorsActivity extends Activity implements
 
 			// Add the fragment to the 'fragment_container' FrameLayout
 			getFragmentManager().beginTransaction()
-					.add(R.id.fragment_container, sensorsFragment).commit();
+					.add(R.id.sensors_fragment_container, sensorsFragment)
+					.commit();
 		}
 
 		Log.d(TAG, "onCreated");
@@ -176,7 +177,7 @@ public class SensorsActivity extends Activity implements
 			// Replace whatever is in the fragment_container view with this
 			// fragment, and add the transaction to the back stack so the user
 			// can navigate back
-			transaction.replace(R.id.fragment_container, newFragment);
+			transaction.replace(R.id.sensors_fragment_container, newFragment);
 			transaction.addToBackStack(null);
 
 			// Commit the transaction
