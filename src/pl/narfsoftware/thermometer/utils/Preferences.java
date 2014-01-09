@@ -8,6 +8,7 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.hardware.SensorManager;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
 
@@ -42,12 +43,28 @@ public class Preferences implements OnSharedPreferenceChangeListener {
 
 	public boolean[] showAmbientCondition = new boolean[ThermometerApp.AMBIENT_CONDITIONS_COUNT];
 
+	private static String DATA_HINT_TOAST_SHOWED_KEY = "data_hint_toast_showed";
+	public boolean dataHintToastShowed;
+
+	public boolean showAccuracyToasts = true;
+
 	public Preferences(Context context) {
 		this.context = context;
 		preferences = PreferenceManager.getDefaultSharedPreferences(context);
 		preferences.registerOnSharedPreferenceChangeListener(this);
 		setAmbientConditionsToShow();
 		setCustomizationPreferences();
+		initDataHintToastShowed();
+	}
+
+	public void setAccuracy(int sensorType, int accuracy) {
+		preferences.edit().putInt(Integer.toString(sensorType), accuracy)
+				.commit();
+	}
+
+	public int getAccuracy(int sensorType) {
+		return preferences.getInt(Integer.toString(sensorType),
+				SensorManager.SENSOR_STATUS_UNRELIABLE);
 	}
 
 	private void setAmbientConditionsToShow() {
@@ -141,6 +158,22 @@ public class Preferences implements OnSharedPreferenceChangeListener {
 						Toast.LENGTH_LONG).show();
 			}
 		}
+
+		// set showing accuracy toast
+		showAccuracyToasts = preferences.getBoolean(context.getResources()
+				.getString(R.string.prefs_accuracy_toast_key), true);
+	}
+
+	private void initDataHintToastShowed() {
+		dataHintToastShowed = preferences.getBoolean(
+				DATA_HINT_TOAST_SHOWED_KEY, false);
+	}
+
+	public void dataHintToastShowed() {
+		dataHintToastShowed = true;
+		preferences.edit()
+				.putBoolean(DATA_HINT_TOAST_SHOWED_KEY, dataHintToastShowed)
+				.commit();
 	}
 
 	@Override

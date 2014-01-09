@@ -63,21 +63,22 @@ public final class R {
         public static final int dewpoint=0x7f02000a;
         public static final int en_app_rgb_wo_60=0x7f02000b;
         public static final int ic_dialog_time=0x7f02000c;
-        public static final int ic_launcher=0x7f02000d;
-        public static final int ic_menu_edit=0x7f02000e;
-        public static final int ic_menu_emoticons=0x7f02000f;
-        public static final int ic_menu_gallery=0x7f020010;
-        public static final int ic_sysbar_quicksettings=0x7f020011;
-        public static final int light=0x7f020012;
-        public static final int light_disabled=0x7f020013;
-        public static final int magnetic_field=0x7f020014;
-        public static final int magnetic_field_disabled=0x7f020015;
-        public static final int pressure=0x7f020016;
-        public static final int pressure_disabled=0x7f020017;
-        public static final int relative_humidity=0x7f020018;
-        public static final int relative_humidity_disabled=0x7f020019;
-        public static final int temprature=0x7f02001a;
-        public static final int temprature_disabled=0x7f02001b;
+        public static final int ic_info=0x7f02000d;
+        public static final int ic_launcher=0x7f02000e;
+        public static final int ic_menu_edit=0x7f02000f;
+        public static final int ic_menu_emoticons=0x7f020010;
+        public static final int ic_menu_gallery=0x7f020011;
+        public static final int ic_sysbar_quicksettings=0x7f020012;
+        public static final int light=0x7f020013;
+        public static final int light_disabled=0x7f020014;
+        public static final int magnetic_field=0x7f020015;
+        public static final int magnetic_field_disabled=0x7f020016;
+        public static final int pressure=0x7f020017;
+        public static final int pressure_disabled=0x7f020018;
+        public static final int relative_humidity=0x7f020019;
+        public static final int relative_humidity_disabled=0x7f02001a;
+        public static final int temprature=0x7f02001b;
+        public static final int temprature_disabled=0x7f02001c;
     }
     public static final class id {
         public static final int action_about=0x7f0c0019;
@@ -164,6 +165,9 @@ public final class R {
         public static final int out_of_memory_error_toast=0x7f08003f;
         public static final int pref_header_customization=0x7f080045;
         public static final int pref_header_sensors=0x7f080005;
+        public static final int prefs_accuracy_toast_key=0x7f080052;
+        public static final int prefs_accuracy_toast_summary=0x7f080053;
+        public static final int prefs_accuracy_toast_title=0x7f080051;
         public static final int prefs_background_color_key=0x7f080044;
         public static final int prefs_background_color_title=0x7f080043;
         public static final int prefs_date_format_key=0x7f080047;

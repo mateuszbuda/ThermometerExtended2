@@ -308,8 +308,15 @@ public class SensorsFragment extends ListFragment implements
 
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
+		if (!preferences.showAccuracyToasts)
+			return;
+
+		if (preferences.getAccuracy(sensor.getType()) == accuracy)
+			return;
+
+		preferences.setAccuracy(sensor.getType(), accuracy);
 		String text = sensor.getName();
-		// TODO switch (?)
+
 		if (accuracy == SensorManager.SENSOR_STATUS_ACCURACY_HIGH)
 			text += " "
 					+ getResources().getString(

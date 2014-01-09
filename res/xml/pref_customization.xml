@@ -16,7 +16,7 @@
         android:entryValues="@array/prefs_background_color_vals"
         android:icon="@drawable/ic_menu_emoticons"
         android:key="@string/prefs_background_color_key"
-        android:order="96"
+        android:order="95"
         android:title="@string/prefs_background_color_title" />
     <ListPreference
         android:defaultValue="EEEE, dd MMMM"
@@ -25,7 +25,7 @@
         android:entryValues="@array/prefs_date_format_vals"
         android:icon="@android:drawable/ic_menu_today"
         android:key="@string/prefs_date_format_key"
-        android:order="93"
+        android:order="92"
         android:title="@string/prefs_date_format_title" />
     <ListPreference
         android:defaultValue="KK:mm a"
@@ -34,7 +34,7 @@
         android:entryValues="@array/prefs_time_format_vals"
         android:icon="@drawable/ic_dialog_time"
         android:key="@string/prefs_time_format_key"
-        android:order="94"
+        android:order="93"
         android:title="@string/prefs_time_format_title" />
     <ListPreference
         android:defaultValue="Roboto.ttf"
@@ -43,7 +43,7 @@
         android:entryValues="@array/prefs_font_vals"
         android:icon="@drawable/ic_menu_edit"
         android:key="@string/prefs_font_key"
-        android:order="97"
+        android:order="96"
         android:title="@string/prefs_font_title" />
     <ListPreference
         android:defaultValue=""
@@ -52,7 +52,15 @@
         android:entryValues="@array/prefs_theme_vals"
         android:icon="@drawable/ic_menu_gallery"
         android:key="@string/prefs_theme_key"
-        android:order="95"
+        android:order="94"
         android:title="@string/prefs_theme_title" />
+
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:icon="@drawable/ic_info"
+        android:key="@string/prefs_accuracy_toast_key"
+        android:order="97"
+        android:summary="@string/prefs_accuracy_toast_summary"
+        android:title="@string/prefs_accuracy_toast_title" />
 
 </PreferenceScreen>

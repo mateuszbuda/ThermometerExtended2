@@ -154,15 +154,16 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 		dataSeries = new GraphViewSeries(sensorData.query(tableName,
 				preferences.temperatureUnitCode));
 		if (dataSeries.getValues().length <= 1) {
-			graphView.getGraphViewStyle().setVerticalLabelsColor(
-					new Preferences(activity).backgroundColor);
 			graphView.getGraphViewStyle().setVerticalLabelsWidth(1);
-			String toastText = getResources().getString(
-					R.string.no_data_info_toast);
-			if (!saveData)
+			if (!preferences.dataHintToastShowed) {
+				// this notification is showed only once
+				preferences.dataHintToastShowed();
+				String toastText = getResources().getString(
+						R.string.no_data_info_toast);
 				toastText += "\n"
 						+ getResources().getString(R.string.no_data_hint_toast);
-			Toast.makeText(activity, toastText, Toast.LENGTH_SHORT).show();
+				Toast.makeText(activity, toastText, Toast.LENGTH_LONG).show();
+			}
 		} else {
 			// set unit
 			tvUnit.setText(Constants.UNITS[preferences.temperatureUnitCode][currentIndex]);

@@ -15,6 +15,9 @@
     <string name="prefs_temp_unit_key">temp_unit</string>
     <string name="prefs_theme_title">Motyw</string>
     <string name="prefs_theme_key">theme</string>
+    <string name="prefs_accuracy_toast_title">Powiadomienia</string>
+    <string name="prefs_accuracy_toast_key">data_accuracy_toasts</string>
+    <string name="prefs_accuracy_toast_summary">Wyświetlanie powiadomień o dokładności danych</string>
 
     <string-array name="prefs_temp_unit_keys">
         <item>Stopnie Celsjusza</item>

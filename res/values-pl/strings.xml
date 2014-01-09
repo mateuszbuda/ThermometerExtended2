@@ -30,7 +30,7 @@
     <string name="data_erased_hint_toast">Wyłacz najpierw zapisywanie danych.</string>
     <string name="no_data_to_erase">Brak danych do usunięcia.</string>
     <string name="no_data_info_toast">Brak danych&#8230;</string>
-    <string name="no_data_hint_toast">Wybrany sensor nie działa w trybie zapisu danych.</string>
+    <string name="no_data_hint_toast">Sprawdź sekcję \"Zapis dnaych\" w Pomocy.</string>
     <string name="title_activity_about">Informacje</string>
     <string name="about_site_header">Odwiedź naszą stronę</string>
     <string name="about_site">www.narfsoftware.pl</string>
@@ -39,7 +39,7 @@
     <string name="logo_description">NarfSoftware Logo</string>
     <string name="action_about_title">Informacje</string>
     <string name="about_header">Termometr Plus</string>
-    <string name="about_subheader">wersja 2.3</string>
+    <string name="about_subheader">wersja 2.4</string>
     <string name="about_text">Oczekujemy na wiadomość od Was. Przesyłacie inormacje o znalezionych błędach, sugestie usprawnień lub jeśli chcecie dodać tłumaczenie. Będziemy wdzięczni, jeśli zdecydujecie się ocenić nasze aplikacje i zostawić komentarz na Google Market.</string>
     <string name="alert_dialog_erase_data_text">Na pewno chcesz usunąć całą historię?</string>
     <string name="yes">Tak</string>
