@@ -15,7 +15,6 @@ import pl.narfsoftware.thermometer.utils.Converter;
 import pl.narfsoftware.thermometer.utils.Preferences;
 import android.app.Activity;
 import android.app.ListFragment;
-import android.database.DataSetObserver;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -168,8 +167,6 @@ public class SensorsFragment extends ListFragment implements
 
 		adapter = new SensorsListViewAdapter(getActivity(),
 				R.layout.sensor_row, sensorsList);
-		adapter.registerDataSetObserver(new DataSetObserver() {
-		});
 		setListAdapter(adapter);
 	}
 

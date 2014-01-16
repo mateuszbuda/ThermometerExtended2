@@ -20,6 +20,8 @@ public class ThermometerApp extends Application implements
 	SensorManager sensorManager;
 	private SensorData sensorData;
 
+	// TODO Refactor - change tables to dictionaries <int, Sensor> with keys as
+	// sensor Type (sensor.getType()).
 	public static final int TEMPERATURE_INDEX = 0;
 	public static final int RELATIVE_HUMIDITY_INDEX = 1;
 	public static final int ABSOLUTE_HUMIDITY_INDEX = 2;
