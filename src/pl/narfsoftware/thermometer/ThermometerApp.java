@@ -1,5 +1,7 @@
 package pl.narfsoftware.thermometer;
 
+import java.util.HashMap;
+
 import pl.narfsoftware.thermometer.db.SensorData;
 import android.app.Application;
 import android.content.SharedPreferences;
@@ -20,8 +22,6 @@ public class ThermometerApp extends Application implements
 	SensorManager sensorManager;
 	private SensorData sensorData;
 
-	// TODO Refactor - change tables to dictionaries <int, Sensor> with keys as
-	// sensor Type (sensor.getType()).
 	public static final int TEMPERATURE_INDEX = 0;
 	public static final int RELATIVE_HUMIDITY_INDEX = 1;
 	public static final int ABSOLUTE_HUMIDITY_INDEX = 2;
@@ -32,6 +32,7 @@ public class ThermometerApp extends Application implements
 	public static final int AMBIENT_CONDITIONS_COUNT = 7;
 
 	public boolean[] saveAmbientConditionData = new boolean[AMBIENT_CONDITIONS_COUNT];
+	public HashMap<Integer, Boolean> saveData;
 
 	public boolean[] hasSensor = new boolean[SENSORS_COUNT];
 
@@ -52,10 +53,8 @@ public class ThermometerApp extends Application implements
 				.getDefaultSharedPreferences(getApplicationContext());
 		preferences.registerOnSharedPreferenceChangeListener(this);
 
-		// setAmbientConditionsToShow();
-
 		sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-		getSensors();
+		setSensors();
 		checkSensorsAvailability();
 
 		Log.d(TAG, "onCreated");
@@ -69,15 +68,23 @@ public class ThermometerApp extends Application implements
 				|| saveAmbientConditionData[DEW_POINT_INDEX]
 				|| saveAmbientConditionData[LIGHT_INDEX]
 				|| saveAmbientConditionData[MAGNETIC_FIELD_INDEX];
+		// ///////// REFACTORED ////////// //
+		// for (int key : saveData.keySet()) {
+		// if (saveData.get(key))
+		// return true;
+		// }
+		// return false;
+		// ///////// REFACTORED ////////// //
 	}
 
-	private void getSensors() {
-		if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+	private void setSensors() {
+		if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
 			sensors[S_TEMPRATURE] = sensorManager
 					.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
-		else
+		} else {
 			sensors[S_TEMPRATURE] = sensorManager
 					.getDefaultSensor(Sensor.TYPE_TEMPERATURE);
+		}
 
 		if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 			sensors[S_RELATIVE_HUMIDITY] = sensorManager
@@ -171,7 +178,6 @@ public class ThermometerApp extends Application implements
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
 		// Implements SensorEventListener just to check sensors availability
-
 	}
 
 	@Override

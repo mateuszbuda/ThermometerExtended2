@@ -1,4 +1,4 @@
-package pl.narfsoftware.thermometer.sensors;
+package pl.narfsoftware.thermometer.ui.sensors;
 
 import pl.narfsoftware.thermometer.SensorsListViewAdapter;
 import pl.narfsoftware.thermometer.ThermometerApp;

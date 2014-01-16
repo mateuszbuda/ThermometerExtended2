@@ -1,4 +1,4 @@
-package pl.narfsoftware.thermometer.sensors;
+package pl.narfsoftware.thermometer.ui.sensors;
 
 import pl.narfsoftware.thermometer.R;
 import pl.narfsoftware.thermometer.SensorsListViewAdapter;
@@ -12,6 +12,12 @@ import android.hardware.SensorManager;
 import android.widget.Toast;
 
 public abstract class BaseSensor implements SensorEventListener {
+
+	public static final int TYPE_ABSOLUTE_HUMIDITY = Sensor.TYPE_AMBIENT_TEMPERATURE
+			* 9 + Sensor.TYPE_RELATIVE_HUMIDITY * 9;
+	public static final int TYPE_DEW_POINT = Sensor.TYPE_AMBIENT_TEMPERATURE
+			* 10 + Sensor.TYPE_RELATIVE_HUMIDITY * 10;
+
 	/**
 	 * Value get from sensor event
 	 */
@@ -52,6 +58,7 @@ public abstract class BaseSensor implements SensorEventListener {
 		preferences.setAccuracy(sensor.getType(), accuracy);
 		String text = sensor.getName();
 
+		// TODO switch ?
 		if (accuracy == SensorManager.SENSOR_STATUS_ACCURACY_HIGH)
 			text += " "
 					+ context.getResources().getString(
@@ -78,7 +85,7 @@ public abstract class BaseSensor implements SensorEventListener {
 
 	/**
 	 * In subclasses after counting values and setting stringValue call super to
-	 * commit changes and update adapter. {@inheritDoc}
+	 * update list view adapter. {@inheritDoc}
 	 */
 	@Override
 	public void onSensorChanged(SensorEvent event) {

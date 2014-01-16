@@ -12,12 +12,13 @@ import android.hardware.SensorManager;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
 
+// TODO needs refactoring
 public class Preferences implements OnSharedPreferenceChangeListener {
 
 	Context context;
 	SharedPreferences preferences;
 
-	// TODO getters and setters...
+	// TODO getters and setters... (?)
 	public String timeFormat = DEFAULT_TIME_FORMAT;
 	public String dateFormat = DEFAULT_DATE_FORMAT;
 	static final String DEFAULT_TIME_FORMAT = "KK:mm a";

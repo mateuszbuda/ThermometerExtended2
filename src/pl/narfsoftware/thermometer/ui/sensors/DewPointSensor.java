@@ -1,4 +1,4 @@
-package pl.narfsoftware.thermometer.sensors;
+package pl.narfsoftware.thermometer.ui.sensors;
 
 import pl.narfsoftware.thermometer.R;
 import pl.narfsoftware.thermometer.SensorsListViewAdapter;
@@ -10,6 +10,10 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.util.Log;
 
+/**
+ * This listener should be registered on temperature sensor's events and
+ * relative humidity ones.
+ */
 public class DewPointSensor extends BaseSensor {
 	static final String TAG = "DewPointSensor";
 
