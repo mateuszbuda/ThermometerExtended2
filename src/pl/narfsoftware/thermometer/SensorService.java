@@ -6,7 +6,6 @@ import java.util.Date;
 import pl.narfsoftware.thermometer.db.DbHelper;
 import pl.narfsoftware.thermometer.db.SensorData;
 import pl.narfsoftware.thermometer.utils.Constants;
-import pl.narfsoftware.thermometer.utils.Preferences;
 import android.app.Service;
 import android.content.Intent;
 import android.hardware.Sensor;
@@ -22,7 +21,6 @@ public class SensorService extends Service implements SensorEventListener {
 	static final String TAG = "SensorService";
 
 	ThermometerApp app;
-	Preferences preferences;
 	SensorData sensorData;
 	SensorManager sensorManager;
 	Sensor[] sensors = new Sensor[SENSORS_COUNT];
@@ -139,7 +137,6 @@ public class SensorService extends Service implements SensorEventListener {
 	@Override
 	public void onSensorChanged(SensorEvent event) {
 		Date date = new Date();
-		// TODO similar code in SensorsFragment
 		if ((app.saveAmbientConditionData[ThermometerApp.TEMPERATURE_INDEX]
 				|| app.saveAmbientConditionData[ThermometerApp.DEW_POINT_INDEX] || app.saveAmbientConditionData[ThermometerApp.ABSOLUTE_HUMIDITY_INDEX])
 				&& event.sensor.equals(app.getTemperatureSensor())) {

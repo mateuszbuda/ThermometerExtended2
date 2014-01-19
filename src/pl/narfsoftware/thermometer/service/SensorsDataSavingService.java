@@ -3,10 +3,9 @@ package pl.narfsoftware.thermometer.service;
 import java.util.HashMap;
 
 import pl.narfsoftware.thermometer.ThermometerApp;
-import pl.narfsoftware.thermometer.service.sensors.DataSavingSensor;
+import pl.narfsoftware.thermometer.service.listeners.DataSavingListener;
 import pl.narfsoftware.thermometer.utils.Sensors;
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
 import android.hardware.SensorManager;
 import android.os.IBinder;
@@ -17,15 +16,12 @@ public class SensorsDataSavingService extends Service {
 
 	ThermometerApp app;
 	Sensors sensors;
-	SensorManager sensorManager;
-	HashMap<Integer, DataSavingSensor> sensorEventListeners;
+	HashMap<Integer, DataSavingListener> sensorEventListeners;
 
 	@Override
 	public void onCreate() {
 		app = (ThermometerApp) getApplication();
 		sensors = new Sensors(getApplicationContext());
-		sensorManager = (SensorManager) getApplicationContext()
-				.getSystemService(Context.SENSOR_SERVICE);
 		Log.d(TAG, "onCreated");
 		super.onCreate();
 	}
@@ -35,12 +31,13 @@ public class SensorsDataSavingService extends Service {
 		// TODO Auto-generated method stub
 		for (int key : app.saveData.keySet()) {
 			if (app.saveData.get(key))
-				sensorManager
+				sensors.getManager()
 						.registerListener(sensorEventListeners.get(key),
 								sensors.sensors.get(key),
 								SensorManager.SENSOR_DELAY_UI);
 			else
-				sensorManager.unregisterListener(sensorEventListeners.get(key));
+				sensors.getManager().unregisterListener(
+						sensorEventListeners.get(key));
 		}
 
 		Log.d(TAG, "onStarted");
@@ -50,7 +47,8 @@ public class SensorsDataSavingService extends Service {
 	@Override
 	public void onDestroy() {
 		for (Integer key : sensorEventListeners.keySet()) {
-			sensorManager.unregisterListener(sensorEventListeners.get(key));
+			sensors.getManager().unregisterListener(
+					sensorEventListeners.get(key));
 		}
 		Log.d(TAG, "onDestroyed");
 		super.onDestroy();

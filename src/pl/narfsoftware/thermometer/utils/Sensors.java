@@ -20,6 +20,10 @@ public class Sensors {
 		setAvailableSensors();
 	}
 
+	public SensorManager getManager() {
+		return sensorManager;
+	}
+
 	private void checkSensorsAvailability() {
 		if (sensorManager.getSensorList(Sensor.TYPE_AMBIENT_TEMPERATURE).size() > 0)
 			sensorsAvailability.put(Sensor.TYPE_AMBIENT_TEMPERATURE, true);
@@ -52,5 +56,46 @@ public class Sensors {
 			if (sensorsAvailability.get(key))
 				sensors.put(key, sensorManager.getDefaultSensor(key));
 		}
+	}
+
+	/**
+	 * Computes absolute humidity
+	 * 
+	 * @param temperature
+	 *            in Celsius degrees
+	 * @param relativeHumidity
+	 *            in %
+	 * @return absolute humidity in g/m^3
+	 */
+	static public float computeAbsoluteHumidity(float temperature,
+			float relativeHumidity) {
+		return (float) (Constants.ABSOLUTE_HUMIDITY_CONSTANT * (relativeHumidity
+				/ Constants.HUNDRED_PERCENT
+				* Constants.A
+				* Math.exp(Constants.M * temperature
+						/ (Constants.TN + temperature)) / (Constants.ZERO_ABSOLUTE + temperature)));
+	}
+
+	/**
+	 * Computes dew point
+	 * 
+	 * @param temperature
+	 *            in Celsius degrees
+	 * @param relativeHumidity
+	 *            in %
+	 * @return dew point in Celsius degrees
+	 */
+	static public float computeDewPoint(float temperature,
+			float relativeHumidity) {
+		double h = Math.log(relativeHumidity / Constants.HUNDRED_PERCENT)
+				+ (Constants.M * temperature) / (Constants.TN + temperature);
+		return (float) (Constants.TN * h / (Constants.M - h));
+	}
+
+	static public float computeMagneticField(float magneticFieldX,
+			float magneticFieldY, float magneticFieldZ) {
+		return (float) Math.sqrt(magneticFieldX * magneticFieldX
+				+ magneticFieldY * magneticFieldY + magneticFieldZ
+				* magneticFieldZ);
 	}
 }
