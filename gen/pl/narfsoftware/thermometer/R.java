@@ -81,14 +81,14 @@ public final class R {
         public static final int temprature_disabled=0x7f02001c;
     }
     public static final class id {
-        public static final int action_about=0x7f0c0019;
-        public static final int action_clear_data=0x7f0c0017;
-        public static final int action_help=0x7f0c0018;
-        public static final int action_settings=0x7f0c0016;
-        public static final int backgroundLayout=0x7f0c000f;
+        public static final int action_about=0x7f0c001a;
+        public static final int action_clear_data=0x7f0c0018;
+        public static final int action_help=0x7f0c0019;
+        public static final int action_settings=0x7f0c0017;
+        public static final int backgroundLayout=0x7f0c0010;
         public static final int backgroundLayoutHelp=0x7f0c0005;
-        public static final int date=0x7f0c0011;
-        public static final int dateAndTime=0x7f0c0010;
+        public static final int date=0x7f0c0012;
+        public static final int dateAndTime=0x7f0c0011;
         public static final int goToMarket=0x7f0c0000;
         public static final int graph=0x7f0c0009;
         public static final int helpTitle=0x7f0c0004;
@@ -96,16 +96,17 @@ public final class R {
         public static final int help_fragment_container=0x7f0c0006;
         public static final int help_titles_fragment=0x7f0c0007;
         public static final int imageHelp=0x7f0c0002;
-        public static final int plot_fragment=0x7f0c0015;
+        public static final int main=0x7f0c000c;
+        public static final int plot_fragment=0x7f0c0016;
         public static final int saveData=0x7f0c000b;
-        public static final int sensorData=0x7f0c000e;
-        public static final int sensorIcon=0x7f0c000c;
-        public static final int sensorType=0x7f0c000d;
-        public static final int sensors_fragment=0x7f0c0014;
-        public static final int sensors_fragment_container=0x7f0c0013;
+        public static final int sensorData=0x7f0c000f;
+        public static final int sensorIcon=0x7f0c000d;
+        public static final int sensorType=0x7f0c000e;
+        public static final int sensors_fragment=0x7f0c0015;
+        public static final int sensors_fragment_container=0x7f0c0014;
         public static final int textViewHelpContent=0x7f0c0001;
         public static final int textViewHelpSource=0x7f0c0003;
-        public static final int time=0x7f0c0012;
+        public static final int time=0x7f0c0013;
         public static final int tvUnit=0x7f0c000a;
     }
     public static final class integer {
