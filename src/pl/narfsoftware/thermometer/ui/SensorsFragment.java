@@ -560,7 +560,18 @@ public class SensorsFragment extends ListFragment implements
 		else if (index == ThermometerApp.MAGNETIC_FIELD_INDEX)
 			iconId = app.saveAmbientConditionData[ThermometerApp.MAGNETIC_FIELD_INDEX] ? R.drawable.magnetic_field
 					: R.drawable.magnetic_field_disabled;
-		adapter.getItem(adapter.getPosition(sensorRows[index])).setIcon(iconId);
-		adapter.notifyDataSetChanged();
+
+		if (adapter == null) {
+			adapter = (SensorsListViewAdapter) getListAdapter();
+			if (adapter == null)
+				return;
+		}
+
+		SensorRow sensorRow = adapter.getItem(adapter
+				.getPosition(sensorRows[index]));
+		if (sensorRow != null) {
+			sensorRow.setIcon(iconId);
+			adapter.notifyDataSetChanged();
+		}
 	}
 }
