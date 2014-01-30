@@ -543,7 +543,7 @@ public class SensorsFragment extends ListFragment implements
 			iconId = app.saveAmbientConditionData[ThermometerApp.TEMPERATURE_INDEX] ? R.drawable.temprature
 					: R.drawable.temprature_disabled;
 		else if (index == ThermometerApp.RELATIVE_HUMIDITY_INDEX)
-			iconId = app.saveAmbientConditionData[ThermometerApp.TEMPERATURE_INDEX] ? R.drawable.relative_humidity
+			iconId = app.saveAmbientConditionData[ThermometerApp.RELATIVE_HUMIDITY_INDEX] ? R.drawable.relative_humidity
 					: R.drawable.relative_humidity_disabled;
 		else if (index == ThermometerApp.ABSOLUTE_HUMIDITY_INDEX)
 			iconId = app.saveAmbientConditionData[ThermometerApp.ABSOLUTE_HUMIDITY_INDEX] ? R.drawable.absolute_humidity
