@@ -370,11 +370,9 @@ public class SensorsFragment extends ListFragment implements
 
 			int pos = adapter
 					.getPosition(sensorRows[ThermometerApp.TEMPERATURE_INDEX]);
-			if (pos < 0)
-				return;
-			adapter.getItem(pos).setStringValue(
-					values[ThermometerApp.TEMPERATURE_INDEX]);
-
+			if (pos > 0)
+				adapter.getItem(pos).setStringValue(
+						values[ThermometerApp.TEMPERATURE_INDEX]);
 			Log.d(TAG, "Got temperature sensor event: " + temperature);
 		}
 
@@ -388,10 +386,9 @@ public class SensorsFragment extends ListFragment implements
 
 			int pos = adapter
 					.getPosition(sensorRows[ThermometerApp.RELATIVE_HUMIDITY_INDEX]);
-			if (pos < 0)
-				return;
-			adapter.getItem(pos).setStringValue(
-					values[ThermometerApp.RELATIVE_HUMIDITY_INDEX]);
+			if (pos > 0)
+				adapter.getItem(pos).setStringValue(
+						values[ThermometerApp.RELATIVE_HUMIDITY_INDEX]);
 
 			Log.d(TAG, "Got relative humidity sensor event: "
 					+ relativeHumidity);
@@ -404,10 +401,9 @@ public class SensorsFragment extends ListFragment implements
 
 			int pos = adapter
 					.getPosition(sensorRows[ThermometerApp.ABSOLUTE_HUMIDITY_INDEX]);
-			if (pos < 0)
-				return;
-			adapter.getItem(pos).setStringValue(
-					values[ThermometerApp.ABSOLUTE_HUMIDITY_INDEX]);
+			if (pos > 0)
+				adapter.getItem(pos).setStringValue(
+						values[ThermometerApp.ABSOLUTE_HUMIDITY_INDEX]);
 		}
 
 		if (preferences.showAmbientCondition[ThermometerApp.PRESSURE_INDEX]
@@ -419,10 +415,9 @@ public class SensorsFragment extends ListFragment implements
 
 			int pos = adapter
 					.getPosition(sensorRows[ThermometerApp.PRESSURE_INDEX]);
-			if (pos < 0)
-				return;
-			adapter.getItem(pos).setStringValue(
-					values[ThermometerApp.PRESSURE_INDEX]);
+			if (pos > 0)
+				adapter.getItem(pos).setStringValue(
+						values[ThermometerApp.PRESSURE_INDEX]);
 
 			Log.d(TAG, "Got pressure sensor event: " + pressure);
 		}
@@ -434,8 +429,9 @@ public class SensorsFragment extends ListFragment implements
 
 			int pos = adapter
 					.getPosition(sensorRows[ThermometerApp.DEW_POINT_INDEX]);
-			adapter.getItem(pos).setStringValue(
-					values[ThermometerApp.DEW_POINT_INDEX]);
+			if (pos > 0)
+				adapter.getItem(pos).setStringValue(
+						values[ThermometerApp.DEW_POINT_INDEX]);
 		}
 
 		if (preferences.showAmbientCondition[ThermometerApp.LIGHT_INDEX]
@@ -446,10 +442,9 @@ public class SensorsFragment extends ListFragment implements
 
 			int pos = adapter
 					.getPosition(sensorRows[ThermometerApp.LIGHT_INDEX]);
-			if (pos < 0)
-				return;
-			adapter.getItem(pos).setStringValue(
-					values[ThermometerApp.LIGHT_INDEX]);
+			if (pos > 0)
+				adapter.getItem(pos).setStringValue(
+						values[ThermometerApp.LIGHT_INDEX]);
 
 			Log.d(TAG, "Got light sensor event: " + light);
 		}
@@ -468,10 +463,9 @@ public class SensorsFragment extends ListFragment implements
 
 			int pos = adapter
 					.getPosition(sensorRows[ThermometerApp.MAGNETIC_FIELD_INDEX]);
-			if (pos < 0)
-				return;
-			adapter.getItem(pos).setStringValue(
-					values[ThermometerApp.MAGNETIC_FIELD_INDEX]);
+			if (pos > 0)
+				adapter.getItem(pos).setStringValue(
+						values[ThermometerApp.MAGNETIC_FIELD_INDEX]);
 
 			Log.d(TAG, "Got magnetic field sensor event: " + magneticField);
 		}
@@ -492,10 +486,6 @@ public class SensorsFragment extends ListFragment implements
 
 		int pos = adapter
 				.getPosition(sensorRows[ThermometerApp.ABSOLUTE_HUMIDITY_INDEX]);
-		if (pos < 0)
-			return;
-		adapter.getItem(pos).setStringValue(
-				values[ThermometerApp.ABSOLUTE_HUMIDITY_INDEX]);
 
 		Log.d(TAG, "Absolute humidity updated: " + absoluteHumidity);
 	}
@@ -522,10 +512,6 @@ public class SensorsFragment extends ListFragment implements
 
 		int pos = adapter
 				.getPosition(sensorRows[ThermometerApp.DEW_POINT_INDEX]);
-		if (pos < 0)
-			return;
-		adapter.getItem(pos).setStringValue(
-				values[ThermometerApp.DEW_POINT_INDEX]);
 
 		Log.d(TAG, "Dew point updated: " + dewPoint);
 	}
