@@ -3,13 +3,14 @@ package pl.narfsoftware.thermometer.service.listeners;
 import java.sql.Timestamp;
 import java.util.Date;
 
-import pl.narfsoftware.thermometer.ThermometerApp;
 import pl.narfsoftware.thermometer.db.DbHelper;
 import android.content.Context;
+import android.hardware.Sensor;
 import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
 import android.util.Log;
 
-public class LightListener extends DataSavingListener {
+public class LightListener extends BaseServiceListener {
 	static final String TAG = ".service.listeners.LightListener";
 
 	public LightListener(Context context) {
@@ -18,8 +19,10 @@ public class LightListener extends DataSavingListener {
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
-		if (app.saveAmbientConditionData[ThermometerApp.LIGHT_INDEX]
-				&& event.sensor.equals(app.getLightSensor())) {
+		if (app.saveAmbientCondition.get(Sensor.TYPE_LIGHT)) {
+			if (event.sensor.getType() != Sensor.TYPE_LIGHT)
+				return;
+
 			value = event.values[0];
 
 			sensorData.insert(DbHelper.TABLE_LIGHT,
@@ -27,6 +30,19 @@ public class LightListener extends DataSavingListener {
 
 			Log.d(TAG, "Got light sensor event with value " + value);
 		}
+	}
+
+	@Override
+	public boolean register() {
+		return sensors.sensorManager.registerListener(this,
+				sensors.sensors.get(Sensor.TYPE_LIGHT),
+				SensorManager.SENSOR_DELAY_UI);
+	}
+
+	@Override
+	public void unregister() {
+		sensors.sensorManager.unregisterListener(this,
+				sensors.sensors.get(Sensor.TYPE_LIGHT));
 	}
 
 }

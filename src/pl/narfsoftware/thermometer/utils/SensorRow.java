@@ -1,4 +1,4 @@
-package pl.narfsoftware.thermometer;
+package pl.narfsoftware.thermometer.utils;
 
 import android.util.Log;
 

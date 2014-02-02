@@ -1,8 +1,12 @@
-package pl.narfsoftware.thermometer;
+package pl.narfsoftware.thermometer.ui;
 
 import java.util.List;
 
+import pl.narfsoftware.thermometer.R;
+import pl.narfsoftware.thermometer.R.id;
+import pl.narfsoftware.thermometer.R.layout;
 import pl.narfsoftware.thermometer.utils.Preferences;
+import pl.narfsoftware.thermometer.utils.SensorRow;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;

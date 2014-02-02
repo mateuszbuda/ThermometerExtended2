@@ -3,7 +3,7 @@ package pl.narfsoftware.thermometer.service;
 import java.util.HashMap;
 
 import pl.narfsoftware.thermometer.ThermometerApp;
-import pl.narfsoftware.thermometer.service.listeners.DataSavingListener;
+import pl.narfsoftware.thermometer.service.listeners.BaseServiceListener;
 import pl.narfsoftware.thermometer.utils.Sensors;
 import android.app.Service;
 import android.content.Intent;
@@ -16,7 +16,7 @@ public class SensorsDataSavingService extends Service {
 
 	ThermometerApp app;
 	Sensors sensors;
-	HashMap<Integer, DataSavingListener> sensorEventListeners;
+	HashMap<Integer, BaseServiceListener> sensorEventListeners;
 
 	@Override
 	public void onCreate() {
@@ -29,8 +29,8 @@ public class SensorsDataSavingService extends Service {
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		// TODO Auto-generated method stub
-		for (int key : app.saveData.keySet()) {
-			if (app.saveData.get(key))
+		for (int key : app.saveAmbientCondition.keySet()) {
+			if (app.saveAmbientCondition.get(key))
 				sensors.getManager()
 						.registerListener(sensorEventListeners.get(key),
 								sensors.sensors.get(key),

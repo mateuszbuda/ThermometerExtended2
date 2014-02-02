@@ -9,6 +9,11 @@ import android.hardware.SensorManager;
 
 @SuppressLint("UseSparseArrays")
 public class Sensors {
+	public static final int TYPE_ABSOLUTE_HUMIDITY = Sensor.TYPE_AMBIENT_TEMPERATURE
+			* 9 + Sensor.TYPE_RELATIVE_HUMIDITY * 9;
+	public static final int TYPE_DEW_POINT = Sensor.TYPE_AMBIENT_TEMPERATURE
+			* 10 + Sensor.TYPE_RELATIVE_HUMIDITY * 10;
+
 	public SensorManager sensorManager;
 	public HashMap<Integer, Boolean> sensorsAvailability = new HashMap<Integer, Boolean>();
 	public HashMap<Integer, Sensor> sensors = new HashMap<Integer, Sensor>();
@@ -46,7 +51,7 @@ public class Sensors {
 			sensorsAvailability.put(Sensor.TYPE_LIGHT, false);
 
 		if (sensorManager.getSensorList(Sensor.TYPE_MAGNETIC_FIELD).size() > 0)
-			sensorsAvailability.put(Sensor.TYPE_MAGNETIC_FIELD, false);
+			sensorsAvailability.put(Sensor.TYPE_MAGNETIC_FIELD, true);
 		else
 			sensorsAvailability.put(Sensor.TYPE_MAGNETIC_FIELD, false);
 	}

@@ -1,34 +1,30 @@
 package pl.narfsoftware.thermometer.ui.listeners;
 
-import pl.narfsoftware.thermometer.SensorsListViewAdapter;
-import pl.narfsoftware.thermometer.ThermometerApp;
+import pl.narfsoftware.thermometer.ui.SensorsListViewAdapter;
+import pl.narfsoftware.thermometer.utils.SensorRow;
 import pl.narfsoftware.thermometer.utils.Sensors;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
 import android.text.Html;
 import android.util.Log;
 
-/**
- * This listener should be registered on temperature sensor's events and
- * relative humidity ones.
- */
-public class AbsoluteHumidityListener extends BaseListener {
+public class AbsoluteHumidityListener extends BaseUIListener {
 	static final String TAG = "AbsoluteHumidityListener";
 
 	private float temperature = 0f;
 	private float relativeHumidity = 0f;
 
 	public AbsoluteHumidityListener(Context context,
-			SensorsListViewAdapter adapter, int position) {
-		super(context, adapter, position);
+			SensorsListViewAdapter adapter, SensorRow sensorRow) {
+		super(context, adapter, sensorRow);
 	}
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
-		if (preferences.showAmbientCondition[ThermometerApp.ABSOLUTE_HUMIDITY_INDEX]
-				&& (event.sensor.equals(app.getTemperatureSensor()) || event.sensor
-						.equals(app.getRelativeHumiditySensor()))) {
+		if (preferences.showAmbientCondition
+				.get(Sensors.TYPE_ABSOLUTE_HUMIDITY)) {
 			if (event.sensor.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE) {
 				temperature = event.values[0];
 				Log.d(TAG, "Got temperature sensor event with value: "
@@ -37,8 +33,10 @@ public class AbsoluteHumidityListener extends BaseListener {
 				relativeHumidity = event.values[0];
 				Log.d(TAG, "Got relative humidity sensor event with value: "
 						+ relativeHumidity);
-			}
+			} else
+				return;
 
+			// what for?
 			value = Sensors.computeAbsoluteHumidity(temperature,
 					relativeHumidity);
 
@@ -49,5 +47,30 @@ public class AbsoluteHumidityListener extends BaseListener {
 
 			super.onSensorChanged(event);
 		}
+	}
+
+	@Override
+	public boolean register() {
+		boolean temperature = sensors.sensorManager.registerListener(this,
+				sensors.sensors.get(Sensor.TYPE_AMBIENT_TEMPERATURE),
+				SensorManager.SENSOR_DELAY_UI);
+		boolean relativeHumidity = sensors.sensorManager.registerListener(this,
+				sensors.sensors.get(Sensor.TYPE_RELATIVE_HUMIDITY),
+				SensorManager.SENSOR_DELAY_UI);
+
+		if (!temperature || !relativeHumidity) {
+			unregister();
+			return false;
+		}
+
+		return true;
+	}
+
+	@Override
+	public void unregister() {
+		sensors.sensorManager.unregisterListener(this,
+				sensors.sensors.get(Sensor.TYPE_AMBIENT_TEMPERATURE));
+		sensors.sensorManager.unregisterListener(this,
+				sensors.sensors.get(Sensor.TYPE_RELATIVE_HUMIDITY));
 	}
 }

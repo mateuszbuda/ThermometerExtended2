@@ -3,14 +3,15 @@ package pl.narfsoftware.thermometer.service.listeners;
 import java.sql.Timestamp;
 import java.util.Date;
 
-import pl.narfsoftware.thermometer.ThermometerApp;
 import pl.narfsoftware.thermometer.db.DbHelper;
 import pl.narfsoftware.thermometer.utils.Sensors;
 import android.content.Context;
+import android.hardware.Sensor;
 import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
 import android.util.Log;
 
-public class MagneticFieldListener extends DataSavingListener {
+public class MagneticFieldListener extends BaseServiceListener {
 	static final String TAG = ".service.listeners.MagneticFieldListener";
 	float magneticFieldX = 0f;
 	float magneticFieldY = 0f;
@@ -22,8 +23,10 @@ public class MagneticFieldListener extends DataSavingListener {
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
-		if (app.saveAmbientConditionData[ThermometerApp.MAGNETIC_FIELD_INDEX]
-				&& event.sensor.equals(app.getMagneticFieldSensor())) {
+		if (app.saveAmbientCondition.get(Sensor.TYPE_MAGNETIC_FIELD)) {
+			if (event.sensor.getType() != Sensor.TYPE_MAGNETIC_FIELD)
+				return;
+
 			magneticFieldX = event.values[0];
 			magneticFieldY = event.values[1];
 			magneticFieldZ = event.values[2];
@@ -35,6 +38,19 @@ public class MagneticFieldListener extends DataSavingListener {
 
 			Log.d(TAG, "Got magnetic field sensor event with value: " + value);
 		}
+	}
+
+	@Override
+	public boolean register() {
+		return sensors.sensorManager.registerListener(this,
+				sensors.sensors.get(Sensor.TYPE_MAGNETIC_FIELD),
+				SensorManager.SENSOR_DELAY_UI);
+	}
+
+	@Override
+	public void unregister() {
+		sensors.sensorManager.unregisterListener(this,
+				sensors.sensors.get(Sensor.TYPE_MAGNETIC_FIELD));
 	}
 
 }

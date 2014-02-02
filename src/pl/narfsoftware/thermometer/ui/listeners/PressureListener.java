@@ -1,30 +1,46 @@
 package pl.narfsoftware.thermometer.ui.listeners;
 
-import pl.narfsoftware.thermometer.SensorsListViewAdapter;
-import pl.narfsoftware.thermometer.ThermometerApp;
+import pl.narfsoftware.thermometer.ui.SensorsListViewAdapter;
+import pl.narfsoftware.thermometer.utils.SensorRow;
 import android.content.Context;
+import android.hardware.Sensor;
 import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
 import android.util.Log;
 
-public class PressureListener extends BaseListener {
+public class PressureListener extends BaseUIListener {
 	static final String TAG = "PressureListener";
 
 	public PressureListener(Context context, SensorsListViewAdapter adapter,
-			int position) {
-		super(context, adapter, position);
+			SensorRow sensorRow) {
+		super(context, adapter, sensorRow);
 	}
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
-		if (preferences.showAmbientCondition[ThermometerApp.PRESSURE_INDEX]
-				&& event.sensor.equals(app.getPressureSensor())) {
-			value = event.values[0];
+		if (preferences.showAmbientCondition.get(Sensor.TYPE_PRESSURE)) {
+			if (event.sensor.getType() != Sensor.TYPE_PRESSURE)
+				return;
 
+			value = event.values[0];
 			stringValue = (String.format("%.0f", value) + " hPa");
 
 			super.onSensorChanged(event);
 
 			Log.d(TAG, "Got pressure sensor event with value: " + value);
 		}
+	}
+
+	@Override
+	public boolean register() {
+		return sensors.sensorManager.registerListener(this,
+				sensors.sensors.get(Sensor.TYPE_PRESSURE),
+				SensorManager.SENSOR_DELAY_UI);
+	}
+
+	@Override
+	public void unregister() {
+		sensors.sensorManager.unregisterListener(this,
+				sensors.sensors.get(Sensor.TYPE_PRESSURE));
 	}
 }

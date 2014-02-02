@@ -7,12 +7,11 @@ import java.util.List;
 import java.util.Locale;
 
 import pl.narfsoftware.thermometer.R;
-import pl.narfsoftware.thermometer.SensorRow;
-import pl.narfsoftware.thermometer.SensorsListViewAdapter;
 import pl.narfsoftware.thermometer.ThermometerApp;
 import pl.narfsoftware.thermometer.utils.Constants;
 import pl.narfsoftware.thermometer.utils.Converter;
 import pl.narfsoftware.thermometer.utils.Preferences;
+import pl.narfsoftware.thermometer.utils.SensorRow;
 import android.app.Activity;
 import android.app.ListFragment;
 import android.hardware.Sensor;

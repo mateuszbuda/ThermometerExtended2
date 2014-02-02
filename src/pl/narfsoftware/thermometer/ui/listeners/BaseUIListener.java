@@ -1,9 +1,11 @@
-package pl.narfsoftware.thermometer.ui.sensors;
+package pl.narfsoftware.thermometer.ui.listeners;
 
 import pl.narfsoftware.thermometer.R;
-import pl.narfsoftware.thermometer.SensorsListViewAdapter;
-import pl.narfsoftware.thermometer.ThermometerApp;
+import pl.narfsoftware.thermometer.ui.SensorsListViewAdapter;
+import pl.narfsoftware.thermometer.utils.Listener;
 import pl.narfsoftware.thermometer.utils.Preferences;
+import pl.narfsoftware.thermometer.utils.SensorRow;
+import pl.narfsoftware.thermometer.utils.Sensors;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -11,40 +13,27 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.widget.Toast;
 
-public abstract class BaseSensor implements SensorEventListener {
+public abstract class BaseUIListener implements Listener, SensorEventListener {
 
-	public static final int TYPE_ABSOLUTE_HUMIDITY = Sensor.TYPE_AMBIENT_TEMPERATURE
-			* 9 + Sensor.TYPE_RELATIVE_HUMIDITY * 9;
-	public static final int TYPE_DEW_POINT = Sensor.TYPE_AMBIENT_TEMPERATURE
-			* 10 + Sensor.TYPE_RELATIVE_HUMIDITY * 10;
-
+	private SensorsListViewAdapter adapter;
 	/**
-	 * Value get from sensor event
+	 * SenorRow associated with particular ambient condition indicator on
+	 * adapter's list
 	 */
-	protected float value;
-	/**
-	 * Value converted to string with unit of measure attached
-	 */
-	protected String stringValue;
-	protected SensorsListViewAdapter adapter;
-	/**
-	 * Position of item (SenorRow) associated with particular ambient condition
-	 * indicator on adapter's list
-	 */
-	protected int position = -1;
-	protected ThermometerApp app;
+	private SensorRow sensorRow;
 	protected Context context;
 	protected Preferences preferences;
+	protected Sensors sensors;
+	protected float value;
+	protected String stringValue;
 
-	public BaseSensor(Context context, SensorsListViewAdapter adapter,
-			int position) {
+	public BaseUIListener(Context context, SensorsListViewAdapter adapter,
+			SensorRow sensorRow) {
 		this.context = context;
-		this.app = (ThermometerApp) context.getApplicationContext();
 		this.adapter = adapter;
-		this.position = position;
+		this.sensorRow = sensorRow;
 		preferences = new Preferences(context);
-		value = 0f;
-		stringValue = context.getResources().getString(R.string.sensor_no_data);
+		sensors = new Sensors(context);
 	}
 
 	@Override
@@ -84,20 +73,20 @@ public abstract class BaseSensor implements SensorEventListener {
 	}
 
 	/**
-	 * In subclasses after counting values and setting stringValue call super to
-	 * update list view adapter. {@inheritDoc}
+	 * After computing value and setting it as a string call super to update
+	 * adapter.
 	 */
 	@Override
 	public void onSensorChanged(SensorEvent event) {
-		if (position < 0 || position >= adapter.getCount())
-			return;
-
-		adapter.getItem(position).setStringValue(stringValue);
-
+		sensorRow.setFloatValue(value);
+		sensorRow.setStringValue(stringValue);
 		adapter.notifyDataSetChanged();
 	}
 
-	public void setPosition(int position) {
-		this.position = position;
-	}
+	@Override
+	public abstract boolean register();
+
+	@Override
+	public abstract void unregister();
+
 }

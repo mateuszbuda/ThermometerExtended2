@@ -1,29 +1,33 @@
 package pl.narfsoftware.thermometer.ui.listeners;
 
 import pl.narfsoftware.thermometer.R;
-import pl.narfsoftware.thermometer.SensorsListViewAdapter;
-import pl.narfsoftware.thermometer.ThermometerApp;
+import pl.narfsoftware.thermometer.ui.SensorsListViewAdapter;
 import pl.narfsoftware.thermometer.utils.Converter;
 import pl.narfsoftware.thermometer.utils.Preferences;
+import pl.narfsoftware.thermometer.utils.SensorRow;
 import android.content.Context;
+import android.hardware.Sensor;
 import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
 import android.util.Log;
 
-public class TemperatureListener extends BaseListener {
+public class TemperatureListener extends BaseUIListener {
 	static final String TAG = "TemperatureListener";
 
 	public TemperatureListener(Context context, SensorsListViewAdapter adapter,
-			int position) {
-		super(context, adapter, position);
+			SensorRow sensorRow) {
+		super(context, adapter, sensorRow);
 	}
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
-		if (preferences.showAmbientCondition[ThermometerApp.TEMPERATURE_INDEX]
-				&& event.sensor.equals(app.getTemperatureSensor())) {
+		if (preferences.showAmbientCondition
+				.get(Sensor.TYPE_AMBIENT_TEMPERATURE)) {
+			if (event.sensor.getType() != Sensor.TYPE_AMBIENT_TEMPERATURE)
+				return;
+
 			value = event.values[0];
 
-			// TODO i'm sure it can be done without those if's
 			if (preferences.temperatureUnit
 					.equals(context.getResources().getStringArray(
 							R.array.prefs_temp_unit_vals)[Preferences.CELSIUS]))
@@ -46,6 +50,19 @@ public class TemperatureListener extends BaseListener {
 
 			super.onSensorChanged(event);
 		}
+	}
+
+	@Override
+	public boolean register() {
+		return sensors.sensorManager.registerListener(this,
+				sensors.sensors.get(Sensor.TYPE_AMBIENT_TEMPERATURE),
+				SensorManager.SENSOR_DELAY_UI);
+	}
+
+	@Override
+	public void unregister() {
+		sensors.sensorManager.unregisterListener(this,
+				sensors.sensors.get(Sensor.TYPE_AMBIENT_TEMPERATURE));
 	}
 
 }
