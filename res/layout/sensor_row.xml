@@ -1,24 +1,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:paddingTop="6dip">
+    style="@style/SensorRowRootLayoutStyle" >
 
     <LinearLayout
         android:id="@+id/main"
-        android:background="#08000000"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/row_padding_bottom"
-        android:paddingLeft="@dimen/row_padding_left"
-        android:paddingRight="@dimen/row_padding_right"
-        android:paddingTop="@dimen/row_padding_top" >
+        style="@style/SensorRowMainLayoutStyle" >
 
         <ImageView
             android:id="@+id/sensorIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:contentDescription="sensor icon"
+            style="@style/SensorRowIconStyle"
             android:src="@android:drawable/ic_delete" />
 
         <LinearLayout
@@ -28,26 +17,18 @@
 
             <TextView
                 android:id="@+id/sensorType"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Large Text"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                style="@style/SensorRowTitleTextViewStyle"
+                android:text="Large Text" />
 
             <TextView
                 android:id="@+id/sensorData"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Medium Text"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                style="@style/SensorRowDataTextViewStyle"
+                android:text="Medium Text" />
         </LinearLayout>
     </LinearLayout>
-    <View android:layout_width="match_parent"
-        android:layout_height="1dip"
-        android:background="#20000000"
-        android:layout_below="@+id/main"/>
+
+    <View
+        style="@style/SensorRowBottomLineStyle"
+        android:layout_below="@+id/main" />
 
 </RelativeLayout>

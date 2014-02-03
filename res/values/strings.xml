@@ -86,5 +86,6 @@
     </string-array>
 
     <string name="action_help_title">Help</string>
+    <string name="sensor_icon_description">Sensor Icon</string>
 
 </resources>
