@@ -1,13 +1,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:paddingTop="6dip">
+    android:paddingBottom="4dip"
+    android:paddingTop="4dip" >
 
     <LinearLayout
         android:id="@+id/main"
-        android:background="#10000080"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#10000080"
         android:paddingBottom="@dimen/row_padding_bottom"
         android:paddingLeft="@dimen/row_padding_left"
         android:paddingRight="@dimen/row_padding_right"
@@ -46,9 +47,11 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
     </LinearLayout>
-    <View android:layout_width="match_parent"
-        android:layout_height="1dip"
-        android:background="#20000000"
-        android:layout_below="@+id/main"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dip"
+        android:layout_below="@+id/main"
+        android:background="#20000000" />
 
 </RelativeLayout>

@@ -39,7 +39,7 @@
     <string name="logo_description">NarfSoftware Logo</string>
     <string name="action_about_title">About</string>
     <string name="about_header">Thermometer Extended</string>
-    <string name="about_subheader">version 2.5</string>
+    <string name="about_subheader">version 2.5.2</string>
     <string name="about_text">We\'re looking forward to hearing from you. Email us to report bugs, suggest an improvement or if you want to add a translation. We will be glad if you decide to rate and comment on our apps on Market.</string>
     <string name="alert_dialog_erase_data_text">Are you sure you want to clear history?</string>
     <string name="yes">Yes</string>
@@ -69,7 +69,7 @@
     <string name="help_text_source">Source: wikipedia.org</string>
 
     <string-array name="help_details">
-        <item name="help_text_main">Main window displays chosen in settings ambient condition indicators. If application is receiving data from particular senors, it is immediately displayed, otherwise you see \'No Data\'. Data accuracy depends on hardware quality. Application merely display received data. Another possibility is that your device simply do not support chosen sensor. If so, you get \'Sensor unavailable\' message.</item>
+        <item name="help_text_main">Main window displays chosen in settings ambient condition indicators. If application is receiving data from particular senors, it is immediately displayed, otherwise you see \'No Data\'. Data accuracy depends on hardware quality. Application merely display received data. Another possibility is that your device simply does not support chosen sensor. If so, you get \'Sensor unavailable\' message.</item>
         <item name="help_text_save_and_display_data">In order to see data history graph you must turn saving data mode on for particular sensor in its plot window. However be aware that it cause chosen sensors to stay active, even if you close application. That may drain device battery especially quickly. So always remember to stop saving data if you do not need it. By default this option is turned off. If particular sensor is working in data saving mode its icon is blue. Otherwise its greyed.</item>
         <item name="help_text_relative_humidity">Relative humidity is the ratio of the partial pressure of water vapor in an air-water mixture to the saturated vapor pressure of water at a prescribed temperature. The relative humidity of air depends on temperature and the pressure of the system of interest. Humans are sensitive to humid air because the human body uses evaporative cooling (perspiration) as the primary mechanism to rid itself of waste heat. Humans can be comfortable within a wide range of humidities depending on the temperature — from thirty to seventy percent - but ideally between fifty and sixty percent.</item>
         <item name="help_text_absolute_humidity">Absolute humidity is the mass of water vapor per unit volume of total air and water vapor mixture. Absolute humidity in the atmosphere ranges from near zero to roughly 30 grams per cubic meter when the air is saturated at 30 °C. The absolute humidity changes as air temperature or pressure changes. It does not take temperature into consideration.</item>

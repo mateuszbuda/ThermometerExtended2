@@ -170,6 +170,7 @@ public class SensorsFragment extends ListFragment implements
 				R.layout.sensor_row, sensorsList);
 		adapter.registerDataSetObserver(new DataSetObserver() {
 		});
+		getListView().setDivider(null);
 		setListAdapter(adapter);
 	}
 
