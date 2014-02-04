@@ -18,18 +18,12 @@ public class RelativeHumidityListener extends BaseUIListener {
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
-		if (preferences.showAmbientCondition.get(Sensor.TYPE_RELATIVE_HUMIDITY)) {
-			if (event.sensor.getType() != Sensor.TYPE_RELATIVE_HUMIDITY)
-				return;
+		value = event.values[0];
+		stringValue = (String.format("%.0f", value) + " %");
 
-			value = event.values[0];
-			stringValue = (String.format("%.0f", value) + " %");
+		super.onSensorChanged(event);
 
-			super.onSensorChanged(event);
-
-			Log.d(TAG, "Got relative humidity sensor event with value: "
-					+ value);
-		}
+		Log.d(TAG, "Got relative humidity sensor event with value: " + value);
 	}
 
 	@Override

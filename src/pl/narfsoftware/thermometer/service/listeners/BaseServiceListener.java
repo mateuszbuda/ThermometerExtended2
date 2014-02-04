@@ -9,7 +9,8 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 
-public abstract class BaseServiceListener implements Listener, SensorEventListener {
+public abstract class BaseServiceListener implements Listener,
+		SensorEventListener {
 	protected float value;
 	protected SensorData sensorData;
 	protected ThermometerApp app;
@@ -19,7 +20,7 @@ public abstract class BaseServiceListener implements Listener, SensorEventListen
 		value = 0f;
 		app = ((ThermometerApp) context.getApplicationContext());
 		sensorData = app.getSensorData();
-		sensors = new Sensors(context);
+		sensors = app.getSensors();
 	}
 
 	@Override

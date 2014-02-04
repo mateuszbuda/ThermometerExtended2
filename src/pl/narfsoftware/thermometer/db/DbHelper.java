@@ -76,13 +76,14 @@ public class DbHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		db.execSQL("drop table if exists " + TABLE_TEMPERATUE);
-		db.execSQL("drop table if exists " + TABLE_RELATIVE_HUMIDITY);
-		db.execSQL("drop table if exists " + TABLE_ABSOLUTE_HUMIDITY);
-		db.execSQL("drop table if exists " + TABLE_PRESSURE);
-		db.execSQL("drop table if exists " + TABLE_DEW_POINT);
-		db.execSQL("drop table if exists " + TABLE_LIGHT);
-		db.execSQL("drop table if exists " + TABLE_MAGNETIC_FIELD);
-		onCreate(db);
+		// O.o'?
+		// db.execSQL("drop table if exists " + TABLE_TEMPERATUE);
+		// db.execSQL("drop table if exists " + TABLE_RELATIVE_HUMIDITY);
+		// db.execSQL("drop table if exists " + TABLE_ABSOLUTE_HUMIDITY);
+		// db.execSQL("drop table if exists " + TABLE_PRESSURE);
+		// db.execSQL("drop table if exists " + TABLE_DEW_POINT);
+		// db.execSQL("drop table if exists " + TABLE_LIGHT);
+		// db.execSQL("drop table if exists " + TABLE_MAGNETIC_FIELD);
+		// onCreate(db);
 	}
 }

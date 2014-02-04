@@ -18,17 +18,12 @@ public class LightListener extends BaseUIListener {
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
-		if (preferences.showAmbientCondition.get(Sensor.TYPE_LIGHT)) {
-			if (event.sensor.getType() != Sensor.TYPE_LIGHT)
-				return;
+		value = event.values[0];
+		stringValue = (String.format("%.0f", value) + " lx");
 
-			value = event.values[0];
-			stringValue = (String.format("%.0f", value) + " lx");
+		super.onSensorChanged(event);
 
-			super.onSensorChanged(event);
-
-			Log.d(TAG, "Got light sensor event with value " + value);
-		}
+		Log.d(TAG, "Got light sensor event with value " + value);
 	}
 
 	@Override

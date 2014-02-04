@@ -18,17 +18,12 @@ public class PressureListener extends BaseUIListener {
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
-		if (preferences.showAmbientCondition.get(Sensor.TYPE_PRESSURE)) {
-			if (event.sensor.getType() != Sensor.TYPE_PRESSURE)
-				return;
+		value = event.values[0];
+		stringValue = (String.format("%.0f", value) + " hPa");
 
-			value = event.values[0];
-			stringValue = (String.format("%.0f", value) + " hPa");
+		super.onSensorChanged(event);
 
-			super.onSensorChanged(event);
-
-			Log.d(TAG, "Got pressure sensor event with value: " + value);
-		}
+		Log.d(TAG, "Got pressure sensor event with value: " + value);
 	}
 
 	@Override

@@ -1,10 +1,10 @@
 package pl.narfsoftware.thermometer.ui;
 
 import pl.narfsoftware.thermometer.R;
-import pl.narfsoftware.thermometer.SensorService;
 import pl.narfsoftware.thermometer.ThermometerApp;
 import pl.narfsoftware.thermometer.db.DbHelper;
 import pl.narfsoftware.thermometer.db.SensorData;
+import pl.narfsoftware.thermometer.service.SensorsDataSavingService;
 import pl.narfsoftware.thermometer.utils.Constants;
 import pl.narfsoftware.thermometer.utils.Label;
 import pl.narfsoftware.thermometer.utils.Preferences;
@@ -36,12 +36,12 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 	Activity activity;
 	ThermometerApp app;
 	Preferences preferences;
-	final static String ARG_INDEX = "sensor_index";
+	final static String ARG_KEY = "sensor_key";
 	/**
-	 * Index of ambient condition as in ThermometerApp, not index on the list in
+	 * Key of ambient condition as in HashMaps, not index on the list in
 	 * SensorsFragment
 	 */
-	int currentIndex = 0;
+	int currentKey = 0;
 
 	boolean saveData;
 
@@ -65,8 +65,13 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 	OnSensorDataSaveStateChangedListener callback;
 
 	public interface OnSensorDataSaveStateChangedListener {
-		/** Called by PlotFragment when a dataSave switch checked state changes */
-		public void onSensorDataSaveStateChanged(int index);
+		/**
+		 * Called by PlotFragment when a dataSave switch checked state changes
+		 * 
+		 * @param key
+		 *            Sensors' type - key in dictionary
+		 */
+		public void onSensorDataSaveStateChanged(int key);
 	}
 
 	@Override
@@ -115,7 +120,7 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 		// the previous sensor selection set by onSaveInstanceState().
 		// This is primarily necessary when in the two-pane layout.
 		if (savedInstanceState != null) {
-			currentIndex = savedInstanceState.getInt(ARG_INDEX);
+			currentKey = savedInstanceState.getInt(ARG_KEY);
 		}
 
 		// Inflate the layout for this fragment
@@ -133,11 +138,11 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 		Bundle args = getArguments();
 		if (args != null) {
 			// Set plot based on argument passed in
-			updatePlotFragment(args.getInt(ARG_INDEX));
-		} else if (currentIndex != -1) {
+			updatePlotFragment(args.getInt(ARG_KEY));
+		} else if (currentKey != -1) {
 			// Set plot based on saved instance state defined during
 			// onCreateView
-			updatePlotFragment(currentIndex);
+			updatePlotFragment(currentKey);
 		}
 	}
 
@@ -149,8 +154,8 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 		tvUnit.setText("");
 		tvUnit.setTypeface(preferences.typeface);
 		saveDataSwitch.setTypeface(preferences.typeface);
-		tableName = DbHelper.TABLE_NAMES[currentIndex];
-		saveData = app.saveAmbientConditionData[currentIndex];
+		tableName = DbHelper.TABLE_NAMES[currentKey];
+		saveData = app.saveAmbientCondition.get(currentKey);
 		dataSeries = new GraphViewSeries(sensorData.query(tableName,
 				preferences.temperatureUnitCode));
 		if (dataSeries.getValues().length <= 1) {
@@ -166,7 +171,7 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 			}
 		} else {
 			// set unit
-			tvUnit.setText(Constants.UNITS[preferences.temperatureUnitCode][currentIndex]);
+			tvUnit.setText(Constants.UNITS[preferences.temperatureUnitCode][currentKey]);
 
 			graphView.setCustomLabelFormatter(new Label(dataSeries));
 
@@ -190,15 +195,14 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 		timer = new TimerRunnable(activity, saveData, dataSeries, sensorData,
 				tableName, graphView, handler);
 		refresher = new RefresherRunnable(saveData, dataSeries, tvUnit,
-				Constants.UNITS[preferences.temperatureUnitCode][currentIndex],
+				Constants.UNITS[preferences.temperatureUnitCode][currentKey],
 				verticalLabelsWidth, graphView, handler);
 
 		handler.postDelayed(timer, Constants.ONE_SECOND);
 		handler.postDelayed(refresher, Constants.ONE_SECOND);
 
 		if (saveDataSwitch != null)
-			saveDataSwitch
-					.setChecked(app.saveAmbientConditionData[currentIndex]);
+			saveDataSwitch.setChecked(app.saveAmbientCondition.get(currentKey));
 	}
 
 	@Override
@@ -221,8 +225,8 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 			sensorData.close();
 	}
 
-	public void updatePlotFragment(int index) {
-		currentIndex = index;
+	public void updatePlotFragment(int key) {
+		currentKey = key;
 		// O.o'? TODO
 		this.onPause();
 		this.onStop();
@@ -235,7 +239,7 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 
 		// Save the current article selection in case we need to recreate the
 		// fragment
-		outState.putInt(ARG_INDEX, currentIndex);
+		outState.putInt(ARG_KEY, currentKey);
 	}
 
 	private void initGraphView() {
@@ -255,7 +259,7 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 
 	@Override
 	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-		saveData = app.saveAmbientConditionData[currentIndex] = isChecked;
+		app.saveAmbientCondition.put(currentKey, saveData = isChecked);
 		if (refresher != null)
 			refresher.setSaveData(isChecked);
 		if (timer != null)
@@ -265,9 +269,13 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 			((SensorsActivity) activity).sensorsFragment.adapter
 					.notifyDataSetChanged();
 		}
-		callback.onSensorDataSaveStateChanged(currentIndex);
-		activity.stopService(new Intent(activity, SensorService.class));
+		callback.onSensorDataSaveStateChanged(currentKey);
+
 		if (app.saveAnyAmbientCondition())
-			activity.startService(new Intent(activity, SensorService.class));
+			activity.startService(new Intent(activity,
+					SensorsDataSavingService.class));
+		else
+			activity.stopService(new Intent(activity,
+					SensorsDataSavingService.class));
 	}
 }

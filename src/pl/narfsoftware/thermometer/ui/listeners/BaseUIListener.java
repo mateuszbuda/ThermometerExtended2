@@ -1,6 +1,7 @@
 package pl.narfsoftware.thermometer.ui.listeners;
 
 import pl.narfsoftware.thermometer.R;
+import pl.narfsoftware.thermometer.ThermometerApp;
 import pl.narfsoftware.thermometer.ui.SensorsListViewAdapter;
 import pl.narfsoftware.thermometer.utils.Listener;
 import pl.narfsoftware.thermometer.utils.Preferences;
@@ -21,6 +22,7 @@ public abstract class BaseUIListener implements Listener, SensorEventListener {
 	 * adapter's list
 	 */
 	private SensorRow sensorRow;
+	private ThermometerApp app;
 	protected Context context;
 	protected Preferences preferences;
 	protected Sensors sensors;
@@ -29,11 +31,12 @@ public abstract class BaseUIListener implements Listener, SensorEventListener {
 
 	public BaseUIListener(Context context, SensorsListViewAdapter adapter,
 			SensorRow sensorRow) {
+		this.app = (ThermometerApp) context.getApplicationContext();
 		this.context = context;
 		this.adapter = adapter;
 		this.sensorRow = sensorRow;
-		preferences = new Preferences(context);
-		sensors = new Sensors(context);
+		preferences = app.getPrefs();
+		sensors = app.getSensors();
 	}
 
 	@Override

@@ -21,35 +21,28 @@ public class TemperatureListener extends BaseUIListener {
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
-		if (preferences.showAmbientCondition
-				.get(Sensor.TYPE_AMBIENT_TEMPERATURE)) {
-			if (event.sensor.getType() != Sensor.TYPE_AMBIENT_TEMPERATURE)
-				return;
+		value = event.values[0];
 
-			value = event.values[0];
+		if (preferences.temperatureUnit
+				.equals(context.getResources().getStringArray(
+						R.array.prefs_temp_unit_vals)[Preferences.CELSIUS]))
+			stringValue = (String.format("%.0f", value) + " " + (char) 0x00B0 + "C");
 
-			if (preferences.temperatureUnit
-					.equals(context.getResources().getStringArray(
-							R.array.prefs_temp_unit_vals)[Preferences.CELSIUS]))
-				stringValue = (String.format("%.0f", value) + " "
-						+ (char) 0x00B0 + "C");
+		else if (preferences.temperatureUnit
+				.equals(context.getResources().getStringArray(
+						R.array.prefs_temp_unit_vals)[Preferences.FAHRENHEIT]))
+			stringValue = (String
+					.format("%.0f", Converter.ConvertTemperature(value,
+							Preferences.FAHRENHEIT))
+					+ " " + (char) 0x00B0 + "F");
 
-			else if (preferences.temperatureUnit
-					.equals(context.getResources().getStringArray(
-							R.array.prefs_temp_unit_vals)[Preferences.FAHRENHEIT]))
-				stringValue = (String.format("%.0f", Converter
-						.ConvertTemperature(value, Preferences.FAHRENHEIT))
-						+ " " + (char) 0x00B0 + "F");
+		else
+			stringValue = (String.format("%.0f",
+					Converter.ConvertTemperature(value, Preferences.KELVIN)) + " K");
 
-			else
-				stringValue = (String
-						.format("%.0f", Converter.ConvertTemperature(value,
-								Preferences.KELVIN)) + " K");
+		Log.d(TAG, "Got temperature sensor event with value: " + value);
 
-			Log.d(TAG, "Got temperature sensor event with value: " + value);
-
-			super.onSensorChanged(event);
-		}
+		super.onSensorChanged(event);
 	}
 
 	@Override

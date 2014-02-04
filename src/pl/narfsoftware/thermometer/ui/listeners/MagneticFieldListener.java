@@ -22,22 +22,17 @@ public class MagneticFieldListener extends BaseUIListener {
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
-		if (preferences.showAmbientCondition.get(Sensor.TYPE_MAGNETIC_FIELD)) {
-			if (event.sensor.getType() != Sensor.TYPE_MAGNETIC_FIELD)
-				return;
+		magneticFieldX = event.values[0];
+		magneticFieldY = event.values[1];
+		magneticFieldZ = event.values[2];
+		value = Sensors.computeMagneticField(magneticFieldX, magneticFieldY,
+				magneticFieldZ);
 
-			magneticFieldX = event.values[0];
-			magneticFieldY = event.values[1];
-			magneticFieldZ = event.values[2];
-			value = Sensors.computeMagneticField(magneticFieldX,
-					magneticFieldY, magneticFieldZ);
+		stringValue = (String.format("%.0f", value) + " " + (char) 0x03BC + "T");
 
-			stringValue = (String.format("%.0f", value) + " " + (char) 0x03BC + "T");
+		Log.d(TAG, "Got magnetic field sensor event with value: " + value);
 
-			Log.d(TAG, "Got magnetic field sensor event with value: " + value);
-
-			super.onSensorChanged(event);
-		}
+		super.onSensorChanged(event);
 	}
 
 	@Override
