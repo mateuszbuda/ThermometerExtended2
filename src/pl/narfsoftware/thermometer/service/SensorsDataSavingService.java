@@ -38,9 +38,8 @@ public class SensorsDataSavingService extends Service {
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		for (int key : app.saveAmbientCondition.keySet()) {
-			if (app.saveAmbientCondition.get(key)
-					&& app.getPrefs().showAmbientCondition.get(key))
+		for (int key : app.getSaveDataKeySet()) {
+			if (app.saveData(key) && app.getPrefs().showData.get(key))
 				listeners.get(key).register();
 			else
 				listeners.get(key).unregister();

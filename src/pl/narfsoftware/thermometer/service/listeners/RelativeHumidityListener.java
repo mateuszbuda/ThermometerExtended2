@@ -19,18 +19,13 @@ public class RelativeHumidityListener extends BaseServiceListener {
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
-		if (app.saveAmbientCondition.get(Sensor.TYPE_RELATIVE_HUMIDITY)) {
-			if (event.sensor.getType() != Sensor.TYPE_RELATIVE_HUMIDITY)
-				return;
-			
-			value = event.values[0];
+		value = event.values[0];
 
-			sensorData.insert(DbHelper.TABLE_RELATIVE_HUMIDITY, (new Timestamp(
-					new Date().getTime()).getTime()), value);
+		sensorData.insert(
+				DbHelper.TABLE_NAMES.get(Sensor.TYPE_RELATIVE_HUMIDITY),
+				(new Timestamp(new Date().getTime()).getTime()), value);
 
-			Log.d(TAG, "Got relative humidity sensor event with value: "
-					+ value);
-		}
+		Log.d(TAG, "Got relative humidity sensor event with value: " + value);
 	}
 
 	@Override

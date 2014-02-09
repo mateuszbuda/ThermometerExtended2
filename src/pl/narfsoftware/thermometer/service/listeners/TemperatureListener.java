@@ -19,17 +19,13 @@ public class TemperatureListener extends BaseServiceListener {
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
-		if (app.saveAmbientCondition.get(Sensor.TYPE_AMBIENT_TEMPERATURE)) {
-			if (event.sensor.getType() != Sensor.TYPE_AMBIENT_TEMPERATURE)
-				return;
+		value = event.values[0];
 
-			value = event.values[0];
+		sensorData.insert(
+				DbHelper.TABLE_NAMES.get(Sensor.TYPE_AMBIENT_TEMPERATURE),
+				(new Timestamp(new Date().getTime()).getTime()), value);
 
-			sensorData.insert(DbHelper.TABLE_TEMPERATUE, (new Timestamp(
-					new Date().getTime()).getTime()), value);
-
-			Log.d(TAG, "Got temperature sensor event with value: " + value);
-		}
+		Log.d(TAG, "Got temperature sensor event with value: " + value);
 	}
 
 	@Override

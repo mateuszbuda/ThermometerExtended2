@@ -15,7 +15,7 @@ public class Sensors {
 			* 10 + Sensor.TYPE_RELATIVE_HUMIDITY * 10;
 
 	public SensorManager sensorManager;
-	public HashMap<Integer, Boolean> sensorsAvailability = new HashMap<Integer, Boolean>();
+	public HashMap<Integer, Boolean> hasSensor = new HashMap<Integer, Boolean>();
 	public HashMap<Integer, Sensor> sensors = new HashMap<Integer, Sensor>();
 
 	public Sensors(Context context) {
@@ -31,34 +31,34 @@ public class Sensors {
 
 	private void checkSensorsAvailability() {
 		if (sensorManager.getSensorList(Sensor.TYPE_AMBIENT_TEMPERATURE).size() > 0)
-			sensorsAvailability.put(Sensor.TYPE_AMBIENT_TEMPERATURE, true);
+			hasSensor.put(Sensor.TYPE_AMBIENT_TEMPERATURE, true);
 		else
-			sensorsAvailability.put(Sensor.TYPE_AMBIENT_TEMPERATURE, false);
+			hasSensor.put(Sensor.TYPE_AMBIENT_TEMPERATURE, false);
 
 		if (sensorManager.getSensorList(Sensor.TYPE_RELATIVE_HUMIDITY).size() > 0)
-			sensorsAvailability.put(Sensor.TYPE_RELATIVE_HUMIDITY, true);
+			hasSensor.put(Sensor.TYPE_RELATIVE_HUMIDITY, true);
 		else
-			sensorsAvailability.put(Sensor.TYPE_RELATIVE_HUMIDITY, false);
+			hasSensor.put(Sensor.TYPE_RELATIVE_HUMIDITY, false);
 
 		if (sensorManager.getSensorList(Sensor.TYPE_PRESSURE).size() > 0)
-			sensorsAvailability.put(Sensor.TYPE_PRESSURE, true);
+			hasSensor.put(Sensor.TYPE_PRESSURE, true);
 		else
-			sensorsAvailability.put(Sensor.TYPE_PRESSURE, false);
+			hasSensor.put(Sensor.TYPE_PRESSURE, false);
 
 		if (sensorManager.getSensorList(Sensor.TYPE_LIGHT).size() > 0)
-			sensorsAvailability.put(Sensor.TYPE_LIGHT, true);
+			hasSensor.put(Sensor.TYPE_LIGHT, true);
 		else
-			sensorsAvailability.put(Sensor.TYPE_LIGHT, false);
+			hasSensor.put(Sensor.TYPE_LIGHT, false);
 
 		if (sensorManager.getSensorList(Sensor.TYPE_MAGNETIC_FIELD).size() > 0)
-			sensorsAvailability.put(Sensor.TYPE_MAGNETIC_FIELD, true);
+			hasSensor.put(Sensor.TYPE_MAGNETIC_FIELD, true);
 		else
-			sensorsAvailability.put(Sensor.TYPE_MAGNETIC_FIELD, false);
+			hasSensor.put(Sensor.TYPE_MAGNETIC_FIELD, false);
 	}
 
 	private void setAvailableSensors() {
-		for (Integer key : sensorsAvailability.keySet()) {
-			if (sensorsAvailability.get(key))
+		for (Integer key : hasSensor.keySet()) {
+			if (hasSensor.get(key))
 				sensors.put(key, sensorManager.getDefaultSensor(key));
 		}
 	}

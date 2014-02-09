@@ -27,26 +27,23 @@ public class AbsoluteHumidityListener extends BaseServiceListener {
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
-		if (app.saveAmbientCondition.get(Sensors.TYPE_ABSOLUTE_HUMIDITY)) {
-			if (event.sensor.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE) {
-				temperature = event.values[0];
-				Log.d(TAG, "Got temperature sensor event with value: "
-						+ temperature);
-			} else if (event.sensor.getType() == Sensor.TYPE_RELATIVE_HUMIDITY) {
-				relativeHumidity = event.values[0];
-				Log.d(TAG, "Got relative humidity sensor event with value: "
-						+ relativeHumidity);
-			} else
-				return;
-
-			value = Sensors.computeAbsoluteHumidity(temperature,
-					relativeHumidity);
-
-			sensorData.insert(DbHelper.TABLE_ABSOLUTE_HUMIDITY, (new Timestamp(
-					new Date().getTime()).getTime()), value);
-
-			Log.d(TAG, "Absolute humidity updated with value " + value);
+		if (event.sensor.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE) {
+			temperature = event.values[0];
+			Log.d(TAG, "Got temperature sensor event with value: "
+					+ temperature);
+		} else {
+			relativeHumidity = event.values[0];
+			Log.d(TAG, "Got relative humidity sensor event with value: "
+					+ relativeHumidity);
 		}
+
+		value = Sensors.computeAbsoluteHumidity(temperature, relativeHumidity);
+
+		sensorData.insert(
+				DbHelper.TABLE_NAMES.get(Sensors.TYPE_ABSOLUTE_HUMIDITY),
+				(new Timestamp(new Date().getTime()).getTime()), value);
+
+		Log.d(TAG, "Absolute humidity updated with value " + value);
 	}
 
 	@Override

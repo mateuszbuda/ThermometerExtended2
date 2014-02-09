@@ -23,21 +23,16 @@ public class MagneticFieldListener extends BaseServiceListener {
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
-		if (app.saveAmbientCondition.get(Sensor.TYPE_MAGNETIC_FIELD)) {
-			if (event.sensor.getType() != Sensor.TYPE_MAGNETIC_FIELD)
-				return;
+		magneticFieldX = event.values[0];
+		magneticFieldY = event.values[1];
+		magneticFieldZ = event.values[2];
+		value = Sensors.computeMagneticField(magneticFieldX, magneticFieldY,
+				magneticFieldZ);
 
-			magneticFieldX = event.values[0];
-			magneticFieldY = event.values[1];
-			magneticFieldZ = event.values[2];
-			value = Sensors.computeMagneticField(magneticFieldX,
-					magneticFieldY, magneticFieldZ);
+		sensorData.insert(DbHelper.TABLE_NAMES.get(Sensor.TYPE_MAGNETIC_FIELD),
+				(new Timestamp(new Date().getTime()).getTime()), value);
 
-			sensorData.insert(DbHelper.TABLE_MAGNETIC_FIELD, (new Timestamp(
-					new Date().getTime()).getTime()), value);
-
-			Log.d(TAG, "Got magnetic field sensor event with value: " + value);
-		}
+		Log.d(TAG, "Got magnetic field sensor event with value: " + value);
 	}
 
 	@Override

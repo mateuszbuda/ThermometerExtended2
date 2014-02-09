@@ -54,7 +54,7 @@ public class Preferences implements OnSharedPreferenceChangeListener {
 	static final String DEFAULT_THEME = "";
 	public Drawable themeDrawable;
 
-	public HashMap<Integer, Boolean> showAmbientCondition;
+	public HashMap<Integer, Boolean> showData = new HashMap<Integer, Boolean>();
 
 	private static String DATA_HINT_TOAST_SHOWED_KEY = "data_hint_toast_showed";
 	public boolean dataHintToastShowed;
@@ -82,24 +82,24 @@ public class Preferences implements OnSharedPreferenceChangeListener {
 	}
 
 	private void setAmbientConditionsToShow() {
-		showAmbientCondition.put(Sensor.TYPE_AMBIENT_TEMPERATURE, preferences
+		showData.put(Sensor.TYPE_AMBIENT_TEMPERATURE, preferences
 				.getBoolean(res.getString(R.string.ambient_temp_key), true));
 
-		showAmbientCondition.put(
+		showData.put(
 				Sensor.TYPE_RELATIVE_HUMIDITY,
 				preferences.getBoolean(
 						res.getString(R.string.relative_humidity_key), true));
-		showAmbientCondition.put(
+		showData.put(
 				Sensors.TYPE_ABSOLUTE_HUMIDITY,
 				preferences.getBoolean(
 						res.getString(R.string.absolute_humidity_key), false));
-		showAmbientCondition.put(Sensor.TYPE_PRESSURE, preferences.getBoolean(
+		showData.put(Sensor.TYPE_PRESSURE, preferences.getBoolean(
 				res.getString(R.string.pressure_key), true));
-		showAmbientCondition.put(Sensors.TYPE_DEW_POINT, preferences
+		showData.put(Sensors.TYPE_DEW_POINT, preferences
 				.getBoolean(res.getString(R.string.dew_point_key), false));
-		showAmbientCondition.put(Sensor.TYPE_LIGHT, preferences.getBoolean(
+		showData.put(Sensor.TYPE_LIGHT, preferences.getBoolean(
 				res.getString(R.string.light_key), false));
-		showAmbientCondition.put(
+		showData.put(
 				Sensor.TYPE_MAGNETIC_FIELD,
 				preferences.getBoolean(
 						res.getString(R.string.magnetic_field_key), false));

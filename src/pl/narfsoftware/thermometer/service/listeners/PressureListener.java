@@ -19,17 +19,12 @@ public class PressureListener extends BaseServiceListener {
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
-		if (app.saveAmbientCondition.get(Sensor.TYPE_PRESSURE)) {
-			if (event.sensor.getType() != Sensor.TYPE_PRESSURE)
-				return;
+		value = event.values[0];
 
-			value = event.values[0];
+		sensorData.insert(DbHelper.TABLE_NAMES.get(Sensor.TYPE_PRESSURE),
+				(new Timestamp(new Date().getTime()).getTime()), value);
 
-			sensorData.insert(DbHelper.TABLE_PRESSURE, (new Timestamp(
-					new Date().getTime()).getTime()), value);
-
-			Log.d(TAG, "Got pressure sensor event with value: " + value);
-		}
+		Log.d(TAG, "Got pressure sensor event with value: " + value);
 	}
 
 	@Override

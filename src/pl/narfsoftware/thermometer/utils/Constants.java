@@ -1,5 +1,8 @@
 package pl.narfsoftware.thermometer.utils;
 
+import java.util.HashMap;
+
+import android.hardware.Sensor;
 import android.text.Html;
 
 public class Constants {
@@ -31,19 +34,42 @@ public class Constants {
 	static final String UNIT_LIGHT = "[lx]";
 	static final String UNIT_MAGNETIC_FIELD = "[" + (char) 0x03BC + "T]";
 
-	static final String[] UNITS_WITH_CELSIUS = { UNIT_TEMPERATURE_CELSIUS,
-			UNIT_RELATIVE_HUMIDITY, UNIT_ABSOLUTE_HUMIDITY, UNIT_PRESSURE,
-			UNIT_DEW_POINT_CELSIUS, UNIT_LIGHT, UNIT_MAGNETIC_FIELD };
-	static final String[] UNITS_WITH_FAHRENHEIT = {
-			UNIT_TEMPERATURE_FAHRENHEIT, UNIT_RELATIVE_HUMIDITY,
-			UNIT_ABSOLUTE_HUMIDITY, UNIT_PRESSURE, UNIT_DEW_POINT_FAHRENHEIT,
-			UNIT_LIGHT, UNIT_MAGNETIC_FIELD };
-	static final String[] UNITS_WITH_KELVIN = { UNIT_TEMPERATURE_KELVIN,
-			UNIT_RELATIVE_HUMIDITY, UNIT_ABSOLUTE_HUMIDITY, UNIT_PRESSURE,
-			UNIT_DEW_POINT_KELVIN, UNIT_LIGHT, UNIT_MAGNETIC_FIELD };
+	static final HashMap<Integer, String> CELSIUS_UNITS = new HashMap<Integer, String>() {
+		{
+			put(Sensor.TYPE_AMBIENT_TEMPERATURE, UNIT_TEMPERATURE_CELSIUS);
+			put(Sensor.TYPE_RELATIVE_HUMIDITY, UNIT_RELATIVE_HUMIDITY);
+			put(Sensors.TYPE_ABSOLUTE_HUMIDITY, UNIT_ABSOLUTE_HUMIDITY);
+			put(Sensor.TYPE_PRESSURE, UNIT_PRESSURE);
+			put(Sensors.TYPE_DEW_POINT, UNIT_DEW_POINT_CELSIUS);
+			put(Sensor.TYPE_LIGHT, UNIT_LIGHT);
+			put(Sensor.TYPE_MAGNETIC_FIELD, UNIT_MAGNETIC_FIELD);
+		};
+	};
+	static final HashMap<Integer, String> FAHRENHEIT_UNITS = new HashMap<Integer, String>() {
+		{
+			put(Sensor.TYPE_AMBIENT_TEMPERATURE, UNIT_TEMPERATURE_FAHRENHEIT);
+			put(Sensor.TYPE_RELATIVE_HUMIDITY, UNIT_RELATIVE_HUMIDITY);
+			put(Sensors.TYPE_ABSOLUTE_HUMIDITY, UNIT_ABSOLUTE_HUMIDITY);
+			put(Sensor.TYPE_PRESSURE, UNIT_PRESSURE);
+			put(Sensors.TYPE_DEW_POINT, UNIT_DEW_POINT_FAHRENHEIT);
+			put(Sensor.TYPE_LIGHT, UNIT_LIGHT);
+			put(Sensor.TYPE_MAGNETIC_FIELD, UNIT_MAGNETIC_FIELD);
+		};
+	};
+	static final HashMap<Integer, String> KELVIN_UNITS = new HashMap<Integer, String>() {
+		{
+			put(Sensor.TYPE_AMBIENT_TEMPERATURE, UNIT_TEMPERATURE_KELVIN);
+			put(Sensor.TYPE_RELATIVE_HUMIDITY, UNIT_RELATIVE_HUMIDITY);
+			put(Sensors.TYPE_ABSOLUTE_HUMIDITY, UNIT_ABSOLUTE_HUMIDITY);
+			put(Sensor.TYPE_PRESSURE, UNIT_PRESSURE);
+			put(Sensors.TYPE_DEW_POINT, UNIT_DEW_POINT_KELVIN);
+			put(Sensor.TYPE_LIGHT, UNIT_LIGHT);
+			put(Sensor.TYPE_MAGNETIC_FIELD, UNIT_MAGNETIC_FIELD);
+		};
+	};
 
-	public static final String[][] UNITS = { UNITS_WITH_CELSIUS,
-			UNITS_WITH_FAHRENHEIT, UNITS_WITH_KELVIN };
+	public static final HashMap<Integer, String>[] UNITS = (HashMap<Integer, String>[]) new HashMap[] {
+			CELSIUS_UNITS, FAHRENHEIT_UNITS, KELVIN_UNITS };
 
 	public static final int HORIZONTAL_LABELS_COUNT = 4;
 	public static final int VERTICAL_LABELS_COUNT = 6;

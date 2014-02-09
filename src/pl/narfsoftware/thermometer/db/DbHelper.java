@@ -1,8 +1,13 @@
 package pl.narfsoftware.thermometer.db;
 
+import java.util.HashMap;
+import java.util.Hashtable;
+
+import pl.narfsoftware.thermometer.utils.Sensors;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.hardware.Sensor;
 import android.util.Log;
 
 public class DbHelper extends SQLiteOpenHelper {
@@ -11,23 +16,29 @@ public class DbHelper extends SQLiteOpenHelper {
 	static final String DB_NAME = "sensors_data.db";
 	static final int DB_VER = 1;
 
-	public static final String TABLE_TEMPERATUE = "Temperature";
-	public static final String TABLE_RELATIVE_HUMIDITY = "RelativeHumidity";
-	public static final String TABLE_ABSOLUTE_HUMIDITY = "AbsoluteHumidity";
-	public static final String TABLE_PRESSURE = "Pressure";
-	public static final String TABLE_DEW_POINT = "DewPoint";
-	public static final String TABLE_LIGHT = "Light";
-	public static final String TABLE_MAGNETIC_FIELD = "MagneticField";
+	private static final String TABLE_TEMPERATUE = "Temperature";
+	private static final String TABLE_RELATIVE_HUMIDITY = "RelativeHumidity";
+	private static final String TABLE_ABSOLUTE_HUMIDITY = "AbsoluteHumidity";
+	private static final String TABLE_PRESSURE = "Pressure";
+	private static final String TABLE_DEW_POINT = "DewPoint";
+	private static final String TABLE_LIGHT = "Light";
+	private static final String TABLE_MAGNETIC_FIELD = "MagneticField";
 
-	public static final String[] TABLE_NAMES = { TABLE_TEMPERATUE,
-			TABLE_RELATIVE_HUMIDITY, TABLE_ABSOLUTE_HUMIDITY, TABLE_PRESSURE,
-			TABLE_DEW_POINT, TABLE_LIGHT, TABLE_MAGNETIC_FIELD };
+	public static final HashMap<Integer, String> TABLE_NAMES = new HashMap<Integer, String>() {
+		{
+			put(Sensor.TYPE_AMBIENT_TEMPERATURE, TABLE_TEMPERATUE);
+			put(Sensor.TYPE_RELATIVE_HUMIDITY, TABLE_RELATIVE_HUMIDITY);
+			put(Sensors.TYPE_ABSOLUTE_HUMIDITY, TABLE_ABSOLUTE_HUMIDITY);
+			put(Sensor.TYPE_PRESSURE, TABLE_PRESSURE);
+			put(Sensors.TYPE_DEW_POINT, TABLE_DEW_POINT);
+			put(Sensor.TYPE_LIGHT, TABLE_LIGHT);
+			put(Sensor.TYPE_MAGNETIC_FIELD, TABLE_MAGNETIC_FIELD);
+		};
+	};
 
 	public static final String C_ID = "_id";
 	public static final String C_TIMESTAMP = "timestamp";
 	public static final String C_VALUE = "value";
-
-	private SQLiteDatabase db;
 
 	public DbHelper(Context context) {
 		super(context, DB_NAME, null, DB_VER);
@@ -39,39 +50,12 @@ public class DbHelper extends SQLiteOpenHelper {
 				+ "(%s int primary key not null, %s int, %s real)";
 		String sql;
 
-		sql = String.format(sqlCreate, TABLE_TEMPERATUE, C_ID, C_TIMESTAMP,
-				C_VALUE);
-		db.execSQL(sql);
-		Log.d(TAG, "onCreate with SQL: " + sql);
-
-		sql = String.format(sqlCreate, TABLE_RELATIVE_HUMIDITY, C_ID,
-				C_TIMESTAMP, C_VALUE);
-		db.execSQL(sql);
-		Log.d(TAG, "onCreate with SQL: " + sql);
-
-		sql = String.format(sqlCreate, TABLE_ABSOLUTE_HUMIDITY, C_ID,
-				C_TIMESTAMP, C_VALUE);
-		db.execSQL(sql);
-		Log.d(TAG, "onCreate with SQL: " + sql);
-
-		sql = String.format(sqlCreate, TABLE_PRESSURE, C_ID, C_TIMESTAMP,
-				C_VALUE);
-		db.execSQL(sql);
-		Log.d(TAG, "onCreate with SQL: " + sql);
-
-		sql = String.format(sqlCreate, TABLE_DEW_POINT, C_ID, C_TIMESTAMP,
-				C_VALUE);
-		db.execSQL(sql);
-		Log.d(TAG, "onCreate with SQL: " + sql);
-
-		sql = String.format(sqlCreate, TABLE_LIGHT, C_ID, C_TIMESTAMP, C_VALUE);
-		db.execSQL(sql);
-		Log.d(TAG, "onCreate with SQL: " + sql);
-
-		sql = String.format(sqlCreate, TABLE_MAGNETIC_FIELD, C_ID, C_TIMESTAMP,
-				C_VALUE);
-		db.execSQL(sql);
-		Log.d(TAG, "onCreate with SQL: " + sql);
+		for (int key : TABLE_NAMES.keySet()) {
+			sql = String.format(sqlCreate, TABLE_NAMES.get(key), C_ID,
+					C_TIMESTAMP, C_VALUE);
+			db.execSQL(sql);
+			Log.d(TAG, "onCreate with SQL: " + sql);
+		}
 	}
 
 	@Override

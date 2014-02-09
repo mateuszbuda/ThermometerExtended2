@@ -19,17 +19,12 @@ public class LightListener extends BaseServiceListener {
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
-		if (app.saveAmbientCondition.get(Sensor.TYPE_LIGHT)) {
-			if (event.sensor.getType() != Sensor.TYPE_LIGHT)
-				return;
+		value = event.values[0];
 
-			value = event.values[0];
+		sensorData.insert(DbHelper.TABLE_NAMES.get(Sensor.TYPE_LIGHT),
+				(new Timestamp(new Date().getTime()).getTime()), value);
 
-			sensorData.insert(DbHelper.TABLE_LIGHT,
-					(new Timestamp(new Date().getTime()).getTime()), value);
-
-			Log.d(TAG, "Got light sensor event with value " + value);
-		}
+		Log.d(TAG, "Got light sensor event with value " + value);
 	}
 
 	@Override

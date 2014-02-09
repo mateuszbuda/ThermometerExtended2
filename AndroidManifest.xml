@@ -32,7 +32,7 @@
                 android:value="pl.narfsoftware.thermometer.ui.SensorsActivity" />
         </activity>
 
-        <service android:name="pl.narfsoftware.thermometer.SensorService" >
+        <service android:name="pl.narfsoftware.thermometer.service.SensorsDataSavingService" >
         </service>
 
         <activity

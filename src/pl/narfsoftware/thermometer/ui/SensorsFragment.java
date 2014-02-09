@@ -9,14 +9,8 @@ import java.util.Locale;
 
 import pl.narfsoftware.thermometer.R;
 import pl.narfsoftware.thermometer.ThermometerApp;
-import pl.narfsoftware.thermometer.ui.listeners.AbsoluteHumidityListener;
 import pl.narfsoftware.thermometer.ui.listeners.BaseUIListener;
-import pl.narfsoftware.thermometer.ui.listeners.DewPointListener;
-import pl.narfsoftware.thermometer.ui.listeners.LightListener;
-import pl.narfsoftware.thermometer.ui.listeners.MagneticFieldListener;
-import pl.narfsoftware.thermometer.ui.listeners.PressureListener;
-import pl.narfsoftware.thermometer.ui.listeners.RelativeHumidityListener;
-import pl.narfsoftware.thermometer.ui.listeners.TemperatureListener;
+import pl.narfsoftware.thermometer.ui.listeners.UIListenersFactory;
 import pl.narfsoftware.thermometer.utils.Preferences;
 import pl.narfsoftware.thermometer.utils.SensorRow;
 import pl.narfsoftware.thermometer.utils.Sensors;
@@ -36,7 +30,7 @@ public class SensorsFragment extends ListFragment {
 
 	Activity activity;
 	ThermometerApp app;
-	Preferences preferences;
+	Preferences prefs;
 
 	String noData;
 	String sensorUnavailavle;
@@ -83,7 +77,7 @@ public class SensorsFragment extends ListFragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		app = (ThermometerApp) activity.getApplication();
-		preferences = app.getPrefs();
+		prefs = app.getPrefs();
 		noData = getResources().getString(R.string.sensor_no_data);
 		sensorUnavailavle = getResources().getString(
 				R.string.sensor_unavailable);
@@ -156,13 +150,49 @@ public class SensorsFragment extends ListFragment {
 
 	private void setAdapter() {
 		sensorsList = new ArrayList<SensorRow>();
-
-		for (int key : sensorTitles.keySet())
-			if (preferences.showAmbientCondition.get(key)) {
-				sensorRows.put(key, new SensorRow(iconIds.get(key),
-						sensorTitles.get(key), values.get(key)));
-				sensorsList.add(sensorRows.get(key));
-			}
+		int key;
+		if (prefs.showData.get(key = Sensor.TYPE_AMBIENT_TEMPERATURE)) {
+			sensorRows.put(key,
+					new SensorRow(iconIds.get(key), sensorTitles.get(key),
+							values.get(key)));
+			sensorsList.add(sensorRows.get(key));
+		}
+		if (prefs.showData.get(key = Sensor.TYPE_RELATIVE_HUMIDITY)) {
+			sensorRows.put(key,
+					new SensorRow(iconIds.get(key), sensorTitles.get(key),
+							values.get(key)));
+			sensorsList.add(sensorRows.get(key));
+		}
+		if (prefs.showData.get(key = Sensors.TYPE_ABSOLUTE_HUMIDITY)) {
+			sensorRows.put(key,
+					new SensorRow(iconIds.get(key), sensorTitles.get(key),
+							values.get(key)));
+			sensorsList.add(sensorRows.get(key));
+		}
+		if (prefs.showData.get(key = Sensor.TYPE_PRESSURE)) {
+			sensorRows.put(key,
+					new SensorRow(iconIds.get(key), sensorTitles.get(key),
+							values.get(key)));
+			sensorsList.add(sensorRows.get(key));
+		}
+		if (prefs.showData.get(key = Sensors.TYPE_DEW_POINT)) {
+			sensorRows.put(key,
+					new SensorRow(iconIds.get(key), sensorTitles.get(key),
+							values.get(key)));
+			sensorsList.add(sensorRows.get(key));
+		}
+		if (prefs.showData.get(key = Sensor.TYPE_LIGHT)) {
+			sensorRows.put(key,
+					new SensorRow(iconIds.get(key), sensorTitles.get(key),
+							values.get(key)));
+			sensorsList.add(sensorRows.get(key));
+		}
+		if (prefs.showData.get(key = Sensor.TYPE_MAGNETIC_FIELD)) {
+			sensorRows.put(key,
+					new SensorRow(iconIds.get(key), sensorTitles.get(key),
+							values.get(key)));
+			sensorsList.add(sensorRows.get(key));
+		}
 
 		adapter = new SensorsListViewAdapter(getActivity(),
 				R.layout.sensor_row, sensorsList);
@@ -170,31 +200,15 @@ public class SensorsFragment extends ListFragment {
 	}
 
 	private void initListeners() {
-		listeners.put(
-				Sensor.TYPE_AMBIENT_TEMPERATURE,
-				new TemperatureListener(activity, adapter, sensorRows
-						.get(Sensor.TYPE_AMBIENT_TEMPERATURE)));
-		listeners.put(
-				Sensor.TYPE_RELATIVE_HUMIDITY,
-				new RelativeHumidityListener(activity, adapter, sensorRows
-						.get(Sensor.TYPE_RELATIVE_HUMIDITY)));
-		listeners.put(
-				Sensors.TYPE_ABSOLUTE_HUMIDITY,
-				new AbsoluteHumidityListener(activity, adapter, sensorRows
-						.get(Sensors.TYPE_ABSOLUTE_HUMIDITY)));
-		listeners.put(Sensor.TYPE_PRESSURE, new PressureListener(activity,
-				adapter, sensorRows.get(Sensor.TYPE_PRESSURE)));
-		listeners.put(Sensors.TYPE_DEW_POINT, new DewPointListener(activity,
-				adapter, sensorRows.get(Sensors.TYPE_DEW_POINT)));
-		listeners.put(Sensor.TYPE_LIGHT, new LightListener(activity, adapter,
-				sensorRows.get(Sensor.TYPE_LIGHT)));
-		listeners.put(Sensor.TYPE_MAGNETIC_FIELD, new MagneticFieldListener(
-				activity, adapter, sensorRows.get(Sensor.TYPE_MAGNETIC_FIELD)));
+		UIListenersFactory factory = new UIListenersFactory(activity, adapter,
+				sensorRows);
+		for (int key : sensorTitles.keySet())
+			listeners.put(key, factory.createListener(key));
 	}
 
 	private void registerChosenListeners() {
 		for (int key : listeners.keySet())
-			if (preferences.showAmbientCondition.get(key))
+			if (prefs.showData.get(key))
 				listeners.get(key).register();
 	}
 
@@ -209,34 +223,35 @@ public class SensorsFragment extends ListFragment {
 	}
 
 	void initIcons() {
-		HashMap<Integer, Boolean> dict = app.saveAmbientCondition;
-		iconIds.put(Sensor.TYPE_AMBIENT_TEMPERATURE, dict
-				.get(Sensor.TYPE_AMBIENT_TEMPERATURE) ? R.drawable.temprature
-				: R.drawable.temprature_disabled);
+		iconIds.put(
+				Sensor.TYPE_AMBIENT_TEMPERATURE,
+				app.saveData(Sensor.TYPE_AMBIENT_TEMPERATURE) ? R.drawable.temprature
+						: R.drawable.temprature_disabled);
 		iconIds.put(
 				Sensors.TYPE_ABSOLUTE_HUMIDITY,
-				dict.get(Sensors.TYPE_ABSOLUTE_HUMIDITY) ? R.drawable.absolute_humidity
+				app.saveData(Sensors.TYPE_ABSOLUTE_HUMIDITY) ? R.drawable.absolute_humidity
 						: R.drawable.absolute_humidity_disabled);
 		iconIds.put(
 				Sensor.TYPE_RELATIVE_HUMIDITY,
-				dict.get(Sensor.TYPE_RELATIVE_HUMIDITY) ? R.drawable.relative_humidity
+				app.saveData(Sensor.TYPE_RELATIVE_HUMIDITY) ? R.drawable.relative_humidity
 						: R.drawable.relative_humidity_disabled);
 		iconIds.put(Sensor.TYPE_PRESSURE,
-				dict.get(Sensor.TYPE_PRESSURE) ? R.drawable.pressure
+				app.saveData(Sensor.TYPE_PRESSURE) ? R.drawable.pressure
 						: R.drawable.pressure_disabled);
-		iconIds.put(Sensors.TYPE_DEW_POINT,
-				dict.get(Sensors.TYPE_DEW_POINT) ? R.drawable.dew_point
-						: R.drawable.dew_point_disabled);
+		iconIds.put(Sensors.TYPE_DEW_POINT, app
+				.saveData(Sensors.TYPE_DEW_POINT) ? R.drawable.dew_point
+				: R.drawable.dew_point_disabled);
 		iconIds.put(Sensor.TYPE_LIGHT,
-				dict.get(Sensor.TYPE_LIGHT) ? R.drawable.light
+				app.saveData(Sensor.TYPE_LIGHT) ? R.drawable.light
 						: R.drawable.light_disabled);
-		iconIds.put(Sensor.TYPE_MAGNETIC_FIELD, dict
-				.get(Sensor.TYPE_MAGNETIC_FIELD) ? R.drawable.magnetic_field
-				: R.drawable.magnetic_field_disabled);
+		iconIds.put(
+				Sensor.TYPE_MAGNETIC_FIELD,
+				app.saveData(Sensor.TYPE_MAGNETIC_FIELD) ? R.drawable.magnetic_field
+						: R.drawable.magnetic_field_disabled);
 	}
 
 	private void initValues() {
-		HashMap<Integer, Boolean> dict = app.getSensors().sensorsAvailability;
+		HashMap<Integer, Boolean> dict = app.getSensors().hasSensor;
 		for (int key : dict.keySet())
 			values.put(key, dict.get(key) ? noData : sensorUnavailavle);
 
@@ -275,25 +290,22 @@ public class SensorsFragment extends ListFragment {
 				.findViewById(R.id.dateAndTime));
 		TextView date = (TextView) activity.findViewById(R.id.date);
 		TextView time = (TextView) activity.findViewById(R.id.time);
-		date.setTypeface(preferences.typeface);
-		time.setTypeface(preferences.typeface);
+		date.setTypeface(prefs.typeface);
+		time.setTypeface(prefs.typeface);
 
-		if (preferences.dateFormat.equals("")
-				&& preferences.timeFormat.equals("")) {
+		if (prefs.dateFormat.equals("") && prefs.timeFormat.equals("")) {
 			dateAndTime.setVisibility(LinearLayout.GONE);
 			return;
-		} else if (preferences.dateFormat.equals("")
-				&& !preferences.timeFormat.equals("")) {
+		} else if (prefs.dateFormat.equals("") && !prefs.timeFormat.equals("")) {
 			dateAndTime.setVisibility(LinearLayout.VISIBLE);
 			date.setVisibility(LinearLayout.GONE);
-			time.setText(new SimpleDateFormat(preferences.timeFormat, Locale
+			time.setText(new SimpleDateFormat(prefs.timeFormat, Locale
 					.getDefault()).format(new Date().getTime()));
 			return;
-		} else if (preferences.timeFormat.equals("")
-				&& !preferences.dateFormat.equals("")) {
+		} else if (prefs.timeFormat.equals("") && !prefs.dateFormat.equals("")) {
 			dateAndTime.setVisibility(LinearLayout.VISIBLE);
 			time.setVisibility(LinearLayout.GONE);
-			date.setText(new SimpleDateFormat(preferences.dateFormat, Locale
+			date.setText(new SimpleDateFormat(prefs.dateFormat, Locale
 					.getDefault()).format(new Date().getTime()));
 			return;
 		}
@@ -302,10 +314,10 @@ public class SensorsFragment extends ListFragment {
 		time.setVisibility(LinearLayout.VISIBLE);
 		date.setVisibility(LinearLayout.VISIBLE);
 
-		time.setText(new SimpleDateFormat(preferences.timeFormat, Locale
-				.getDefault()).format(new Date().getTime()));
-		date.setText(new SimpleDateFormat(preferences.dateFormat, Locale
-				.getDefault()).format(new Date().getTime()));
+		time.setText(new SimpleDateFormat(prefs.timeFormat, Locale.getDefault())
+				.format(new Date().getTime()));
+		date.setText(new SimpleDateFormat(prefs.dateFormat, Locale.getDefault())
+				.format(new Date().getTime()));
 	}
 
 	public void updateSensorsFragment(int key) {
@@ -316,25 +328,25 @@ public class SensorsFragment extends ListFragment {
 		int iconId = 0;
 		switch (key) {
 		case Sensor.TYPE_AMBIENT_TEMPERATURE:
-			iconId = app.saveAmbientCondition.get(key) ? R.drawable.temprature
+			iconId = app.saveData(key) ? R.drawable.temprature
 					: R.drawable.temprature_disabled;
 		case Sensor.TYPE_RELATIVE_HUMIDITY:
-			iconId = app.saveAmbientCondition.get(key) ? R.drawable.relative_humidity
+			iconId = app.saveData(key) ? R.drawable.relative_humidity
 					: R.drawable.relative_humidity_disabled;
 		case Sensor.TYPE_PRESSURE:
-			iconId = app.saveAmbientCondition.get(key) ? R.drawable.pressure
+			iconId = app.saveData(key) ? R.drawable.pressure
 					: R.drawable.pressure_disabled;
 		case Sensor.TYPE_LIGHT:
-			iconId = app.saveAmbientCondition.get(key) ? R.drawable.light
+			iconId = app.saveData(key) ? R.drawable.light
 					: R.drawable.light_disabled;
 		case Sensor.TYPE_MAGNETIC_FIELD:
-			iconId = app.saveAmbientCondition.get(key) ? R.drawable.magnetic_field
+			iconId = app.saveData(key) ? R.drawable.magnetic_field
 					: R.drawable.magnetic_field_disabled;
 		case Sensors.TYPE_ABSOLUTE_HUMIDITY:
-			iconId = app.saveAmbientCondition.get(key) ? R.drawable.absolute_humidity
+			iconId = app.saveData(key) ? R.drawable.absolute_humidity
 					: R.drawable.absolute_humidity_disabled;
 		case Sensors.TYPE_DEW_POINT:
-			iconId = app.saveAmbientCondition.get(key) ? R.drawable.dew_point
+			iconId = app.saveData(key) ? R.drawable.dew_point
 					: R.drawable.dew_point_disabled;
 		}
 

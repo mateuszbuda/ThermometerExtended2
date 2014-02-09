@@ -5,10 +5,12 @@ import java.util.List;
 
 import pl.narfsoftware.thermometer.utils.Converter;
 import pl.narfsoftware.thermometer.utils.Preferences;
+import pl.narfsoftware.thermometer.utils.Sensors;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.hardware.Sensor;
 import android.util.Log;
 
 import com.jjoe64.graphview.GraphView.GraphViewData;
@@ -19,7 +21,6 @@ public class SensorData {
 	private static int ID = 0;
 
 	Context context;
-
 	DbHelper dbHelper;
 	SQLiteDatabase database;
 
@@ -52,8 +53,8 @@ public class SensorData {
 	public GraphViewData[] query(String table, int unitCode) {
 		database = dbHelper.getReadableDatabase();
 
-		if (table != DbHelper.TABLE_TEMPERATUE
-				&& table != DbHelper.TABLE_DEW_POINT)
+		if (table != DbHelper.TABLE_NAMES.get(Sensor.TYPE_AMBIENT_TEMPERATURE)
+				&& table != DbHelper.TABLE_NAMES.get(Sensors.TYPE_DEW_POINT))
 			// value returned by converter will remain unchanged
 			unitCode = Preferences.CELSIUS;
 
@@ -73,24 +74,23 @@ public class SensorData {
 
 		cursor.close();
 
+		Log.d(TAG, "data rows count: " + graphViewData.size() + "from table"
+				+ table);
 		return graphViewData.toArray(new GraphViewData[0]);
 	}
 
 	public void deleteAll() {
 		database = dbHelper.getWritableDatabase();
-		database.delete(DbHelper.TABLE_TEMPERATUE, null, null);
-		database.delete(DbHelper.TABLE_ABSOLUTE_HUMIDITY, null, null);
-		database.delete(DbHelper.TABLE_RELATIVE_HUMIDITY, null, null);
-		database.delete(DbHelper.TABLE_PRESSURE, null, null);
-		database.delete(DbHelper.TABLE_DEW_POINT, null, null);
-		database.delete(DbHelper.TABLE_LIGHT, null, null);
-		database.delete(DbHelper.TABLE_MAGNETIC_FIELD, null, null);
+
+		for (int key : DbHelper.TABLE_NAMES.keySet())
+			database.delete(DbHelper.TABLE_NAMES.get(key), null, null);
+
 		database.close();
 	}
 
-	public void delete(int sensorIndex) {
+	public void delete(int sensorType) {
 		database = dbHelper.getWritableDatabase();
-		database.delete(DbHelper.TABLE_NAMES[sensorIndex], null, null);
+		database.delete(DbHelper.TABLE_NAMES.get(sensorType), null, null);
 		database.close();
 	}
 
@@ -109,7 +109,7 @@ public class SensorData {
 
 	private ContentValues getAsContentVaues(long timestamp, double value) {
 		ContentValues values = new ContentValues();
-		// O.o'?
+
 		values.put(DbHelper.C_ID, SensorData.ID++);
 		if ((Long) timestamp != null)
 			values.put(DbHelper.C_TIMESTAMP, timestamp);
