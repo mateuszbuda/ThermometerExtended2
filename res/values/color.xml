@@ -3,6 +3,7 @@
 
     <color name="dividing_line_color">#44232323</color>
     <color name="sensor_row_background_color">#08000000</color>
-    <color name="sensor_row_bottom_line_color">#20000000</color>
+    <color name="sensor_row_bottom_line_color">#28000000</color>
+    <color name="selected_row">#15000000</color>
 
 </resources>

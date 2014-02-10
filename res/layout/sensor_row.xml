@@ -1,6 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/root"
-    style="@style/SensorRowRootLayoutStyle" >
+    style="@style/SensorRowRootLayoutStyle">
 
     <LinearLayout
         android:id="@+id/main"
@@ -9,6 +9,7 @@
         <ImageView
             android:id="@+id/sensorIcon"
             style="@style/SensorRowIconStyle"
+            android:layout_gravity="center"
             android:src="@android:drawable/ic_delete" />
 
         <LinearLayout
@@ -33,9 +34,4 @@
     <View
         style="@style/SensorRowBottomLineStyle"
         android:layout_below="@+id/main" />
-
-    <View
-        style="@style/SensorRowRightLineStyle"
-        android:layout_alignRight="@+id/main" />
-
 </RelativeLayout>

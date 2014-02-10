@@ -75,6 +75,13 @@ public class SensorsFragment extends ListFragment {
 	}
 
 	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		getListView().setClickable(true);
+		getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+	}
+
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		app = (ThermometerApp) activity.getApplication();
@@ -133,6 +140,8 @@ public class SensorsFragment extends ListFragment {
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
+		v.setSelected(true);
+
 		// Notify the parent activity of selected items' key
 		int selectedItemKey = -1;
 		SensorRow selected = (SensorRow) getListView().getItemAtPosition(
@@ -146,7 +155,7 @@ public class SensorsFragment extends ListFragment {
 		callback.onSensorSelected(selectedItemKey);
 		// Set the item as checked to be highlighted when in two-pane layout
 		// (tiaa)
-		getListView().setItemChecked(position, true);
+		// getListView().setItemChecked(position, true);
 	}
 
 	private void setAdapter() {

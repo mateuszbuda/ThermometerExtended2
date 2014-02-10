@@ -2,13 +2,13 @@
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
+            backward-compatibility can go here.
         -->
     </style>
 
@@ -47,7 +47,7 @@
         <item name="android:paddingBottom">@dimen/row_padding_bottom</item>
         <item name="android:paddingLeft">@dimen/row_padding_left</item>
         <item name="android:paddingRight">@dimen/row_padding_right</item>
-        <item name="android:background">@color/sensor_row_background_color</item>
+        <item name="android:background">@drawable/sensor_row_background</item>
     </style>
 
     <style name="SensorRowIconStyle">
@@ -74,12 +74,6 @@
     <style name="SensorRowBottomLineStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/sensor_row_bottom_line_height</item>
-        <item name="android:background">@color/sensor_row_bottom_line_color</item>
-    </style>
-
-    <style name="SensorRowRightLineStyle">
-        <item name="android:layout_width">@dimen/sensor_row_right_line_width</item>
-        <item name="android:layout_height">match_parent</item>
         <item name="android:background">@color/sensor_row_bottom_line_color</item>
     </style>
 
