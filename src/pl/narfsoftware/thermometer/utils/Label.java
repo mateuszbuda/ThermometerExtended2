@@ -9,10 +9,16 @@ import com.jjoe64.graphview.GraphViewSeries;
 
 public class Label implements CustomLabelFormatter {
 
-	GraphViewSeries dataSeries;
+	private GraphViewSeries dataSeries;
+	private SimpleDateFormat formatToday;
+	private SimpleDateFormat formatOlder;
+	String date;
+	String time;
 
 	public Label(GraphViewSeries gvs) {
 		dataSeries = gvs;
+		formatToday = new SimpleDateFormat(Constants.DATE_FORMAT_TODAY);
+		formatOlder = new SimpleDateFormat(Constants.DATE_FORMAT_OLDER);
 	}
 
 	@Override
@@ -20,19 +26,10 @@ public class Label implements CustomLabelFormatter {
 		if (isValueX) {
 			if (dataSeries.getValues() != null
 					&& dataSeries.getValues().length > 0) {
-				String date;
-				String time;
-
 				long now = new Timestamp(new Date().getTime()).getTime();
-
 				Date d = new Date((long) value);
-
-				date = new SimpleDateFormat(Constants.DATE_FORMAT_OLDER)
-						.format(d);
-
-				time = new SimpleDateFormat(Constants.DATE_FORMAT_TODAY)
-						.format(d);
-
+				date = formatOlder.format(d);
+				time = formatToday.format(d);
 				return ((now - ((long) dataSeries.getValues()[0].getX())) < Constants.DAY) ? time
 						: date + "\n" + time;
 			}

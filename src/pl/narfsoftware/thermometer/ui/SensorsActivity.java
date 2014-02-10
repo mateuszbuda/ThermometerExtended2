@@ -149,7 +149,7 @@ public class SensorsActivity extends Activity implements
 	}
 
 	@Override
-	public void onSensorSelected(int index) {
+	public void onSensorSelected(int key) {
 		// The user selected the sensor from the SensorsFragment
 
 		// Capture the plot fragment from the activity layout
@@ -160,7 +160,7 @@ public class SensorsActivity extends Activity implements
 			// If plot frag is available, we're in two-pane layout...
 
 			// Call a method in the PlotFragment to update its content
-			plotFragment.updatePlotFragment(index);
+			plotFragment.updatePlotFragment(key);
 
 		} else {
 			// If the frag is not available, we're in the one-pane layout and
@@ -169,7 +169,7 @@ public class SensorsActivity extends Activity implements
 			// Create fragment and give it an argument for the selected sensor
 			PlotFragment newFragment = new PlotFragment();
 			Bundle args = new Bundle();
-			args.putInt(PlotFragment.ARG_INDEX, index);
+			args.putInt(PlotFragment.ARG_KEY, key);
 			newFragment.setArguments(args);
 			FragmentTransaction transaction = getFragmentManager()
 					.beginTransaction();
@@ -186,7 +186,7 @@ public class SensorsActivity extends Activity implements
 	}
 
 	@Override
-	public void onSensorDataSaveStateChanged(int index) {
+	public void onSensorDataSaveStateChanged(int key) {
 		// The user changed checked state of dataSave switch from the
 		// PlotFragment
 
@@ -198,7 +198,7 @@ public class SensorsActivity extends Activity implements
 			// If sensors frag is available, we're in two-pane layout...
 
 			// Call a method in the SensorsFragment to update its content
-			sensorsFragment.updateSensorsFragment(index);
+			sensorsFragment.updateSensorsFragment(key);
 
 		} else {
 			// If the frag is not available, we're in the one-pane layout and

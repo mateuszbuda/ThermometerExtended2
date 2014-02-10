@@ -1,15 +1,20 @@
 package pl.narfsoftware.thermometer.utils;
 
+import pl.narfsoftware.thermometer.ThermometerApp;
 import pl.narfsoftware.thermometer.db.SensorData;
 import android.content.Context;
 import android.os.Handler;
+import android.util.Log;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GraphViewSeries;
 
+/**
+ * Updates graph view when data saving is turned on
+ */
 public class TimerRunnable implements Runnable {
+	static final String TAG = "TimerRunnable";
 
-	Context context;
 	boolean saveData;
 	GraphViewSeries dataSeries;
 	SensorData sensorData;
@@ -26,7 +31,7 @@ public class TimerRunnable implements Runnable {
 		tableName = tn;
 		graphView = gv;
 		handler = h;
-		prefs = new Preferences(context);
+		prefs = ((ThermometerApp) context.getApplicationContext()).getPrefs();
 	}
 
 	@Override
@@ -34,6 +39,7 @@ public class TimerRunnable implements Runnable {
 		if (saveData) {
 			dataSeries.resetData(sensorData.query(tableName,
 					prefs.temperatureUnitCode));
+			Log.d(TAG, "data rows count: " + dataSeries.getValues().length);
 
 			graphView.scrollToEnd();
 		}

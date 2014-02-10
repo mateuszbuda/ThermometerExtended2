@@ -7,6 +7,10 @@ import android.widget.TextView;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GraphViewSeries;
 
+/**
+ * Checks every second for any data to be displayed. Initialises graph view when
+ * user switches to data save mode.
+ */
 public class RefresherRunnable implements Runnable {
 
 	boolean saveData;
@@ -15,7 +19,6 @@ public class RefresherRunnable implements Runnable {
 	String unit;
 	int verticalLabelsWidth;
 	GraphView graphView;
-	Label label;
 	Handler handler;
 
 	public RefresherRunnable(boolean sd, GraphViewSeries ds, TextView tv,

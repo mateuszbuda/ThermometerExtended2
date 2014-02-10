@@ -13,5 +13,9 @@
     <dimen name="row_padding_bottom">6dp</dimen>
     <dimen name="row_padding_left">6dp</dimen>
     <dimen name="help_text_bottom_margin">12dp</dimen>
+    <dimen name="sensor_row_top_padding">4dp</dimen>
+    <dimen name="sensor_row_bottom_padding">4dp</dimen>
+    <dimen name="sensor_row_bottom_line_height">2dp</dimen>
+    <dimen name="sensor_row_right_line_width">2dp</dimen>
 
 </resources>

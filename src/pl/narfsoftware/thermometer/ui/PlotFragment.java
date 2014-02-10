@@ -1,10 +1,10 @@
 package pl.narfsoftware.thermometer.ui;
 
 import pl.narfsoftware.thermometer.R;
-import pl.narfsoftware.thermometer.SensorService;
 import pl.narfsoftware.thermometer.ThermometerApp;
 import pl.narfsoftware.thermometer.db.DbHelper;
 import pl.narfsoftware.thermometer.db.SensorData;
+import pl.narfsoftware.thermometer.service.SensorsDataSavingService;
 import pl.narfsoftware.thermometer.utils.Constants;
 import pl.narfsoftware.thermometer.utils.Label;
 import pl.narfsoftware.thermometer.utils.Preferences;
@@ -14,8 +14,10 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Color;
+import android.hardware.Sensor;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,12 +38,12 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 	Activity activity;
 	ThermometerApp app;
 	Preferences preferences;
-	final static String ARG_INDEX = "sensor_index";
+	final static String ARG_KEY = "sensor_key";
 	/**
-	 * Index of ambient condition as in ThermometerApp, not index on the list in
+	 * Key of ambient condition as in HashMaps, not index on the list in
 	 * SensorsFragment
 	 */
-	int currentIndex = 0;
+	int currentKey = Sensor.TYPE_AMBIENT_TEMPERATURE;
 
 	boolean saveData;
 
@@ -65,8 +67,13 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 	OnSensorDataSaveStateChangedListener callback;
 
 	public interface OnSensorDataSaveStateChangedListener {
-		/** Called by PlotFragment when a dataSave switch checked state changes */
-		public void onSensorDataSaveStateChanged(int index);
+		/**
+		 * Called by PlotFragment when a dataSave switch checked state changes
+		 * 
+		 * @param key
+		 *            Sensors' type - key in dictionary
+		 */
+		public void onSensorDataSaveStateChanged(int key);
 	}
 
 	@Override
@@ -87,14 +94,12 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		activity = getActivity();
-		preferences = new Preferences(activity);
+		app = ((ThermometerApp) activity.getApplication());
+		preferences = app.getPrefs();
 		textSize = getResources().getInteger(R.integer.plot_label_text_size);
 		verticalLabelsWidth = getResources().getInteger(
 				R.integer.plot_vertical_labels_widht);
-		app = ((ThermometerApp) activity.getApplication());
-		sensorData = ((ThermometerApp) activity.getApplication())
-				.getSensorData();
+		sensorData = app.getSensorData();
 
 		initGraphView();
 	}
@@ -115,7 +120,7 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 		// the previous sensor selection set by onSaveInstanceState().
 		// This is primarily necessary when in the two-pane layout.
 		if (savedInstanceState != null) {
-			currentIndex = savedInstanceState.getInt(ARG_INDEX);
+			currentKey = savedInstanceState.getInt(ARG_KEY);
 		}
 
 		// Inflate the layout for this fragment
@@ -133,11 +138,13 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 		Bundle args = getArguments();
 		if (args != null) {
 			// Set plot based on argument passed in
-			updatePlotFragment(args.getInt(ARG_INDEX));
-		} else if (currentIndex != -1) {
+			// updatePlotFragment(args.getInt(ARG_KEY));
+			currentKey = args.getInt(ARG_KEY);
+		} else if (currentKey < 0) {
 			// Set plot based on saved instance state defined during
 			// onCreateView
-			updatePlotFragment(currentIndex);
+			// updatePlotFragment(currentKey);
+			currentKey = Sensor.TYPE_AMBIENT_TEMPERATURE;
 		}
 	}
 
@@ -145,43 +152,60 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 	public void onResume() {
 		super.onResume();
 
-		saveData = false;
+		initDataForGraphView();
+
+		if (dataSeries.getValues().length <= 1) {
+			// hide vertical labels
+			graphView.getGraphViewStyle().setVerticalLabelsWidth(1);
+			if (!preferences.dataHintToastShowed)
+				showDataHindToast();
+		} else
+			showData();
+
+		runGraphView();
+	}
+
+	private void initDataForGraphView() {
 		tvUnit.setText("");
 		tvUnit.setTypeface(preferences.typeface);
+		saveDataSwitch.setChecked(app.saveData(currentKey));
 		saveDataSwitch.setTypeface(preferences.typeface);
-		tableName = DbHelper.TABLE_NAMES[currentIndex];
-		saveData = app.saveAmbientConditionData[currentIndex];
+		tableName = DbHelper.TABLE_NAMES.get(currentKey);
+		saveData = app.saveData(currentKey);
 		dataSeries = new GraphViewSeries(sensorData.query(tableName,
 				preferences.temperatureUnitCode));
-		if (dataSeries.getValues().length <= 1) {
-			graphView.getGraphViewStyle().setVerticalLabelsWidth(1);
-			if (!preferences.dataHintToastShowed) {
-				// this notification is showed only once
-				preferences.dataHintToastShowed();
-				String toastText = getResources().getString(
-						R.string.no_data_info_toast);
-				toastText += "\n"
-						+ getResources().getString(R.string.no_data_hint_toast);
-				Toast.makeText(activity, toastText, Toast.LENGTH_LONG).show();
-			}
-		} else {
-			// set unit
-			tvUnit.setText(Constants.UNITS[preferences.temperatureUnitCode][currentIndex]);
+		Log.d(TAG, "data rows count: " + dataSeries.getValues().length);
+	}
 
-			graphView.setCustomLabelFormatter(new Label(dataSeries));
+	private void showDataHindToast() {
+		// this notification is showed only once
+		preferences.dataHintToastShowed();
+		String toastText = getResources()
+				.getString(R.string.no_data_info_toast);
+		toastText += "\n"
+				+ getResources().getString(R.string.no_data_hint_toast);
+		Toast.makeText(activity, toastText, Toast.LENGTH_LONG).show();
+	}
 
-			graphView.getGraphViewStyle().setVerticalLabelsColor(Color.BLACK);
-			graphView.getGraphViewStyle().setVerticalLabelsWidth(
-					verticalLabelsWidth);
+	private void showData() {
+		if (tvUnit != null)
+			tvUnit.setText(Constants.UNITS[preferences.temperatureUnitCode]
+					.get(currentKey));
 
-			graphView.addSeries(dataSeries);
-			graphView.setViewPort(
-					dataSeries.getValues()[0].getX(),
-					dataSeries.getValues()[dataSeries.getValues().length - 1]
-							.getX() - dataSeries.getValues()[0].getX());
-			graphView.setScalable(true);
-		}
+		graphView.setCustomLabelFormatter(new Label(dataSeries));
 
+		graphView.getGraphViewStyle().setVerticalLabelsWidth(
+				verticalLabelsWidth);
+
+		graphView.addSeries(dataSeries);
+		graphView.setViewPort(
+				dataSeries.getValues()[0].getX(),
+				dataSeries.getValues()[dataSeries.getValues().length - 1]
+						.getX() - dataSeries.getValues()[0].getX());
+		graphView.setScalable(true);
+	}
+
+	private void runGraphView() {
 		graphView.setScrollable(true);
 		// add graph view
 		if (backgroundLayout != null && graphView.getParent() == null)
@@ -190,15 +214,12 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 		timer = new TimerRunnable(activity, saveData, dataSeries, sensorData,
 				tableName, graphView, handler);
 		refresher = new RefresherRunnable(saveData, dataSeries, tvUnit,
-				Constants.UNITS[preferences.temperatureUnitCode][currentIndex],
-				verticalLabelsWidth, graphView, handler);
+				Constants.UNITS[preferences.temperatureUnitCode]
+						.get(currentKey), verticalLabelsWidth, graphView,
+				handler);
 
 		handler.postDelayed(timer, Constants.ONE_SECOND);
 		handler.postDelayed(refresher, Constants.ONE_SECOND);
-
-		if (saveDataSwitch != null)
-			saveDataSwitch
-					.setChecked(app.saveAmbientConditionData[currentIndex]);
 	}
 
 	@Override
@@ -221,26 +242,38 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 			sensorData.close();
 	}
 
-	public void updatePlotFragment(int index) {
-		currentIndex = index;
-		// O.o'? TODO
-		this.onPause();
-		this.onStop();
-		this.onResume();
+	public void updatePlotFragment(int key) {
+		currentKey = key;
+
+		handler.removeCallbacks(timer);
+		handler.removeCallbacks(refresher);
+
+		graphView.removeAllSeries();
+
+		initDataForGraphView();
+
+		if (dataSeries.getValues().length <= 1) {
+			// hide vertical labels
+			graphView.getGraphViewStyle().setVerticalLabelsWidth(1);
+			if (!preferences.dataHintToastShowed)
+				showDataHindToast();
+		} else
+			showData();
+
+		runGraphView();
 	}
 
 	@Override
 	public void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
 
-		// Save the current article selection in case we need to recreate the
-		// fragment
-		outState.putInt(ARG_INDEX, currentIndex);
+		// Save the current ambient condition selection in case we need to
+		// recreate the fragment
+		outState.putInt(ARG_KEY, currentKey);
 	}
 
 	private void initGraphView() {
-		graphView = new LineGraphView(getActivity(), "");
-
+		graphView = new LineGraphView(activity, "");
 		graphView.getGraphViewStyle().setHorizontalLabelsColor(Color.BLACK);
 		graphView.getGraphViewStyle().setVerticalLabelsColor(Color.BLACK);
 		graphView.getGraphViewStyle().setGridColor(Color.GRAY);
@@ -255,7 +288,7 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 
 	@Override
 	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-		saveData = app.saveAmbientConditionData[currentIndex] = isChecked;
+		app.setSaveData(currentKey, saveData = isChecked);
 		if (refresher != null)
 			refresher.setSaveData(isChecked);
 		if (timer != null)
@@ -265,9 +298,13 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 			((SensorsActivity) activity).sensorsFragment.adapter
 					.notifyDataSetChanged();
 		}
-		callback.onSensorDataSaveStateChanged(currentIndex);
-		activity.stopService(new Intent(activity, SensorService.class));
-		if (app.saveAnyAmbientCondition())
-			activity.startService(new Intent(activity, SensorService.class));
+		callback.onSensorDataSaveStateChanged(currentKey);
+
+		if (app.saveAnyData())
+			activity.startService(new Intent(activity,
+					SensorsDataSavingService.class));
+		else
+			activity.stopService(new Intent(activity,
+					SensorsDataSavingService.class));
 	}
 }

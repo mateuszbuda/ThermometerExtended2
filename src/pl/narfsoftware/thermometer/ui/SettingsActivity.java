@@ -82,19 +82,19 @@ public class SettingsActivity extends PreferenceActivity {
 		// In the simplified UI, fragments are not used at all and we instead
 		// use the older PreferenceActivity APIs.
 
-		// Add 'general' preferences.
+		// Add 'general' prefs.
 		// PreferenceCategory sensorsHeader = new PreferenceCategory(this);
 		// sensorsHeader.setTitle(R.string.pref_header_sensors);
 		// getPreferenceScreen().addPreference(sensorsHeader);
 		addPreferencesFromResource(R.xml.pref_ambient_conditions);
 
-		// Add 'data and sync' preferences, and a corresponding header.
+		// Add 'data and sync' prefs, and a corresponding header.
 		PreferenceCategory customizationHeader = new PreferenceCategory(this);
 		customizationHeader.setTitle(R.string.pref_header_customization);
 		getPreferenceScreen().addPreference(customizationHeader);
 		addPreferencesFromResource(R.xml.pref_customization);
 
-		// Bind the summaries of preferences to their values. When their values
+		// Bind the summaries of prefs to their values. When their values
 		// change, their summaries are updated to reflect the new value, per the
 		// Android Design guidelines.
 		bindPreferenceSummaryToValue(findPreference(getString(R.string.prefs_temp_unit_key)));
@@ -151,7 +151,7 @@ public class SettingsActivity extends PreferenceActivity {
 			String stringValue = value.toString();
 
 			if (preference instanceof ListPreference) {
-				// For list preferences, look up the correct display value in
+				// For list prefs, look up the correct display value in
 				// the preference's 'entries' list.
 				ListPreference listPreference = (ListPreference) preference;
 				int index = listPreference.findIndexOfValue(stringValue);
@@ -162,7 +162,7 @@ public class SettingsActivity extends PreferenceActivity {
 								: null);
 
 			} else if (preference instanceof RingtonePreference) {
-				// For ringtone preferences, look up the correct display value
+				// For ringtone prefs, look up the correct display value
 				// using RingtoneManager.
 				if (TextUtils.isEmpty(stringValue)) {
 					// Empty values correspond to 'silent' (no ringtone).
@@ -185,7 +185,7 @@ public class SettingsActivity extends PreferenceActivity {
 				}
 
 			} else {
-				// For all other preferences, set the summary to the value's
+				// For all other prefs, set the summary to the value's
 				// simple string representation.
 				preference.setSummary(stringValue);
 			}
@@ -217,7 +217,7 @@ public class SettingsActivity extends PreferenceActivity {
 	}
 
 	/**
-	 * This fragment shows general preferences only. It is used when the
+	 * This fragment shows general prefs only. It is used when the
 	 * activity is showing a two-pane settings UI.
 	 */
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -230,7 +230,7 @@ public class SettingsActivity extends PreferenceActivity {
 	}
 
 	/**
-	 * This fragment shows data and sync preferences only. It is used when the
+	 * This fragment shows data and sync prefs only. It is used when the
 	 * activity is showing a two-pane settings UI.
 	 */
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -241,7 +241,7 @@ public class SettingsActivity extends PreferenceActivity {
 			super.onCreate(savedInstanceState);
 			addPreferencesFromResource(R.xml.pref_customization);
 
-			// Bind the summaries of preferences to their values. When their
+			// Bind the summaries of prefs to their values. When their
 			// values change, their summaries are updated to reflect the new
 			// value, per the Android Design guidelines.
 			bindPreferenceSummaryToValue(findPreference(getString(R.string.prefs_temp_unit_key)));
