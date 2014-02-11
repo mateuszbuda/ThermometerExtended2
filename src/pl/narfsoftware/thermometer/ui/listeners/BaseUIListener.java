@@ -2,9 +2,9 @@ package pl.narfsoftware.thermometer.ui.listeners;
 
 import pl.narfsoftware.thermometer.R;
 import pl.narfsoftware.thermometer.ThermometerApp;
+import pl.narfsoftware.thermometer.preferences.Preferences;
 import pl.narfsoftware.thermometer.ui.SensorsListViewAdapter;
 import pl.narfsoftware.thermometer.utils.Listener;
-import pl.narfsoftware.thermometer.utils.Preferences;
 import pl.narfsoftware.thermometer.utils.SensorRow;
 import pl.narfsoftware.thermometer.utils.Sensors;
 import android.content.Context;
@@ -41,7 +41,7 @@ public abstract class BaseUIListener implements Listener, SensorEventListener {
 
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
-		if (!preferences.showAccuracyToasts)
+		if (!preferences.showAccuracyToast())
 			return;
 
 		if (preferences.getAccuracy(sensor.getType()) == accuracy)

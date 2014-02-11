@@ -1,7 +1,7 @@
 package pl.narfsoftware.thermometer.ui;
 
 import pl.narfsoftware.thermometer.R;
-import pl.narfsoftware.thermometer.utils.Preferences;
+import pl.narfsoftware.thermometer.preferences.Preferences;
 import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
@@ -60,10 +60,10 @@ public class HelpActivity extends Activity implements
 		super.onResume();
 
 		LinearLayout backgroundLayout = ((LinearLayout) findViewById(R.id.backgroundLayoutHelp));
-		if (prefs.theme.equals(""))
-			backgroundLayout.setBackgroundColor(prefs.backgroundColor);
+		if (prefs.getTheme() == null)
+			backgroundLayout.setBackgroundColor(prefs.getBackgroundColor());
 		else
-			backgroundLayout.setBackgroundDrawable(prefs.themeDrawable);
+			backgroundLayout.setBackgroundDrawable(prefs.getTheme());
 	}
 
 	/**

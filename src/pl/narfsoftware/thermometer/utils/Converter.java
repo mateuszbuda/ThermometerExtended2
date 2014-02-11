@@ -1,5 +1,8 @@
 package pl.narfsoftware.thermometer.utils;
 
+import pl.narfsoftware.thermometer.preferences.Preferences;
+
+
 public class Converter {
 	/**
 	 * Converts valueFrom from Celsius degrees and returns value converted to

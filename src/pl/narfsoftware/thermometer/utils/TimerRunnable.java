@@ -2,6 +2,7 @@ package pl.narfsoftware.thermometer.utils;
 
 import pl.narfsoftware.thermometer.ThermometerApp;
 import pl.narfsoftware.thermometer.db.SensorData;
+import pl.narfsoftware.thermometer.preferences.Preferences;
 import android.content.Context;
 import android.os.Handler;
 import android.util.Log;
@@ -38,7 +39,7 @@ public class TimerRunnable implements Runnable {
 	public void run() {
 		if (saveData) {
 			dataSeries.resetData(sensorData.query(tableName,
-					prefs.temperatureUnitCode));
+					prefs.getTempUnitCode()));
 			Log.d(TAG, "data rows count: " + dataSeries.getValues().length);
 
 			graphView.scrollToEnd();

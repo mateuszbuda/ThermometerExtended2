@@ -2,7 +2,7 @@ package pl.narfsoftware.thermometer.ui;
 
 import pl.narfsoftware.thermometer.R;
 import pl.narfsoftware.thermometer.ThermometerApp;
-import pl.narfsoftware.thermometer.utils.Preferences;
+import pl.narfsoftware.thermometer.preferences.Preferences;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;

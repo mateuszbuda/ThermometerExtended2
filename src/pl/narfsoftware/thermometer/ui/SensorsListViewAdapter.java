@@ -3,9 +3,7 @@ package pl.narfsoftware.thermometer.ui;
 import java.util.List;
 
 import pl.narfsoftware.thermometer.R;
-import pl.narfsoftware.thermometer.R.id;
-import pl.narfsoftware.thermometer.R.layout;
-import pl.narfsoftware.thermometer.utils.Preferences;
+import pl.narfsoftware.thermometer.preferences.Preferences;
 import pl.narfsoftware.thermometer.utils.SensorRow;
 import android.app.Activity;
 import android.content.Context;
@@ -51,8 +49,8 @@ public class SensorsListViewAdapter extends ArrayAdapter<SensorRow> {
 			holder.sensorIcon = (ImageView) convertView
 					.findViewById(R.id.sensorIcon);
 			convertView.setTag(holder);
-			holder.sensorData.setTypeface(prefs.typeface);
-			holder.sensorType.setTypeface(prefs.typeface);
+			holder.sensorData.setTypeface(prefs.getTypeface());
+			holder.sensorType.setTypeface(prefs.getTypeface());
 		} else
 			holder = (ViewHolder) convertView.getTag();
 

@@ -1,9 +1,8 @@
 package pl.narfsoftware.thermometer.ui.listeners;
 
-import pl.narfsoftware.thermometer.R;
+import pl.narfsoftware.thermometer.preferences.Preferences;
 import pl.narfsoftware.thermometer.ui.SensorsListViewAdapter;
 import pl.narfsoftware.thermometer.utils.Converter;
-import pl.narfsoftware.thermometer.utils.Preferences;
 import pl.narfsoftware.thermometer.utils.SensorRow;
 import pl.narfsoftware.thermometer.utils.Sensors;
 import android.content.Context;
@@ -39,13 +38,9 @@ public class DewPointListener extends BaseUIListener {
 		value = Sensors.computeDewPoint(temperature, relativeHumidity);
 
 		// TODO refactor
-		if (preferences.temperatureUnit
-				.equals(context.getResources().getStringArray(
-						R.array.prefs_temp_unit_vals)[Preferences.CELSIUS]))
+		if (preferences.getTempUnitCode() == Preferences.CELSIUS)
 			stringValue = (String.format("%.0f", value) + " " + (char) 0x00B0 + "C");
-		else if (preferences.temperatureUnit
-				.equals(context.getResources().getStringArray(
-						R.array.prefs_temp_unit_vals)[Preferences.FAHRENHEIT]))
+		else if (preferences.getTempUnitCode() == Preferences.FAHRENHEIT)
 			stringValue = (String
 					.format("%.0f", Converter.ConvertTemperature(value,
 							Preferences.FAHRENHEIT))

@@ -3,8 +3,8 @@ package pl.narfsoftware.thermometer.db;
 import java.util.ArrayList;
 import java.util.List;
 
+import pl.narfsoftware.thermometer.preferences.Preferences;
 import pl.narfsoftware.thermometer.utils.Converter;
-import pl.narfsoftware.thermometer.utils.Preferences;
 import pl.narfsoftware.thermometer.utils.Sensors;
 import android.content.ContentValues;
 import android.content.Context;

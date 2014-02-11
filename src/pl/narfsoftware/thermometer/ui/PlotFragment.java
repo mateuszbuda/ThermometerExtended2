@@ -4,10 +4,10 @@ import pl.narfsoftware.thermometer.R;
 import pl.narfsoftware.thermometer.ThermometerApp;
 import pl.narfsoftware.thermometer.db.DbHelper;
 import pl.narfsoftware.thermometer.db.SensorData;
+import pl.narfsoftware.thermometer.preferences.Preferences;
 import pl.narfsoftware.thermometer.service.SensorsDataSavingService;
 import pl.narfsoftware.thermometer.utils.Constants;
 import pl.narfsoftware.thermometer.utils.Label;
-import pl.narfsoftware.thermometer.utils.Preferences;
 import pl.narfsoftware.thermometer.utils.RefresherRunnable;
 import pl.narfsoftware.thermometer.utils.TimerRunnable;
 import android.app.Activity;
@@ -157,7 +157,7 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 		if (dataSeries.getValues().length <= 1) {
 			// hide vertical labels
 			graphView.getGraphViewStyle().setVerticalLabelsWidth(1);
-			if (!preferences.dataHintToastShowed)
+			if (!preferences.dataHintToastShowed())
 				showDataHindToast();
 		} else
 			showData();
@@ -167,19 +167,19 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 
 	private void initDataForGraphView() {
 		tvUnit.setText("");
-		tvUnit.setTypeface(preferences.typeface);
+		tvUnit.setTypeface(preferences.getTypeface());
 		saveDataSwitch.setChecked(app.saveData(currentKey));
-		saveDataSwitch.setTypeface(preferences.typeface);
+		saveDataSwitch.setTypeface(preferences.getTypeface());
 		tableName = DbHelper.TABLE_NAMES.get(currentKey);
 		saveData = app.saveData(currentKey);
 		dataSeries = new GraphViewSeries(sensorData.query(tableName,
-				preferences.temperatureUnitCode));
+				preferences.getTempUnitCode()));
 		Log.d(TAG, "data rows count: " + dataSeries.getValues().length);
 	}
 
 	private void showDataHindToast() {
 		// this notification is showed only once
-		preferences.dataHintToastShowed();
+		preferences.setDataHintToastShowed();
 		String toastText = getResources()
 				.getString(R.string.no_data_info_toast);
 		toastText += "\n"
@@ -189,7 +189,7 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 
 	private void showData() {
 		if (tvUnit != null)
-			tvUnit.setText(Constants.UNITS[preferences.temperatureUnitCode]
+			tvUnit.setText(Constants.UNITS[preferences.getTempUnitCode()]
 					.get(currentKey));
 
 		graphView.setCustomLabelFormatter(new Label(dataSeries));
@@ -214,9 +214,8 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 		timer = new TimerRunnable(activity, saveData, dataSeries, sensorData,
 				tableName, graphView, handler);
 		refresher = new RefresherRunnable(saveData, dataSeries, tvUnit,
-				Constants.UNITS[preferences.temperatureUnitCode]
-						.get(currentKey), verticalLabelsWidth, graphView,
-				handler);
+				Constants.UNITS[preferences.getTempUnitCode()].get(currentKey),
+				verticalLabelsWidth, graphView, handler);
 
 		handler.postDelayed(timer, Constants.ONE_SECOND);
 		handler.postDelayed(refresher, Constants.ONE_SECOND);
@@ -255,7 +254,7 @@ public class PlotFragment extends Fragment implements OnCheckedChangeListener {
 		if (dataSeries.getValues().length <= 1) {
 			// hide vertical labels
 			graphView.getGraphViewStyle().setVerticalLabelsWidth(1);
-			if (!preferences.dataHintToastShowed)
+			if (!preferences.dataHintToastShowed())
 				showDataHindToast();
 		} else
 			showData();

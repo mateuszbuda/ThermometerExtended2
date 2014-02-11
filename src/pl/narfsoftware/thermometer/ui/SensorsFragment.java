@@ -9,9 +9,9 @@ import java.util.Locale;
 
 import pl.narfsoftware.thermometer.R;
 import pl.narfsoftware.thermometer.ThermometerApp;
+import pl.narfsoftware.thermometer.preferences.Preferences;
 import pl.narfsoftware.thermometer.ui.listeners.BaseUIListener;
 import pl.narfsoftware.thermometer.ui.listeners.UIListenersFactory;
-import pl.narfsoftware.thermometer.utils.Preferences;
 import pl.narfsoftware.thermometer.utils.SensorRow;
 import pl.narfsoftware.thermometer.utils.Sensors;
 import android.app.Activity;
@@ -161,43 +161,43 @@ public class SensorsFragment extends ListFragment {
 	private void setAdapter() {
 		sensorsList = new ArrayList<SensorRow>();
 		int key;
-		if (prefs.showData.get(key = Sensor.TYPE_AMBIENT_TEMPERATURE)) {
+		if (prefs.getShowDataDict().get(key = Sensor.TYPE_AMBIENT_TEMPERATURE)) {
 			sensorRows.put(key,
 					new SensorRow(iconIds.get(key), sensorTitles.get(key),
 							values.get(key)));
 			sensorsList.add(sensorRows.get(key));
 		}
-		if (prefs.showData.get(key = Sensor.TYPE_RELATIVE_HUMIDITY)) {
+		if (prefs.getShowDataDict().get(key = Sensor.TYPE_RELATIVE_HUMIDITY)) {
 			sensorRows.put(key,
 					new SensorRow(iconIds.get(key), sensorTitles.get(key),
 							values.get(key)));
 			sensorsList.add(sensorRows.get(key));
 		}
-		if (prefs.showData.get(key = Sensors.TYPE_ABSOLUTE_HUMIDITY)) {
+		if (prefs.getShowDataDict().get(key = Sensors.TYPE_ABSOLUTE_HUMIDITY)) {
 			sensorRows.put(key,
 					new SensorRow(iconIds.get(key), sensorTitles.get(key),
 							values.get(key)));
 			sensorsList.add(sensorRows.get(key));
 		}
-		if (prefs.showData.get(key = Sensor.TYPE_PRESSURE)) {
+		if (prefs.getShowDataDict().get(key = Sensor.TYPE_PRESSURE)) {
 			sensorRows.put(key,
 					new SensorRow(iconIds.get(key), sensorTitles.get(key),
 							values.get(key)));
 			sensorsList.add(sensorRows.get(key));
 		}
-		if (prefs.showData.get(key = Sensors.TYPE_DEW_POINT)) {
+		if (prefs.getShowDataDict().get(key = Sensors.TYPE_DEW_POINT)) {
 			sensorRows.put(key,
 					new SensorRow(iconIds.get(key), sensorTitles.get(key),
 							values.get(key)));
 			sensorsList.add(sensorRows.get(key));
 		}
-		if (prefs.showData.get(key = Sensor.TYPE_LIGHT)) {
+		if (prefs.getShowDataDict().get(key = Sensor.TYPE_LIGHT)) {
 			sensorRows.put(key,
 					new SensorRow(iconIds.get(key), sensorTitles.get(key),
 							values.get(key)));
 			sensorsList.add(sensorRows.get(key));
 		}
-		if (prefs.showData.get(key = Sensor.TYPE_MAGNETIC_FIELD)) {
+		if (prefs.getShowDataDict().get(key = Sensor.TYPE_MAGNETIC_FIELD)) {
 			sensorRows.put(key,
 					new SensorRow(iconIds.get(key), sensorTitles.get(key),
 							values.get(key)));
@@ -222,7 +222,7 @@ public class SensorsFragment extends ListFragment {
 
 	private void registerChosenListeners() {
 		for (int key : listeners.keySet())
-			if (prefs.showData.get(key))
+			if (prefs.getShowDataDict().get(key))
 				listeners.get(key).register();
 	}
 
@@ -304,22 +304,25 @@ public class SensorsFragment extends ListFragment {
 				.findViewById(R.id.dateAndTime));
 		TextView date = (TextView) activity.findViewById(R.id.date);
 		TextView time = (TextView) activity.findViewById(R.id.time);
-		date.setTypeface(prefs.typeface);
-		time.setTypeface(prefs.typeface);
+		date.setTypeface(prefs.getTypeface());
+		time.setTypeface(prefs.getTypeface());
 
-		if (prefs.dateFormat.equals("") && prefs.timeFormat.equals("")) {
+		if (prefs.getDateFormat().equals("")
+				&& prefs.getTimeFormat().equals("")) {
 			dateAndTime.setVisibility(LinearLayout.GONE);
 			return;
-		} else if (prefs.dateFormat.equals("") && !prefs.timeFormat.equals("")) {
+		} else if (prefs.getDateFormat().equals("")
+				&& !prefs.getTimeFormat().equals("")) {
 			dateAndTime.setVisibility(LinearLayout.VISIBLE);
 			date.setVisibility(LinearLayout.GONE);
-			time.setText(new SimpleDateFormat(prefs.timeFormat, Locale
+			time.setText(new SimpleDateFormat(prefs.getTimeFormat(), Locale
 					.getDefault()).format(new Date().getTime()));
 			return;
-		} else if (prefs.timeFormat.equals("") && !prefs.dateFormat.equals("")) {
+		} else if (prefs.getTimeFormat().equals("")
+				&& !prefs.getDateFormat().equals("")) {
 			dateAndTime.setVisibility(LinearLayout.VISIBLE);
 			time.setVisibility(LinearLayout.GONE);
-			date.setText(new SimpleDateFormat(prefs.dateFormat, Locale
+			date.setText(new SimpleDateFormat(prefs.getDateFormat(), Locale
 					.getDefault()).format(new Date().getTime()));
 			return;
 		}
@@ -328,10 +331,10 @@ public class SensorsFragment extends ListFragment {
 		time.setVisibility(LinearLayout.VISIBLE);
 		date.setVisibility(LinearLayout.VISIBLE);
 
-		time.setText(new SimpleDateFormat(prefs.timeFormat, Locale.getDefault())
-				.format(new Date().getTime()));
-		date.setText(new SimpleDateFormat(prefs.dateFormat, Locale.getDefault())
-				.format(new Date().getTime()));
+		time.setText(new SimpleDateFormat(prefs.getTimeFormat(), Locale
+				.getDefault()).format(new Date().getTime()));
+		date.setText(new SimpleDateFormat(prefs.getDateFormat(), Locale
+				.getDefault()).format(new Date().getTime()));
 	}
 
 	public void updateSensorsFragment(int key) {

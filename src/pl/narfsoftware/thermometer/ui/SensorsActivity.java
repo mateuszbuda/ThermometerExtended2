@@ -6,7 +6,7 @@ import java.util.Locale;
 
 import pl.narfsoftware.thermometer.R;
 import pl.narfsoftware.thermometer.ThermometerApp;
-import pl.narfsoftware.thermometer.utils.Preferences;
+import pl.narfsoftware.thermometer.preferences.Preferences;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -83,12 +83,12 @@ public class SensorsActivity extends Activity implements
 					TextView time = (TextView) findViewById(R.id.time);
 
 					if (date != null)
-						date.setText(new SimpleDateFormat(
-								preferences.dateFormat, Locale.getDefault())
+						date.setText(new SimpleDateFormat(preferences
+								.getDateFormat(), Locale.getDefault())
 								.format(new Date().getTime()));
 					if (time != null)
-						time.setText(new SimpleDateFormat(
-								preferences.timeFormat, Locale.getDefault())
+						time.setText(new SimpleDateFormat(preferences
+								.getTimeFormat(), Locale.getDefault())
 								.format(new Date().getTime()));
 				}
 			}
@@ -102,10 +102,11 @@ public class SensorsActivity extends Activity implements
 	protected void onResume() {
 		super.onResume();
 		LinearLayout backgroundLayout = (LinearLayout) findViewById(R.id.backgroundLayout);
-		if (preferences.theme.equals(""))
-			backgroundLayout.setBackgroundColor(preferences.backgroundColor);
+		if (preferences.getTheme() == null)
+			backgroundLayout.setBackgroundColor(preferences
+					.getBackgroundColor());
 		else
-			backgroundLayout.setBackgroundDrawable(preferences.themeDrawable);
+			backgroundLayout.setBackgroundDrawable(preferences.getTheme());
 	}
 
 	@Override

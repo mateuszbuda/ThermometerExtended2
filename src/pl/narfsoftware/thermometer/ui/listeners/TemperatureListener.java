@@ -1,9 +1,8 @@
 package pl.narfsoftware.thermometer.ui.listeners;
 
-import pl.narfsoftware.thermometer.R;
+import pl.narfsoftware.thermometer.preferences.Preferences;
 import pl.narfsoftware.thermometer.ui.SensorsListViewAdapter;
 import pl.narfsoftware.thermometer.utils.Converter;
-import pl.narfsoftware.thermometer.utils.Preferences;
 import pl.narfsoftware.thermometer.utils.SensorRow;
 import android.content.Context;
 import android.hardware.Sensor;
@@ -23,14 +22,10 @@ public class TemperatureListener extends BaseUIListener {
 	public void onSensorChanged(SensorEvent event) {
 		value = event.values[0];
 
-		if (preferences.temperatureUnit
-				.equals(context.getResources().getStringArray(
-						R.array.prefs_temp_unit_vals)[Preferences.CELSIUS]))
+		if (preferences.getTempUnitCode() == Preferences.CELSIUS)
 			stringValue = (String.format("%.0f", value) + " " + (char) 0x00B0 + "C");
 
-		else if (preferences.temperatureUnit
-				.equals(context.getResources().getStringArray(
-						R.array.prefs_temp_unit_vals)[Preferences.FAHRENHEIT]))
+		else if (preferences.getTempUnitCode() == Preferences.FAHRENHEIT)
 			stringValue = (String
 					.format("%.0f", Converter.ConvertTemperature(value,
 							Preferences.FAHRENHEIT))

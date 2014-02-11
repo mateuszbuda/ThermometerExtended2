@@ -10,7 +10,7 @@
         android:order="91"
         android:title="@string/prefs_temp_unit_title" />
     <ListPreference
-        android:defaultValue="#FFF0F8FF"
+        android:defaultValue="@string/prefs_background_default_color"
         android:dialogTitle="@string/prefs_background_color_title"
         android:entries="@array/prefs_background_color_keys"
         android:entryValues="@array/prefs_background_color_vals"
@@ -19,7 +19,7 @@
         android:order="95"
         android:title="@string/prefs_background_color_title" />
     <ListPreference
-        android:defaultValue="EEEE, dd MMMM"
+        android:defaultValue="@string/prefs_date_default_format"
         android:dialogTitle="@string/prefs_date_format_title"
         android:entries="@array/prefs_date_format_keys"
         android:entryValues="@array/prefs_date_format_vals"
@@ -28,7 +28,7 @@
         android:order="92"
         android:title="@string/prefs_date_format_title" />
     <ListPreference
-        android:defaultValue="KK:mm a"
+        android:defaultValue="@string/prefs_time_default_format"
         android:dialogTitle="@string/prefs_time_format_title"
         android:entries="@array/prefs_time_format_keys"
         android:entryValues="@array/prefs_time_format_vals"
@@ -37,7 +37,7 @@
         android:order="93"
         android:title="@string/prefs_time_format_title" />
     <ListPreference
-        android:defaultValue="Roboto.ttf"
+        android:defaultValue="@string/prefs_default_typeface"
         android:dialogTitle="@string/prefs_font_title"
         android:entries="@array/prefs_font_keys"
         android:entryValues="@array/prefs_font_vals"
@@ -46,7 +46,7 @@
         android:order="96"
         android:title="@string/prefs_font_title" />
     <ListPreference
-        android:defaultValue=""
+        android:defaultValue="@string/prefs_default_theme"
         android:dialogTitle="@string/prefs_theme_title"
         android:entries="@array/prefs_theme_keys"
         android:entryValues="@array/prefs_theme_vals"

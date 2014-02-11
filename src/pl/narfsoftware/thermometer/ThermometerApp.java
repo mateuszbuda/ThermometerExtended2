@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 import pl.narfsoftware.thermometer.db.SensorData;
-import pl.narfsoftware.thermometer.utils.Preferences;
+import pl.narfsoftware.thermometer.preferences.Preferences;
 import pl.narfsoftware.thermometer.utils.Sensors;
 import android.app.Application;
 import android.hardware.Sensor;
