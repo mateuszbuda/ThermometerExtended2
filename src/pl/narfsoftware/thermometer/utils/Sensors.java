@@ -54,6 +54,15 @@ public class Sensors {
 			hasSensor.put(Sensor.TYPE_MAGNETIC_FIELD, true);
 		else
 			hasSensor.put(Sensor.TYPE_MAGNETIC_FIELD, false);
+
+		if (hasSensor.get(Sensor.TYPE_AMBIENT_TEMPERATURE)
+				&& hasSensor.get(Sensor.TYPE_RELATIVE_HUMIDITY)) {
+			hasSensor.put(Sensors.TYPE_ABSOLUTE_HUMIDITY, true);
+			hasSensor.put(Sensors.TYPE_DEW_POINT, true);
+		} else {
+			hasSensor.put(Sensors.TYPE_ABSOLUTE_HUMIDITY, false);
+			hasSensor.put(Sensors.TYPE_DEW_POINT, false);
+		}
 	}
 
 	private void setAvailableSensors() {

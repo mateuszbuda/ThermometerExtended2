@@ -87,8 +87,5 @@
 
     <string name="action_help_title">Help</string>
     <string name="sensor_icon_description">Sensor Icon</string>
-    <string name="prefs_background_default_color">#FFF0F8FF</string>
-    <string name="prefs_default_theme"></string>
-    <string name="prefs_default_typeface">Roboto.ttf</string>
 
 </resources>

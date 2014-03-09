@@ -20,6 +20,9 @@
     <string name="prefs_accuracy_toast_summary">Toasts reporting data accuracy level</string>
     <string name="prefs_date_default_format">EEEE, dd MMMM</string>
     <string name="prefs_time_default_format">KK:mm a</string>
+    <string name="prefs_background_default_color">#FFF0F8FF</string>
+    <string name="prefs_default_theme"></string>
+    <string name="prefs_default_typeface">Roboto.ttf</string>
 
     <string-array name="prefs_temp_unit_keys">
         <item>Degrees Celsius</item>

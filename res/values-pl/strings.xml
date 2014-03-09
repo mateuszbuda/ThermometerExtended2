@@ -87,8 +87,5 @@
 
     <string name="action_help_title">Pomoc</string>
     <string name="sensor_icon_description">Ikona Sensora</string>
-    <string name="empty_sensors_list">Nie wybrałeś żadnego wskaźnika warunków otoczenia.\nZaznacz w Ustawieniach te, które mają być wyświetlane.</string>
-    <string name="sensor_unavailable_hit">Twoje urządzenie niestety nie jest wyposarzone w odpowiedni sensor :(.</string>
-    <string name="no_data_hit">Brak danych do wyświetlenia. Włącz zapis danych, żeby przeglądać historię na wykresie.</string>
 
 </resources>
