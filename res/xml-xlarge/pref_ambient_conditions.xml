@@ -12,7 +12,7 @@
         android:key="@string/relative_humidity_key"
         android:title="@string/relative_humidity_title" />
     <CheckBoxPreference
-        android:defaultValue="false"
+        android:defaultValue="true"
         android:icon="@drawable/absolute_humidity"
         android:key="@string/absolute_humidity_key"
         android:title="@string/absolute_humidity_title" />
@@ -22,17 +22,17 @@
         android:key="@string/pressure_key"
         android:title="@string/pressure_title" />
     <CheckBoxPreference
-        android:defaultValue="false"
+        android:defaultValue="true"
         android:icon="@drawable/dew_point"
         android:key="@string/dew_point_key"
         android:title="@string/dew_point_title" />
     <CheckBoxPreference
-        android:defaultValue="false"
+        android:defaultValue="true"
         android:icon="@drawable/light"
         android:key="@string/light_key"
         android:title="@string/light_title" />
     <CheckBoxPreference
-        android:defaultValue="false"
+        android:defaultValue="true"
         android:icon="@drawable/magnetic_field"
         android:key="@string/magnetic_field_key"
         android:title="@string/magnetic_field_title" />
