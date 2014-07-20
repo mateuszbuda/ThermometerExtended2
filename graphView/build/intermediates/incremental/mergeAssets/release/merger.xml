@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="main" >
+        <source path="C:\Users\mateusz\ASworkspace\Thermometer2\graphView\src\main\assets" />
+    </dataSet>
+    <dataSet config="release" >
+        <source path="C:\Users\mateusz\ASworkspace\Thermometer2\graphView\src\release\assets" />
+    </dataSet>
+
+</merger>

@@ -1,0 +1,2 @@
+include ':graphView', ':app'
+include ':thermometer2'

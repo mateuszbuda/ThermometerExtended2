@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/StandardRootLayoutStyle" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textViewHelpContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/help_text_bottom_margin"
+            android:text="help details"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <ImageView
+            android:id="@+id/imageHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/help_text_bottom_margin"
+            android:contentDescription="@string/dew_point_title"
+            android:scaleType="fitCenter" />
+
+        <TextView
+            android:id="@+id/textViewHelpSource"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/help_text_bottom_margin"
+            android:layout_marginTop="@dimen/help_text_bottom_margin"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+    </LinearLayout>
+
+</ScrollView><!-- From: file:/C:/Users/mateusz/ASworkspace/Thermometer2/thermometer2/src/main/res/layout/help_details_view.xml -->

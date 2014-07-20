@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/C:/Users/mateusz/ASworkspace/Thermometer2/thermometer2/src/main/res/values-large/integers.xml -->
+    <eat-comment />
+
+    <integer name="plot_label_text_size">14</integer>
+    <integer name="plot_vertical_labels_widht">90</integer>
+
+</resources>

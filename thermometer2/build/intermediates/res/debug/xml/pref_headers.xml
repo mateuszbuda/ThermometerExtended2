@@ -1,0 +1,13 @@
+<preference-headers xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- These settings headers are only used on tablets. -->
+
+    <header
+        android:fragment="pl.narfsoftware.thermometer.ui.SettingsActivity$SensorsPreferenceFragment"
+        android:title="@string/pref_header_sensors" />
+    <header
+        android:fragment="pl.narfsoftware.thermometer.ui.SettingsActivity$CustomizationPreferenceFragment"
+        android:title="@string/pref_header_customization" />
+
+</preference-headers>
+<!-- From: file:/C:/Users/mateusz/ASworkspace/Thermometer2/thermometer2/src/main/res/xml/pref_headers.xml -->

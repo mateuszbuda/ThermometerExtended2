@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-516f0c533ba5a4098b9c8cdc224353257d1ab6fd.jar"
+        jar="C:\Users\mateusz\ASworkspace\Thermometer2\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d"/>
+    <item
+        dex="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\build\intermediates\pre-dexed\debug\classes-964c4aacd913d2a7a9f4932601872896809e6e46.jar"
+        jar="C:\Users\mateusz\ASworkspace\Thermometer2\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
+    <item
+        dex="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-b6d1b0d96a9e826029d6545ebec9b8da5310c8e0.jar"
+        jar="C:\Users\mateusz\Dev\adt-bundle-windows-x86_64-20140702\sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
+    <item
+        dex="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\build\intermediates\pre-dexed\debug\classes-57319c340d9523a68a19f0284055c6451a769560.jar"
+        jar="C:\Users\mateusz\ASworkspace\Thermometer2\build\intermediates\exploded-aar\Thermometer2\graphView\unspecified\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="2128908baa601732e079975e1798912dbae6c9f4"/>
+
+</pre-dex-items>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="21.0.0-rc1" >
+        <source path="C:\Users\mateusz\ASworkspace\Thermometer2\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0-rc1\assets" />
+    </dataSet>
+    <dataSet config="unspecified" >
+        <source path="C:\Users\mateusz\ASworkspace\Thermometer2\build\intermediates\exploded-aar\Thermometer2\graphView\unspecified\assets" />
+    </dataSet>
+    <dataSet config="main" >
+        <source path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\assets" >
+            <file
+                name="3Dumb.ttf"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\assets\3Dumb.ttf" />
+            <file
+                name="aladdin.ttf"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\assets\aladdin.ttf" />
+            <file
+                name="Bloodrac.TTF"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\assets\Bloodrac.TTF" />
+            <file
+                name="brooklynkid.ttf"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\assets\brooklynkid.ttf" />
+            <file
+                name="catholicschoolgirls.TTF"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\assets\catholicschoolgirls.TTF" />
+            <file
+                name="ChopinScript.ttf"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\assets\ChopinScript.ttf" />
+            <file
+                name="DESTROY_.ttf"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\assets\DESTROY_.ttf" />
+            <file
+                name="Gothic.otf"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\assets\Gothic.otf" />
+            <file
+                name="harryp.ttf"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\assets\harryp.ttf" />
+            <file
+                name="Mosaicleaf086.ttf"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\assets\Mosaicleaf086.ttf" />
+            <file
+                name="Roboto.ttf"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\assets\Roboto.ttf" />
+            <file
+                name="SpecialElite.ttf"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\assets\SpecialElite.ttf" />
+            <file
+                name="Sreda.ttf"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\assets\Sreda.ttf" />
+            <file
+                name="terminatortwo.ttf"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\assets\terminatortwo.ttf" />
+            <file
+                name="ZnikomitNo25.otf"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\assets\ZnikomitNo25.otf" />
+        </source>
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\debug\assets" />
+    </dataSet>
+
+</merger>

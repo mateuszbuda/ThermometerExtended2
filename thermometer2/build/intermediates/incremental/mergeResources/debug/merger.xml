@@ -1,0 +1,2238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="20.0.0" >
+        <source path="C:\Users\mateusz\ASworkspace\Thermometer2\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\res" />
+    </dataSet>
+    <dataSet config="unspecified" >
+        <source path="C:\Users\mateusz\ASworkspace\Thermometer2\build\intermediates\exploded-aar\Thermometer2\graphView\unspecified\res" />
+    </dataSet>
+    <dataSet config="main" >
+        <source path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res" >
+            <file
+                name="sensor_row_background"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable\sensor_row_background.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="about_logo"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\about_logo.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="absolute_humidity"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\absolute_humidity.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="absolute_humidity_disabled"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\absolute_humidity_disabled.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="bgimage_abstraction"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\bgimage_abstraction.jpg"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="bgimage_paper"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\bgimage_paper.jpg"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="bgimage_simple_gradient"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\bgimage_simple_gradient.jpg"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="bgimage_summer"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\bgimage_summer.jpg"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="bgimage_vintage"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\bgimage_vintage.jpg"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="dewpoint"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\dewpoint.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="dew_point"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\dew_point.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="dew_point_disabled"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\dew_point_disabled.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="empty_image"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\empty_image.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="en_app_rgb_wo_60"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\en_app_rgb_wo_60.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_dialog_time"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\ic_dialog_time.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_info"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\ic_info.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\ic_launcher.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_menu_edit"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\ic_menu_edit.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_menu_emoticons"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\ic_menu_emoticons.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_menu_gallery"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\ic_menu_gallery.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_sysbar_quicksettings"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\ic_sysbar_quicksettings.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="light"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\light.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="light_disabled"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\light_disabled.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="magnetic_field"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\magnetic_field.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="magnetic_field_disabled"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\magnetic_field_disabled.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="pressure"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\pressure.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="pressure_disabled"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\pressure_disabled.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="relative_humidity"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\relative_humidity.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="relative_humidity_disabled"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\relative_humidity_disabled.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="temprature"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\temprature.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="temprature_disabled"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-hdpi\temprature_disabled.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-mdpi\ic_launcher.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-xhdpi\ic_launcher.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\drawable-xxhdpi\ic_launcher.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="activity_about"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\layout\activity_about.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="help_details_view"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\layout\help_details_view.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="help_title_row"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\layout\help_title_row.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="help_view"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\layout\help_view.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="plot_view"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\layout\plot_view.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="sensors_view"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\layout\sensors_view.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="sensor_row"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\layout\sensor_row.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="help_view"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\layout-large-land\help_view.xml"
+                qualifiers="large-land-v4"
+                type="layout" />
+            <file
+                name="sensors_view"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\layout-large-land\sensors_view.xml"
+                qualifiers="large-land-v4"
+                type="layout" />
+            <file
+                name="help_view"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\layout-xlarge\help_view.xml"
+                qualifiers="xlarge-v4"
+                type="layout" />
+            <file
+                name="sensors_view"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\layout-xlarge\sensors_view.xml"
+                qualifiers="xlarge-v4"
+                type="layout" />
+            <file
+                name="sensors"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\menu\sensors.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\values\color.xml"
+                qualifiers="" >
+                <color name="dividing_line_color" >#44232323
+                </color>
+                <color name="selected_row" >#15000000
+                </color>
+                <color name="sensor_row_bottom_line_color" >#28000000
+                </color>
+                <color name="sensor_row_background_color" >#08000000
+                </color>
+            </file>
+            <file
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\values\dimens.xml"
+                qualifiers="" >
+                <dimen name="rows_bottom_padding" >12dp
+                </dimen>
+                <dimen name="activity_horizontal_margin" >16dp
+                </dimen>
+                <dimen name="sensor_row_bottom_line_height" >2dp
+                </dimen>
+                <dimen name="activity_vertical_margin" >16dp
+                </dimen>
+                <dimen name="plot_act_left_padding" >8dp
+                </dimen>
+                <dimen name="row_padding_left" >6dp
+                </dimen>
+                <dimen name="sensor_row_bottom_padding" >4dp
+                </dimen>
+                <dimen name="sensor_row_top_padding" >4dp
+                </dimen>
+                <dimen name="row_bottom_padding_small" >6dp
+                </dimen>
+                <dimen name="row_padding_bottom" >6dp
+                </dimen>
+                <dimen name="help_text_bottom_margin" >12dp
+                </dimen>
+                <dimen name="image_text_padding" >12dp
+                </dimen>
+                <dimen name="row_padding_top" >6dp
+                </dimen>
+                <dimen name="plot_act_top_padding" >8dp
+                </dimen>
+                <dimen name="row_padding_right" >6dp
+                </dimen>
+                <dimen name="sensor_row_right_line_width" >2dp
+                </dimen>
+            </file>
+            <file
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\values\integers.xml"
+                qualifiers="" >
+                <integer name="plot_label_text_size" >
+14
+                </integer>
+                <integer name="plot_vertical_labels_widht" >
+46
+                </integer>
+            </file>
+            <file
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\values\strings.xml"
+                qualifiers="" >
+                <string name="title_activity_settings" >Settings
+                </string>
+                <string name="toast_on_dew_point_save_data" >Saving dew point data turned on
+                </string>
+                <string name="logo_description" >NarfSoftware Logo
+                </string>
+                <string name="pressure_key" >pressure
+                </string>
+                <string name="toast_on_absolute_humidity_save_data" >Saving absolute humidity data turned on
+                </string>
+                <string name="about_site_header" >Visit developer\'s site
+                </string>
+                <string name="yes" >Yes
+                </string>
+                <string name="relative_humidity_key" >relative_humidity
+                </string>
+                <string name="toast_on_relative_humidity_save_data" >Saving relative humidity data turned on
+                </string>
+                <string name="no_data_info_toast" >No data to display…
+                </string>
+                <string name="toast_off_relative_humidity_save_data" >Saving relative humidity data turned off
+                </string>
+                <string name="title_activity_about" >About
+                </string>
+                <string name="dew_point_title" >Dew Point
+                </string>
+                <string name="toast_on_light_save_data" >Saving light data turned on
+                </string>
+                <string name="out_of_memory_error_toast" >Your device is out of memory for this application and drawabale could not be loaded. You had better set theme to \'None\'.
+                </string>
+                <string name="about_email_title" >Contact developer
+                </string>
+
+                <string-array name="help_details" >
+                    <item name="help_text_main">
+Main window displays chosen in settings ambient condition indicators. If application is receiving data from particular senors, it is immediately displayed, otherwise you see \'No Data\'. Data accuracy depends on hardware quality. Application merely display received data. Another possibility is that your device simply does not support chosen sensor. If so, you get \'Sensor unavailable\' message.
+                    </item>
+                    <item name="help_text_save_and_display_data">
+In order to see data history graph you must turn saving data mode on for particular sensor in its plot window. However be aware that it cause chosen sensors to stay active, even if you close application. That may drain device battery especially quickly. So always remember to stop saving data if you do not need it. By default this option is turned off. If particular sensor is working in data saving mode its icon is blue. Otherwise its greyed.
+                    </item>
+                    <item name="help_text_relative_humidity">
+Relative humidity is the ratio of the partial pressure of water vapor in an air-water mixture to the saturated vapor pressure of water at a prescribed temperature. The relative humidity of air depends on temperature and the pressure of the system of interest. Humans are sensitive to humid air because the human body uses evaporative cooling (perspiration) as the primary mechanism to rid itself of waste heat. Humans can be comfortable within a wide range of humidities depending on the temperature — from thirty to seventy percent - but ideally between fifty and sixty percent.
+                    </item>
+                    <item name="help_text_absolute_humidity">
+Absolute humidity is the mass of water vapor per unit volume of total air and water vapor mixture. Absolute humidity in the atmosphere ranges from near zero to roughly 30 grams per cubic meter when the air is saturated at 30 °C. The absolute humidity changes as air temperature or pressure changes. It does not take temperature into consideration.
+                    </item>
+                    <item name="help_text_dew_point">
+The dew point is the temperature below which the water vapor in air at constant barometric pressure condenses into liquid water at the same rate at which it evaporates. The condensed water is called dew when it forms on a solid surface. The dew point is a water-to-air saturation temperature. The dew point is associated with relative humidity. A high relative humidity indicates that the dew point is closer to the current air temperature. Relative humidity of 100% indicates the dew point is equal to the current temperature and that the air is maximally saturated with water.
+                    </item>
+                    <item name="help_text_light">
+Illuminance is a measure of how much luminous flux is spread over a given area. One can think of luminous flux (measured in lumens) as a measure of the total "amount" of visible light present, and the illuminance as a measure of the intensity of illumination on a surface. One lux is equal to one lumen per square metre. Achieving an illuminance of 500 lux might be possible in a home kitchen with a single fluorescent light fixture with an output of 12000 lumens.
+                    </item>
+                </string-array>
+
+                <string name="data_erased_hint_toast" >Stop saving data first.
+                </string>
+
+                <string-array name="help_titles" >
+                    <item name="help_text_main_header">
+Ambient condition indicators
+                    </item>
+                    <item name="help_text_save_and_display_data_header">
+Data Saving
+                    </item>
+                    <item name="help_text_relative_humidity_header">
+Relative Humidity
+                    </item>
+                    <item name="help_text_absolute_humidity_header">
+Absolute Humidity
+                    </item>
+                    <item name="help_text_dew_point_header">
+Dew Point
+                    </item>
+                    <item name="help_text_light_header">
+Light
+                    </item>
+                </string-array>
+
+                <string name="pressure_title" >Pressure
+                </string>
+                <string name="toast_on_magnetic_field_save_data" >Saving magnetic field data turned on
+                </string>
+                <string name="dew_point_key" >dew_point
+                </string>
+                <string name="data_erased_success_toast" >Data successfully erased
+                </string>
+                <string name="title_activity_help" >Help
+                </string>
+                <string name="about_site" >www.narfsoftware.pl/en
+                </string>
+                <string name="about_text" >We\'re looking forward to hearing from you. Email us to report bugs, suggest an improvement or if you want to add a translation. We will be glad if you decide to rate and comment on our apps on Market.
+                </string>
+                <string name="action_clear_data" >Erase History
+                </string>
+                <string name="light_key" >light
+                </string>
+                <string name="toast_on_pressure_save_data" >Saving pressure data turned on
+                </string>
+                <string name="toast_off_magnetic_field_save_data" >Saving magnetic field data turned off
+                </string>
+                <string name="no_data_to_erase" >No data to erase.
+                </string>
+                <string name="no" >No
+                </string>
+                <string name="accuracy_high_toast_text" >is reporting data with maximum accuracy
+                </string>
+                <string name="about_header" >Thermometer Extended
+                </string>
+                <string name="no_data_hint_toast" >Read about Data Saving in Help.
+                </string>
+                <string name="help_text_source" >Source: wikipedia.org
+                </string>
+                <string name="accuracy_low_toast_text" >is reporting data with low accuracy
+                </string>
+                <string name="absolute_humidity_title" >Absolute Humidity
+                </string>
+                <string name="action_settings" >Settings
+                </string>
+                <string name="toast_on_temperature_save_data" >Saving temperature data turned on
+                </string>
+                <string name="accuracy_medium_toast_text" >is reporting data with an average level of accuracy
+                </string>
+                <string name="light_title" >Light
+                </string>
+                <string name="about_email" >info@narfsoftware.pl
+                </string>
+                <string name="toast_off_absolute_humidity_save_data" >Saving absolute humidity data turned off
+                </string>
+                <string name="relative_humidity_title" >Relative Humidity
+                </string>
+                <string name="about_subheader" >version 2.5.2
+                </string>
+                <string name="sensor_unavailable" >Sensor unavailable
+                </string>
+                <string name="data_erased_fail_toast" >Failed to erase data :(
+                </string>
+                <string name="action_help_title" >Help
+                </string>
+                <string name="absolute_humidity_key" >absolute_humidity
+                </string>
+                <string name="toast_off_dew_point_save_data" >Saving dew point data turned off
+                </string>
+                <string name="prefs_header" >Settings
+                </string>
+                <string name="accuracy_unreliable_toast_text_part_2" >cannot be trusted
+                </string>
+                <string name="toast_off_temperature_save_data" >Saving temperature data turned off
+                </string>
+                <string name="ambient_temp_title" >Temperature
+                </string>
+                <string name="sensor_icon_description" >Sensor Icon
+                </string>
+                <string name="toast_off_light_save_data" >Saving light data turned off
+                </string>
+                <string name="accuracy_unreliable_toast_text_part_1" >The values returned by
+                </string>
+                <string name="action_about_title" >About
+                </string>
+                <string name="prefs_sensors" >Sensors
+                </string>
+                <string name="toast_off_pressure_save_data" >Saving pressure data turned off
+                </string>
+                <string name="magnetic_field_key" >magnetic_field
+                </string>
+                <string name="sensor_no_data" >No data
+                </string>
+                <string name="save_data_switch" >"Save data"
+                </string>
+                <string name="ambient_temp_key" >ambient_temprature
+                </string>
+                <string name="app_name" >Thermometer Extended
+                </string>
+                <string name="prefs_sensors_title" >Choose sensors
+                </string>
+                <string name="pref_header_sensors" >Ambient conditions
+                </string>
+                <string name="alert_dialog_erase_data_text" >Are you sure you want to clear history?
+                </string>
+                <string name="magnetic_field_title" >Magnetic Field
+                </string>
+            </file>
+            <file
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\values\strings_prefs.xml"
+                qualifiers="" >
+                <string name="prefs_background_default_color" >#FFF0F8FF
+                </string>
+
+                <string-array name="prefs_font_vals" >
+                    <item>
+Roboto.ttf
+                    </item>
+                    <item>
+Gothic.otf
+                    </item>
+                    <item>
+SpecialElite.ttf
+                    </item>
+                    <item>
+3Dumb.ttf
+                    </item>
+                    <item>
+DESTROY_.ttf
+                    </item>
+                    <item>
+harryp.ttf
+                    </item>
+                    <item>
+ChopinScript.ttf
+                    </item>
+                    <item>
+Bloodrac.TTF
+                    </item>
+                    <item>
+brooklynkid.ttf
+                    </item>
+                    <item>
+aladdin.ttf
+                    </item>
+                    <item>
+catholicschoolgirls.TTF
+                    </item>
+                    <item>
+terminatortwo.ttf
+                    </item>
+                </string-array>
+
+                <string name="prefs_date_format_title" >Date Format
+                </string>
+                <string name="prefs_time_format_key" >time_format
+                </string>
+                <string name="prefs_rest_title" >Customization
+                </string>
+
+                <string-array name="prefs_theme_keys" >
+                    <item>
+Abstraction
+                    </item>
+                    <item>
+Paper
+                    </item>
+                    <item>
+Simple Gradient
+                    </item>
+                    <item>
+Summer
+                    </item>
+                    <item>
+Vintage
+                    </item>
+                    <item>
+None
+                    </item>
+                </string-array>
+
+                <string name="prefs_font_title" >Font style
+                </string>
+                <string name="prefs_font_key" >font
+                </string>
+                <string name="prefs_default_typeface" >Roboto.ttf
+                </string>
+                <string name="prefs_date_format_key" >date_format
+                </string>
+                <string name="prefs_background_color_title" >Background Color
+                </string>
+                <string name="prefs_accuracy_toast_key" >data_accuracy_toasts
+                </string>
+
+                <string-array name="prefs_time_format_vals" >
+                    <item>
+HH:mm
+                    </item>
+                    <item>
+KK:mm a
+                    </item>
+                    <item>
+HH:mm z
+                    </item>
+                    <item>
+KK:mm a, z
+                    </item>
+                    <item>
+HH:mm ZZZZ
+                    </item>
+                    <item>
+KK:mm a, ZZZZ
+                    </item>
+                    <item>
+HH:mm zZZZZ
+                    </item>
+                    <item>
+KK:mm a, zZZZZ
+                    </item>
+                    <item/>
+                </string-array>
+
+                <string name="pref_header_customization" >Customization
+                </string>
+
+                <string-array name="prefs_background_color_vals" >
+                    <item>
+#FFF0F8FF
+                    </item>
+                    <item>
+#667FFFD4
+                    </item>
+                    <item>
+#FFFFE4C4
+                    </item>
+                    <item>
+#FFFFF8DC
+                    </item>
+                    <item>
+#FFDCDCDC
+                    </item>
+                    <item>
+#88ADFF2F
+                    </item>
+                    <item>
+#66FF69B4
+                    </item>
+                    <item>
+#FFFFFACD
+                    </item>
+                    <item>
+#88F08080
+                    </item>
+                    <item>
+#FFE0FFFF
+                    </item>
+                    <item>
+#88D3D3D3
+                    </item>
+                    <item>
+#8832CD32
+                    </item>
+                    <item>
+#66BA55D3
+                    </item>
+                    <item>
+#88FFA500
+                    </item>
+                    <item>
+#88FFDAB9
+                    </item>
+                    <item>
+#88FFC0CB
+                    </item>
+                    <item>
+#66DDA0DD
+                    </item>
+                    <item>
+#66F4A460
+                    </item>
+                    <item>
+#662E8B57
+                    </item>
+                    <item>
+#FFFFFAFA
+                    </item>
+                    <item>
+#FFFFFFFF
+                    </item>
+                </string-array>
+
+                <string name="prefs_default_theme" ></string>
+
+                <string-array name="prefs_date_format_vals" >
+                    <item>
+EEEE, dd MMMM
+                    </item>
+                    <item>
+EEEE, d MMMM
+                    </item>
+                    <item>
+EEEE, dd MMMM y
+                    </item>
+                    <item>
+EEEE, d MMMM y
+                    </item>
+                    <item>
+E, d MMMM
+                    </item>
+                    <item>
+E, d MMMM y
+                    </item>
+                    <item>
+d MMMM
+                    </item>
+                    <item>
+dd MMMM
+                    </item>
+                    <item>
+d MMMM y
+                    </item>
+                    <item>
+dd MMMM y
+                    </item>
+                    <item>
+EEEE, dd MMM
+                    </item>
+                    <item>
+EEEE, d MMM
+                    </item>
+                    <item>
+EEEE, dd MMM y
+                    </item>
+                    <item>
+EEEE, d MMM y
+                    </item>
+                    <item>
+E, d MMM
+                    </item>
+                    <item>
+E, d MMM y
+                    </item>
+                    <item>
+d MMM
+                    </item>
+                    <item>
+dd MMM
+                    </item>
+                    <item>
+d MMM y
+                    </item>
+                    <item>
+dd MMM y
+                    </item>
+                    <item>
+dd–MM–y
+                    </item>
+                    <item>
+dd–MM–yy
+                    </item>
+                    <item>
+d–M–yy
+                    </item>
+                    <item>
+y–MM–dd
+                    </item>
+                    <item>
+yy–MM–dd
+                    </item>
+                    <item>
+yy–M–d
+                    </item>
+                    <item>
+EEEE, dd–MM–y
+                    </item>
+                    <item>
+EEEE, dd–MM–yy
+                    </item>
+                    <item>
+EEEE, d–M–yy
+                    </item>
+                    <item>
+EEEE, y–MM–dd
+                    </item>
+                    <item>
+EEEE, yy–MM–dd
+                    </item>
+                    <item>
+EEEE, yy–M–d
+                    </item>
+                    <item>
+EEEE, dd/MM/y
+                    </item>
+                    <item>
+EEEE, dd/MM/yy
+                    </item>
+                    <item>
+EEEE, d/M/yy
+                    </item>
+                    <item>
+EEEE, y/MM/dd
+                    </item>
+                    <item>
+EEEE, yy/MM/dd
+                    </item>
+                    <item>
+EEEE, yy/M/d
+                    </item>
+                    <item>
+E, dd–MM–y
+                    </item>
+                    <item>
+E, dd–MM–yy
+                    </item>
+                    <item>
+E, d–M–yy
+                    </item>
+                    <item>
+E, y–MM–dd
+                    </item>
+                    <item>
+E, yy–MM–dd
+                    </item>
+                    <item>
+E, yy–M–d
+                    </item>
+                    <item>
+E, dd/MM/y
+                    </item>
+                    <item>
+E, dd/MM/y
+                    </item>
+                    <item>
+E, d/M/yy
+                    </item>
+                    <item>
+E, y/MM/dd
+                    </item>
+                    <item>
+E, yy/MM/dd
+                    </item>
+                    <item>
+E, yy/M/d
+                    </item>
+                    <item/>
+                </string-array>
+
+                <string name="prefs_background_color_key" >background_color
+                </string>
+                <string name="prefs_temp_unit_key" >temp_unit
+                </string>
+                <string name="prefs_theme_title" >Theme
+                </string>
+                <string name="prefs_time_default_format" >KK:mm a
+                </string>
+
+                <string-array name="prefs_date_format_keys" >
+                    <item>
+Tuesday, 01 October
+                    </item>
+                    <item>
+Tuesday, 1 October
+                    </item>
+                    <item>
+Tuesday, 01 October 2013
+                    </item>
+                    <item>
+Tuesday, 1 October 2013
+                    </item>
+                    <item>
+Tue, 1 October
+                    </item>
+                    <item>
+Tue, 1 October 2013
+                    </item>
+                    <item>
+1 October
+                    </item>
+                    <item>
+01 October
+                    </item>
+                    <item>
+1 October 2013
+                    </item>
+                    <item>
+01 October 2013
+                    </item>
+                    <item>
+Tuesday, 01 Oct
+                    </item>
+                    <item>
+Tuesday, 1 Oct
+                    </item>
+                    <item>
+Tuesday, 01 Oct 2013
+                    </item>
+                    <item>
+Tuesday, 1 Oct 2013
+                    </item>
+                    <item>
+Tue, 1 Oct
+                    </item>
+                    <item>
+Tue, 1 Oct 2013
+                    </item>
+                    <item>
+1 Oct
+                    </item>
+                    <item>
+01 Oct
+                    </item>
+                    <item>
+1 Oct 2013
+                    </item>
+                    <item>
+01 Oct 2013
+                    </item>
+                    <item>
+01–10–2013
+                    </item>
+                    <item>
+01–10–13
+                    </item>
+                    <item>
+1–9–13
+                    </item>
+                    <item>
+2013–10–01
+                    </item>
+                    <item>
+13–10–01
+                    </item>
+                    <item>
+13–9–1
+                    </item>
+                    <item>
+Tuesday, 01–10–2013
+                    </item>
+                    <item>
+Tuesday, 01–10–13
+                    </item>
+                    <item>
+Sunday, 1–9–13
+                    </item>
+                    <item>
+Tuesday, 2013–10–01
+                    </item>
+                    <item>
+Tuesday, 13–10–01
+                    </item>
+                    <item>
+Sunday, 13–9–1
+                    </item>
+                    <item>
+Tuesday, 01/10/2013
+                    </item>
+                    <item>
+Tuesday, 01/10/13
+                    </item>
+                    <item>
+Sunday, 1/9/13
+                    </item>
+                    <item>
+Tuesday, 2013/10/01
+                    </item>
+                    <item>
+Tuesday, 13/10/01
+                    </item>
+                    <item>
+Sunday, 13/9/1
+                    </item>
+                    <item>
+Tue, 01–10–2013
+                    </item>
+                    <item>
+Tue, 01–10–13
+                    </item>
+                    <item>
+Sun, 1–9–13
+                    </item>
+                    <item>
+Tue, 2013–10–01
+                    </item>
+                    <item>
+Tue, 13–10–01
+                    </item>
+                    <item>
+Sun, 13–9–1
+                    </item>
+                    <item>
+Tue, 01/10/2013
+                    </item>
+                    <item>
+Tue, 01/10/13
+                    </item>
+                    <item>
+Sun, 1/9/13
+                    </item>
+                    <item>
+Tue, 2013/10/01
+                    </item>
+                    <item>
+Tue, 13/10/01
+                    </item>
+                    <item>
+Sun, 13/9/1
+                    </item>
+                    <item>
+None
+                    </item>
+                </string-array>
+                <string-array name="prefs_font_keys" >
+                    <item>
+Roboto
+                    </item>
+                    <item>
+Gothic
+                    </item>
+                    <item>
+Special Elite
+                    </item>
+                    <item>
+3Dumb
+                    </item>
+                    <item>
+Destroy
+                    </item>
+                    <item>
+Harry Potter
+                    </item>
+                    <item>
+Chopin Script
+                    </item>
+                    <item>
+Blood Of Dracula
+                    </item>
+                    <item>
+Brooklyn Kid
+                    </item>
+                    <item>
+Aladdin
+                    </item>
+                    <item>
+Catholic School Girls
+                    </item>
+                    <item>
+Terminator
+                    </item>
+                </string-array>
+                <string-array name="prefs_theme_vals" >
+                    <item>
+bgimage_abstraction
+                    </item>
+                    <item>
+bgimage_paper
+                    </item>
+                    <item>
+bgimage_simple_gradient
+                    </item>
+                    <item>
+bgimage_summer
+                    </item>
+                    <item>
+bgimage_vintage
+                    </item>
+                    <item/>
+                </string-array>
+
+                <string name="prefs_date_default_format" >EEEE, dd MMMM
+                </string>
+
+                <string-array name="prefs_time_format_keys" >
+                    <item>
+13:30
+                    </item>
+                    <item>
+01:30 PM
+                    </item>
+                    <item>
+13:30 UTC
+                    </item>
+                    <item>
+01:30 PM, UTC
+                    </item>
+                    <item>
+13:30 +00:00
+                    </item>
+                    <item>
+01:30 PM, +00:00
+                    </item>
+                    <item>
+13:30 UTC+00:00
+                    </item>
+                    <item>
+01:30 PM, UTC+00:00
+                    </item>
+                    <item>
+None
+                    </item>
+                </string-array>
+
+                <string name="prefs_accuracy_toast_summary" >Toasts reporting data accuracy level
+                </string>
+
+                <string-array name="prefs_temp_unit_keys" >
+                    <item>
+Degrees Celsius
+                    </item>
+                    <item>
+Degrees Fahrenheit
+                    </item>
+                    <item>
+Kelvin
+                    </item>
+                </string-array>
+
+                <string name="prefs_theme_key" >theme
+                </string>
+
+                <string-array name="prefs_temp_unit_vals" >
+                    <item>
+celsius
+                    </item>
+                    <item>
+fahrenheit
+                    </item>
+                    <item>
+kelvin
+                    </item>
+                </string-array>
+                <string-array name="prefs_background_color_keys" >
+                    <item>
+Alice Blue
+                    </item>
+                    <item>
+Aquamarine
+                    </item>
+                    <item>
+Bisque
+                    </item>
+                    <item>
+Cornsilk
+                    </item>
+                    <item>
+Gainsboro
+                    </item>
+                    <item>
+Green Yellow
+                    </item>
+                    <item>
+Hot Pink
+                    </item>
+                    <item>
+Lemon Chiffon
+                    </item>
+                    <item>
+Light Coral
+                    </item>
+                    <item>
+Light Cyan
+                    </item>
+                    <item>
+Light Gray
+                    </item>
+                    <item>
+Lime Green
+                    </item>
+                    <item>
+Medium Orchid
+                    </item>
+                    <item>
+Orange
+                    </item>
+                    <item>
+Peach Puff
+                    </item>
+                    <item>
+Pink
+                    </item>
+                    <item>
+Plum
+                    </item>
+                    <item>
+Sandy Brown
+                    </item>
+                    <item>
+Sea Green
+                    </item>
+                    <item>
+Snow
+                    </item>
+                    <item>
+White
+                    </item>
+                </string-array>
+
+                <string name="prefs_temp_unit_title" >Temperature Unit
+                </string>
+                <string name="prefs_time_format_title" >Time Format
+                </string>
+                <string name="prefs_accuracy_toast_title" >Accuracy Toasts
+                </string>
+            </file>
+            <file
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\values\styles.xml"
+                qualifiers="" >
+
+                <style name="SensorRowDataTextViewStyle" >
+                    <item name="android:layout_width">
+fill_parent
+                    </item>
+                    <item name="android:layout_height">
+wrap_content
+                    </item>
+                    <item name="android:gravity">
+center
+                    </item>
+                    <item name="android:layout_gravity">
+center
+                    </item>
+                </style>
+
+                <style name="SensorRowRootLayoutStyle" >
+                    <item name="android:layout_width">
+fill_parent
+                    </item>
+                    <item name="android:layout_height">
+fill_parent
+                    </item>
+                    <item name="android:paddingTop">
+@dimen/sensor_row_top_padding
+                    </item>
+                    <item name="android:paddingBottom">
+@dimen/sensor_row_bottom_padding
+                    </item>
+                </style>
+
+                <style name="SensorRowTitleTextViewStyle" >
+                    <item name="android:layout_width">
+fill_parent
+                    </item>
+                    <item name="android:layout_height">
+wrap_content
+                    </item>
+                    <item name="android:gravity">
+center
+                    </item>
+                    <item name="android:layout_gravity">
+center
+                    </item>
+                </style>
+
+                <style name="StandardPaddedRootLayoutStyle" >
+                    <item name="android:paddingBottom">
+@dimen/activity_vertical_margin
+                    </item>
+                    <item name="android:paddingTop">
+@dimen/activity_vertical_margin
+                    </item>
+                    <item name="android:paddingLeft">
+@dimen/activity_horizontal_margin
+                    </item>
+                    <item name="android:paddingRight">
+@dimen/activity_horizontal_margin
+                    </item>
+                    <item name="android:gravity">
+top
+                    </item>
+                    <item name="android:layout_width">
+match_parent
+                    </item>
+                    <item name="android:layout_height">
+match_parent
+                    </item>
+                </style>
+
+                <style name="SensorRowBottomLineStyle" >
+                    <item name="android:layout_width">
+match_parent
+                    </item>
+                    <item name="android:layout_height">
+@dimen/sensor_row_bottom_line_height
+                    </item>
+                    <item name="android:background">
+@color/sensor_row_bottom_line_color
+                    </item>
+                </style>
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Light" >
+
+                    <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+                    -->
+                </style>
+
+                <style name="SensorRowIconStyle" >
+                    <item name="android:layout_width">
+wrap_content
+                    </item>
+                    <item name="android:layout_height">
+wrap_content
+                    </item>
+                    <item name="android:gravity">
+center
+                    </item>
+                    <item name="android:contentDescription">
+@string/sensor_icon_description
+                    </item>
+                </style>
+
+                <style name="StandardRootLayoutStyle" >
+                    <item name="android:gravity">
+top
+                    </item>
+                    <item name="android:layout_width">
+match_parent
+                    </item>
+                    <item name="android:layout_height">
+match_parent
+                    </item>
+                </style>
+
+                <style name="SensorRowMainLayoutStyle" >
+                    <item name="android:layout_width">
+match_parent
+                    </item>
+                    <item name="android:layout_height">
+wrap_content
+                    </item>
+                    <item name="android:paddingTop">
+@dimen/row_padding_top
+                    </item>
+                    <item name="android:paddingBottom">
+@dimen/row_padding_bottom
+                    </item>
+                    <item name="android:paddingLeft">
+@dimen/row_padding_left
+                    </item>
+                    <item name="android:paddingRight">
+@dimen/row_padding_right
+                    </item>
+                    <item name="android:background">
+@drawable/sensor_row_background
+                    </item>
+                </style>
+
+                <style
+                    name="AppTheme"
+                    parent="AppBaseTheme" >
+
+                    <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+                </style>
+            </file>
+            <file
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\values-large\integers.xml"
+                qualifiers="large-v4" >
+                <integer name="plot_vertical_labels_widht" >
+90
+                </integer>
+                <integer name="plot_label_text_size" >
+14
+                </integer>
+            </file>
+            <file
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\values-pl\strings.xml"
+                qualifiers="pl" >
+                <string name="prefs_sensors_title" >Wybierz sensory
+                </string>
+                <string name="title_activity_about" >Informacje
+                </string>
+                <string name="no_data_hint_toast" >Sprawdź sekcję \"Zapis dnaych\" w Pomocy.
+                </string>
+                <string name="toast_on_pressure_save_data" >Zapis danych dla ciśnienia włączony
+                </string>
+                <string name="about_email" >info@narfsoftware.pl
+                </string>
+                <string name="toast_on_light_save_data" >Zapis danych dla oświetlenia włączony
+                </string>
+                <string name="toast_off_pressure_save_data" >Zapis danych dla ciśnienia wyłączony
+                </string>
+                <string name="toast_off_dew_point_save_data" >Zapis danych dla punktu rosy wyłączony
+                </string>
+                <string name="dew_point_title" >Punkt Rosy
+                </string>
+                <string name="no_data_to_erase" >Brak danych do usunięcia.
+                </string>
+                <string name="no" >Nie
+                </string>
+
+                <string-array name="help_titles" >
+                    <item name="help_text_main_header">
+Wskaźniki warunków otoczenia
+                    </item>
+                    <item name="help_text_save_and_display_data_header">
+Zapis danych
+                    </item>
+                    <item name="help_text_relative_humidity_header">
+Wilgotność Względna
+                    </item>
+                    <item name="help_text_absolute_humidity_header">
+Wilgotność Bezwzględna
+                    </item>
+                    <item name="help_text_dew_point_header">
+Punkt Rosy
+                    </item>
+                    <item name="help_text_light_header">
+Oświetlenie
+                    </item>
+                </string-array>
+
+                <string name="title_activity_help" >Pomoc
+                </string>
+                <string name="action_clear_data" >Wyczyść historię
+                </string>
+                <string name="pressure_title" >Ciśnienie
+                </string>
+                <string name="ambient_temp_key" >ambient_temprature
+                </string>
+                <string name="about_header" >Termometr Plus
+                </string>
+                <string name="about_subheader" >wersja 2.5.2
+                </string>
+                <string name="help_text_source" >Źródło: wikipedia.org
+                </string>
+                <string name="toast_off_light_save_data" >Zapis danych dla oświetlenia wyłączony
+                </string>
+                <string name="accuracy_unreliable_toast_text_part_2" >są niemiarodajne
+                </string>
+                <string name="toast_off_absolute_humidity_save_data" >Zapis danych dla wilgotności bezwzględnej wyłączony
+                </string>
+                <string name="no_data_info_toast" >Brak danych…
+                </string>
+                <string name="accuracy_unreliable_toast_text_part_1" >Wartości odbierane od
+                </string>
+                <string name="about_site_header" >Odwiedź naszą stronę
+                </string>
+                <string name="dew_point_key" >dew_point
+                </string>
+                <string name="action_settings" >Ustawienia
+                </string>
+                <string name="logo_description" >NarfSoftware Logo
+                </string>
+                <string name="app_name" >Termometr Plus
+                </string>
+                <string name="save_data_switch" >Zapis danych
+                </string>
+                <string name="sensor_unavailable" >Sensor niedostępny
+                </string>
+                <string name="title_activity_settings" >Ustawienia
+                </string>
+                <string name="light_title" >Oświetlenie
+                </string>
+                <string name="yes" >Tak
+                </string>
+                <string name="toast_on_relative_humidity_save_data" >Zapis danych dla wilgotności względnej włączony
+                </string>
+                <string name="ambient_temp_title" >Temperatura
+                </string>
+                <string name="prefs_sensors" >Sensory
+                </string>
+                <string name="out_of_memory_error_toast" >Twojemu urządzeniu brakuje pamięci i nie może załadować wybranego motywu. Powinieneś zrezygnować z tej opcji i ustawić ją na \"Brak\".
+                </string>
+                <string name="relative_humidity_title" >Wilgotność Względna
+                </string>
+                <string name="relative_humidity_key" >relative_humidity
+                </string>
+                <string name="data_erased_hint_toast" >Wyłącz najpierw zapisywanie danych.
+                </string>
+                <string name="about_email_title" >Kontakt
+                </string>
+                <string name="toast_off_temperature_save_data" >Zapis danych dla temperatury wyłączony
+                </string>
+                <string name="toast_on_dew_point_save_data" >Zapis danych dla punktu rosy włączony
+                </string>
+                <string name="about_site" >www.narfsoftware.pl
+                </string>
+                <string name="toast_on_absolute_humidity_save_data" >Zapis danych dla wilgotności bezwzględnej włączony
+                </string>
+                <string name="accuracy_low_toast_text" >przesyła dane z niską dokładnością
+                </string>
+                <string name="pref_header_sensors" >Wskaźniki otoczenia
+                </string>
+                <string name="magnetic_field_title" >Pole Magnetyczne
+                </string>
+                <string name="action_about_title" >Informacje
+                </string>
+                <string name="alert_dialog_erase_data_text" >Na pewno chcesz usunąć całą historię?
+                </string>
+                <string name="light_key" >light
+                </string>
+                <string name="sensor_icon_description" >Ikona Sensora
+                </string>
+                <string name="accuracy_high_toast_text" >przesyła dane z najwyższą dokładnością.
+                </string>
+                <string name="sensor_no_data" >Brak danych
+                </string>
+                <string name="magnetic_field_key" >magnetic_field
+                </string>
+                <string name="toast_on_magnetic_field_save_data" >Zapis danych dla pola magnetycznego włączony
+                </string>
+                <string name="absolute_humidity_key" >absolute_humidity
+                </string>
+                <string name="accuracy_medium_toast_text" >przesyła dane z przeciętną dokładnością
+                </string>
+                <string name="pressure_key" >pressure
+                </string>
+                <string name="about_text" >Oczekujemy na wiadomość od Was. Przesyłajcie inormacje o znalezionych błędach, sugestie usprawnień lub jeśli chcecie dodać tłumaczenie. Będziemy wdzięczni, jeśli zdecydujecie się ocenić nasze aplikacje i zostawić komentarz na Google Market.
+                </string>
+
+                <string-array name="help_details" >
+                    <item name="help_text_main">
+Ekran główny wyświetla wybrane w ustawieniach wskaźniki warunków otoczenia. Jeśli aplikacja odbiera dane z odpowiedniego sensora, są one natychmiast prezentowane. W przeciwnym wypadku wyświetla się \"Brak danych\". Dokładność danych zależy od jakości urządzeń. Aplikacja jedynie udostępnia otrzymywane dane od sensorów wbudowanych w urządzenie. Istnieje również taka możliwość, że twoje urządzenie nie posiada wybranego sensora. W takim wypadku wyświetli się wiadomość \"Sensor niedostępny\".
+                    </item>
+                    <item name="help_text_save_and_display_data">
+Żeby móc zobaczyć historię odebranych danych na wykresie musisz najpierw uaktywnić opcję ich zapisu w oknie wykresu historii danych wybranego wskaźnika. Jadnak musisz być świadom tego, że spowoduje to utrzymywanie sensora aktywnym, nawet jeśli aplikacja będzie zamknięta. W efekcie doprowadzi to do wysokiego zużycia baterii. Pamiętaj więc, żeby zawsze wyłączyć opcję zapisu danych jeśli nie będziesz już dłużej tego potrzebował. Domyślnie opcja ta jest wyłączona. Dla sensorów, które działają w trybie zapisu danych ikona jest niebieska, dla pozostałych wyszarzona.
+                    </item>
+                    <item name="help_text_relative_humidity">
+Wilgotność względna to stosunek ciśnienia cząstkowego pary wodnej zawartej w powietrzu do ciśnienia nasycenia, określającego maksymalne ciśnienie cząstkowe pary wodnej w danej temperaturze. Ciśnienie cząstkowe jest (zgodnie z prawem Daltona) ciśnieniem, jakie miałby gaz, gdyby zajmował całą dostępną objętość. Wilgotność względna jest niemianowana i zawiera się w przedziale od 0 do 1, często wyrażana w procentach (100% = 1). Wilgotność względna równa 0 oznacza powietrze suche, zaś równa 1 oznacza powietrze całkowicie nasycone parą wodną. Przy wilgotności względnej równej 1 oziębienie powietrza daje początek skraplaniu pary wodnej.
+                    </item>
+                    <item name="help_text_absolute_humidity">
+Wilgotność bezwzględna to zawartość pary wodnej w powietrzu, w jednostce objętości równej 1m³, wyrażona w gramach [g/m³]. Wartość wilgotności bezwzględnej w atmosferze przyjmuje wartości od bliskich zeru do nawet 30 gramów na mert sześcienny przy powietrzu nasyconym w temperaturze 30 °C. Wilgotność bezwzględna zmienia się wraz z wilgotnością bezwzględną i ciśnieniem. Nie zależy jednak od temperatury.
+                    </item>
+                    <item name="help_text_dew_point">
+W przypadku pary wodnej w powietrzu jest to temperatura, w której para wodna zawarta w powietrzu osiąga na skutek schładzania stan nasycenia (przy zastanym składzie i ciśnieniu powietrza), a poniżej tej temperatury staje się przesycona i skrapla się lub resublimuje. Punkt rosy jest powiązany z wilgotnością względną. Wysoka wilgotność względna wskazuje, że punkt rosy jest bliski temperaturze otoczenia. Wilgotność względna na poziomie 100% wskazuje, że punkt rosy jest dokładnie równy temperaturze otoczenia a powietrze jest maksymalnie nasycone parą wodną.
+                    </item>
+                    <item name="help_text_light">
+Natężenie oświetlenia to gęstość strumienia świetlnego padającego na daną powierzchnię. Natężenie oświetlenia jest jedyną wielkością światła, która nie charakteryzuje samego źródła światła, lecz jasność oświetlenia powierzchni. Jednostką natężenia oświetlenia w układzie SI jest luks (lx) równy lumen na metr kwadratowy. Natężenie oświetlenia miejsca pracy określają polskie normy. W normie tej przyjęto, że wymagane natężenie oświetlenia w celu dostrzeżenia rysów ludzkiej twarzy w normalnych warunkach oświetleniowych, powinno być nie mniejsze niż 20 lx i jest to najmniejsze natężenie oświetlenia wymieniane przez normę. W typowych pracach biurowych, takich jak: pisanie ręczne, pisanie na maszynie, czytanie, obsługiwanie klawiatury wymagane jest natężenie oświetlenia 500 lx, dla prac precyzyjnych przewyższa 1000 lx. W słoneczny letni dzień natężenie oświetlenia w miejscach niezacienionych osiąga wartość 100 000 lx.
+                    </item>
+                </string-array>
+
+                <string name="action_help_title" >Pomoc
+                </string>
+                <string name="prefs_header" >Ustawienia
+                </string>
+                <string name="toast_off_relative_humidity_save_data" >Zapis danych dla wilgotności względnej wyłączony
+                </string>
+                <string name="toast_off_magnetic_field_save_data" >Zapis danych dla pola magnetycznego wyłączony
+                </string>
+                <string name="absolute_humidity_title" >Wilgotność Bezwzględna
+                </string>
+                <string name="data_erased_fail_toast" >Usuwanie danych nie powiodło się :(
+                </string>
+                <string name="data_erased_success_toast" >Dane pomyślnie usunięte
+                </string>
+                <string name="toast_on_temperature_save_data" >Zapis danych dla temperatury włączony
+                </string>
+            </file>
+            <file
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\values-pl\strings_prefs.xml"
+                qualifiers="pl" >
+                <string name="prefs_default_typeface" >Roboto.ttf
+                </string>
+
+                <string-array name="prefs_time_format_keys" >
+                    <item>
+13:30
+                    </item>
+                    <item>
+01:30 PM
+                    </item>
+                    <item>
+13:30 UTC
+                    </item>
+                    <item>
+01:30 PM, UTC
+                    </item>
+                    <item>
+13:30 +00:00
+                    </item>
+                    <item>
+01:30 PM, +00:00
+                    </item>
+                    <item>
+13:30 UTC+00:00
+                    </item>
+                    <item>
+01:30 PM, UTC+00:00
+                    </item>
+                    <item>
+Brak
+                    </item>
+                </string-array>
+
+                <string name="prefs_theme_title" >Motyw
+                </string>
+
+                <string-array name="prefs_time_format_vals" >
+                    <item>
+HH:mm
+                    </item>
+                    <item>
+KK:mm a
+                    </item>
+                    <item>
+HH:mm z
+                    </item>
+                    <item>
+KK:mm a, z
+                    </item>
+                    <item>
+HH:mm ZZZZ
+                    </item>
+                    <item>
+KK:mm a, ZZZZ
+                    </item>
+                    <item>
+HH:mm zZZZZ
+                    </item>
+                    <item>
+KK:mm a, zZZZZ
+                    </item>
+                    <item/>
+                </string-array>
+                <string-array name="prefs_background_color_keys" >
+                    <item>
+Bladobłekitny
+                    </item>
+                    <item>
+Seledynowy
+                    </item>
+                    <item>
+Kremowy
+                    </item>
+                    <item>
+Kukurydziany
+                    </item>
+                    <item>
+Jasnoniebieskoszary
+                    </item>
+                    <item>
+Zielonożółty
+                    </item>
+                    <item>
+Ciemnoróżowy
+                    </item>
+                    <item>
+Żółtoszyfonowy
+                    </item>
+                    <item>
+Jasnokoralowy
+                    </item>
+                    <item>
+Jasnoniebieskozielony
+                    </item>
+                    <item>
+Jasnoszary
+                    </item>
+                    <item>
+Limonkowozielony
+                    </item>
+                    <item>
+Purpurowy
+                    </item>
+                    <item>
+Pomarańczowy
+                    </item>
+                    <item>
+Jasnobrzoskwiniowy
+                    </item>
+                    <item>
+Różowy
+                    </item>
+                    <item>
+Śliwkowy
+                    </item>
+                    <item>
+Piaskowobrązowy
+                    </item>
+                    <item>
+Morski
+                    </item>
+                    <item>
+Śnieżny
+                    </item>
+                    <item>
+Biały
+                    </item>
+                </string-array>
+
+                <string name="prefs_accuracy_toast_title" >Powiadomienia
+                </string>
+                <string name="prefs_date_format_key" >date_format
+                </string>
+                <string name="prefs_theme_key" >theme
+                </string>
+                <string name="prefs_background_default_color" >#FFF0F8FF
+                </string>
+                <string name="prefs_date_format_title" >Format daty
+                </string>
+
+                <string-array name="prefs_temp_unit_keys" >
+                    <item>
+Stopnie Celsjusza
+                    </item>
+                    <item>
+Stopnie Fahrenheita
+                    </item>
+                    <item>
+Kelwiny
+                    </item>
+                </string-array>
+
+                <string name="prefs_accuracy_toast_key" >data_accuracy_toasts
+                </string>
+                <string name="prefs_rest_title" >Dostosowanie
+                </string>
+                <string name="prefs_font_title" >Czcionka
+                </string>
+                <string name="prefs_time_format_title" >Format godziny
+                </string>
+                <string name="pref_header_customization" >Dostosowanie
+                </string>
+
+                <string-array name="prefs_theme_keys" >
+                    <item>
+Abstrakcja
+                    </item>
+                    <item>
+Papirus
+                    </item>
+                    <item>
+Gradient
+                    </item>
+                    <item>
+Lato
+                    </item>
+                    <item>
+Vintage
+                    </item>
+                    <item>
+Brak
+                    </item>
+                </string-array>
+
+                <string name="prefs_time_default_format" >KK:mm a
+                </string>
+
+                <string-array name="prefs_date_format_vals" >
+                    <item>
+EEEE, dd MMMM
+                    </item>
+                    <item>
+EEEE, d MMMM
+                    </item>
+                    <item>
+EEEE, dd MMMM y
+                    </item>
+                    <item>
+EEEE, d MMMM y
+                    </item>
+                    <item>
+E, d MMMM
+                    </item>
+                    <item>
+E, d MMMM y
+                    </item>
+                    <item>
+d MMMM
+                    </item>
+                    <item>
+dd MMMM
+                    </item>
+                    <item>
+d MMMM y
+                    </item>
+                    <item>
+dd MMMM y
+                    </item>
+                    <item>
+EEEE, dd MMM
+                    </item>
+                    <item>
+EEEE, d MMM
+                    </item>
+                    <item>
+EEEE, dd MMM y
+                    </item>
+                    <item>
+EEEE, d MMM y
+                    </item>
+                    <item>
+E, d MMM
+                    </item>
+                    <item>
+E, d MMM y
+                    </item>
+                    <item>
+d MMM
+                    </item>
+                    <item>
+dd MMM
+                    </item>
+                    <item>
+d MMM y
+                    </item>
+                    <item>
+dd MMM y
+                    </item>
+                    <item>
+dd–MM–y
+                    </item>
+                    <item>
+dd–MM–yy
+                    </item>
+                    <item>
+d–M–yy
+                    </item>
+                    <item>
+y–MM–dd
+                    </item>
+                    <item>
+yy–MM–dd
+                    </item>
+                    <item>
+yy–M–d
+                    </item>
+                    <item>
+EEEE, dd–MM–y
+                    </item>
+                    <item>
+EEEE, dd–MM–yy
+                    </item>
+                    <item>
+EEEE, d–M–yy
+                    </item>
+                    <item>
+EEEE, y–MM–dd
+                    </item>
+                    <item>
+EEEE, yy–MM–dd
+                    </item>
+                    <item>
+EEEE, yy–M–d
+                    </item>
+                    <item>
+EEEE, dd/MM/y
+                    </item>
+                    <item>
+EEEE, dd/MM/yy
+                    </item>
+                    <item>
+EEEE, d/M/yy
+                    </item>
+                    <item>
+EEEE, y/MM/dd
+                    </item>
+                    <item>
+EEEE, yy/MM/dd
+                    </item>
+                    <item>
+EEEE, yy/M/d
+                    </item>
+                    <item>
+E, dd–MM–y
+                    </item>
+                    <item>
+E, dd–MM–yy
+                    </item>
+                    <item>
+E, d–M–yy
+                    </item>
+                    <item>
+E, y–MM–dd
+                    </item>
+                    <item>
+E, yy–MM–dd
+                    </item>
+                    <item>
+E, yy–M–d
+                    </item>
+                    <item>
+E, dd/MM/y
+                    </item>
+                    <item>
+E, dd/MM/y
+                    </item>
+                    <item>
+E, d/M/yy
+                    </item>
+                    <item>
+E, y/MM/dd
+                    </item>
+                    <item>
+E, yy/MM/dd
+                    </item>
+                    <item>
+E, yy/M/d
+                    </item>
+                    <item/>
+                </string-array>
+                <string-array name="prefs_date_format_keys" >
+                    <item>
+czwartek, 01 października
+                    </item>
+                    <item>
+czwartek, 1 października
+                    </item>
+                    <item>
+czwartek, 01 października 2013
+                    </item>
+                    <item>
+czwartek, 1 października 2013
+                    </item>
+                    <item>
+czw., 1 października
+                    </item>
+                    <item>
+czw., 1 października 2013
+                    </item>
+                    <item>
+1 października
+                    </item>
+                    <item>
+01 października
+                    </item>
+                    <item>
+1 października 2013
+                    </item>
+                    <item>
+01 października 2013
+                    </item>
+                    <item>
+czwartek, 01 paź
+                    </item>
+                    <item>
+czwartek, 1 paź
+                    </item>
+                    <item>
+czwartek, 01 paź 2013
+                    </item>
+                    <item>
+czwartek, 1 paź 2013
+                    </item>
+                    <item>
+czw., 1 paź
+                    </item>
+                    <item>
+czw., 1 paź 2013
+                    </item>
+                    <item>
+1 paź
+                    </item>
+                    <item>
+01 paź
+                    </item>
+                    <item>
+1 paź 2013
+                    </item>
+                    <item>
+01 paź 2013
+                    </item>
+                    <item>
+01–10–2013
+                    </item>
+                    <item>
+01–10–13
+                    </item>
+                    <item>
+1–9–13
+                    </item>
+                    <item>
+2013–10–01
+                    </item>
+                    <item>
+13–10–01
+                    </item>
+                    <item>
+13–9–1
+                    </item>
+                    <item>
+czwartek, 01–10–2013
+                    </item>
+                    <item>
+czwartek, 01–10–13
+                    </item>
+                    <item>
+sobota, 1–9–13
+                    </item>
+                    <item>
+czwartek, 2013–10–01
+                    </item>
+                    <item>
+czwartek, 13–10–01
+                    </item>
+                    <item>
+sobota, 13–9–1
+                    </item>
+                    <item>
+czwartek, 01/10/2013
+                    </item>
+                    <item>
+czwartek, 01/10/13
+                    </item>
+                    <item>
+sobota, 1/9/13
+                    </item>
+                    <item>
+czwartek, 2013/10/01
+                    </item>
+                    <item>
+czwartek, 13/10/01
+                    </item>
+                    <item>
+sobota, 13/9/1
+                    </item>
+                    <item>
+czw., 01–10–2013
+                    </item>
+                    <item>
+czw., 01–10–13
+                    </item>
+                    <item>
+sob., 1–9–13
+                    </item>
+                    <item>
+czw., 2013–10–01
+                    </item>
+                    <item>
+czw., 13–10–01
+                    </item>
+                    <item>
+sob., 13–9–1
+                    </item>
+                    <item>
+czw., 01/10/2013
+                    </item>
+                    <item>
+czw., 01/10/13
+                    </item>
+                    <item>
+sob., 1/9/13
+                    </item>
+                    <item>
+czw., 2013/10/01
+                    </item>
+                    <item>
+czw., 13/10/01
+                    </item>
+                    <item>
+sob., 13/9/1
+                    </item>
+                    <item>
+Brak
+                    </item>
+                </string-array>
+
+                <string name="prefs_temp_unit_title" >Jednostka Temperatury
+                </string>
+                <string name="prefs_font_key" >font
+                </string>
+
+                <string-array name="prefs_background_color_vals" >
+                    <item>
+#FFF0F8FF
+                    </item>
+                    <item>
+#667FFFD4
+                    </item>
+                    <item>
+#FFFFE4C4
+                    </item>
+                    <item>
+#FFFFF8DC
+                    </item>
+                    <item>
+#FFDCDCDC
+                    </item>
+                    <item>
+#88ADFF2F
+                    </item>
+                    <item>
+#66FF69B4
+                    </item>
+                    <item>
+#FFFFFACD
+                    </item>
+                    <item>
+#88F08080
+                    </item>
+                    <item>
+#FFE0FFFF
+                    </item>
+                    <item>
+#88D3D3D3
+                    </item>
+                    <item>
+#8832CD32
+                    </item>
+                    <item>
+#66BA55D3
+                    </item>
+                    <item>
+#88FFA500
+                    </item>
+                    <item>
+#88FFDAB9
+                    </item>
+                    <item>
+#88FFC0CB
+                    </item>
+                    <item>
+#66DDA0DD
+                    </item>
+                    <item>
+#66F4A460
+                    </item>
+                    <item>
+#662E8B57
+                    </item>
+                    <item>
+#FFFFFAFA
+                    </item>
+                    <item>
+#FFFFFFFF
+                    </item>
+                </string-array>
+
+                <string name="prefs_background_color_key" >background_color
+                </string>
+                <string name="prefs_default_theme" ></string>
+
+                <string-array name="prefs_font_keys" >
+                    <item>
+Roboto
+                    </item>
+                    <item>
+Special Elite
+                    </item>
+                    <item>
+Mosaic
+                    </item>
+                    <item>
+Elegant
+                    </item>
+                    <item>
+Smooth
+                    </item>
+                </string-array>
+
+                <string name="prefs_temp_unit_key" >temp_unit
+                </string>
+                <string name="prefs_time_format_key" >time_format
+                </string>
+
+                <string-array name="prefs_temp_unit_vals" >
+                    <item>
+celsius
+                    </item>
+                    <item>
+fahrenheit
+                    </item>
+                    <item>
+kelvin
+                    </item>
+                </string-array>
+
+                <string name="prefs_background_color_title" >Kolor tła
+                </string>
+
+                <string-array name="prefs_font_vals" >
+                    <item>
+Roboto.ttf
+                    </item>
+                    <item>
+SpecialElite.ttf
+                    </item>
+                    <item>
+Mosaicleaf086.ttf
+                    </item>
+                    <item>
+Sreda.ttf
+                    </item>
+                    <item>
+ZnikomitNo25.otf
+                    </item>
+                </string-array>
+
+                <string name="prefs_accuracy_toast_summary" >Wyświetlanie powiadomień o dokładności danych
+                </string>
+
+                <string-array name="prefs_theme_vals" >
+                    <item>
+bgimage_abstraction
+                    </item>
+                    <item>
+bgimage_paper
+                    </item>
+                    <item>
+bgimage_simple_gradient
+                    </item>
+                    <item>
+bgimage_summer
+                    </item>
+                    <item>
+bgimage_vintage
+                    </item>
+                    <item/>
+                </string-array>
+
+                <string name="prefs_date_default_format" >EEEE, dd MMMM
+                </string>
+            </file>
+            <file
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\values-sw720dp-land\dimens.xml"
+                qualifiers="sw720dp-land-v13" >
+                <dimen name="activity_horizontal_margin" >32dp
+                </dimen>
+            </file>
+            <file
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\values-v11\styles.xml"
+                qualifiers="v11" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Holo.Light" >
+
+                    <!-- API 11 theme customizations can go here. -->
+                </style>
+            </file>
+            <file
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\values-v14\styles.xml"
+                qualifiers="v14" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Holo.Light.DarkActionBar" >
+
+                    <!-- API 14 theme customizations can go here. -->
+                </style>
+            </file>
+            <file
+                name="pref_ambient_conditions"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\xml\pref_ambient_conditions.xml"
+                qualifiers=""
+                type="xml" />
+            <file
+                name="pref_customization"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\xml\pref_customization.xml"
+                qualifiers=""
+                type="xml" />
+            <file
+                name="pref_headers"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\xml\pref_headers.xml"
+                qualifiers=""
+                type="xml" />
+            <file
+                name="pref_ambient_conditions"
+                path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\main\res\xml-xlarge\pref_ambient_conditions.xml"
+                qualifiers="xlarge-v4"
+                type="xml" />
+        </source>
+        <source path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\build\generated\res\rs\debug" />
+        <source path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\build\generated\res\generated\debug" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="C:\Users\mateusz\ASworkspace\Thermometer2\thermometer2\src\debug\res" />
+    </dataSet>
+
+</merger>

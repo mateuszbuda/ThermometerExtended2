@@ -1,0 +1,37 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    style="@style/SensorRowRootLayoutStyle">
+
+    <LinearLayout
+        android:id="@+id/main"
+        style="@style/SensorRowMainLayoutStyle" >
+
+        <ImageView
+            android:id="@+id/sensorIcon"
+            style="@style/SensorRowIconStyle"
+            android:layout_gravity="center"
+            android:src="@android:drawable/ic_delete" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/sensorType"
+                style="@style/SensorRowTitleTextViewStyle"
+                android:text="Large Text"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/sensorData"
+                style="@style/SensorRowDataTextViewStyle"
+                android:text="Medium Text"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        style="@style/SensorRowBottomLineStyle"
+        android:layout_below="@+id/main" />
+</RelativeLayout><!-- From: file:/C:/Users/mateusz/ASworkspace/Thermometer2/thermometer2/src/main/res/layout/sensor_row.xml -->
