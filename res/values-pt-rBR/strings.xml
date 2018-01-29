@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Thermometer Extended</string>
+    <string name="action_settings">Configurações</string>
+    <string name="prefs_header">Configurações</string>
+    <string name="title_activity_settings">Configurações</string>
+    <string name="prefs_sensors">Sensores</string>
+    <string name="pref_header_sensors">Condições de ambiente</string>
+    <string name="prefs_sensors_title">Escolher sensores</string>
+    <string name="ambient_temp_title">Temperatura</string>
+    <string name="relative_humidity_title">Umidade Relativa</string>
+    <string name="absolute_humidity_title">Umidade Absoluta</string>
+    <string name="pressure_title">Pressão</string>
+    <string name="dew_point_title">Ponto de Orvalho</string>
+    <string name="light_title">Luz</string>
+    <string name="magnetic_field_title">Campo Magnético</string>
+    <string name="ambient_temp_key">ambient_temprature</string>
+    <string name="relative_humidity_key">relative_humidity</string>
+    <string name="absolute_humidity_key">absolute_humidity</string>
+    <string name="pressure_key">pressure</string>
+    <string name="dew_point_key">dew_point</string>
+    <string name="light_key">light</string>
+    <string name="magnetic_field_key">magnetic_field</string>
+    <string name="sensor_unavailable">Sensor indisponível</string>
+    <string name="sensor_no_data">Sem dados</string>
+    <string name="action_clear_data">Apagar Histórico</string>
+    <string name="data_erased_success_toast">Dados apagados com sucesso</string>
+    <string name="data_erased_fail_toast">Falha ao apagar dados :(</string>
+    <string name="data_erased_hint_toast">Primeiro pare de salvar os dados.</string>
+    <string name="no_data_to_erase">Nenhum dado para apagar.</string>
+    <string name="no_data_info_toast">Nenhum dado para exibir&#8230;</string>
+    <string name="no_data_hint_toast">Ler sobre Salvamento de Dados na Ajuda.</string>
+    <string name="title_activity_about">Sobre</string>
+    <string name="about_site_header">Visite o site do desenvolvedor</string>
+    <string name="about_site">www.narfsoftware.pl/en</string>
+    <string name="about_email_title">Contactar o desenvolvedor</string>
+    <string name="about_email">info@narfsoftware.pl</string>
+    <string name="logo_description">NarfSoftware Logo</string>
+    <string name="action_about_title">Sobre</string>
+    <string name="about_header">Thermometer Extended</string>
+    <string name="about_subheader">versão 2.5.4</string>
+    <string name="about_text">Queremos ouvir de você. Envie-nos email para relatar bugs, sugerir uma melhoria ou se você gostaria de adicionar uma trdução. Ficaremos gratos se você decidir avaliar e comentar nossos apps na loja.</string>
+    <string name="alert_dialog_erase_data_text">Tem certeza que deseja limpar o histórico?</string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+    <string name="toast_on_temperature_save_data">Salvamento de dados de temperatura ligado</string>
+    <string name="toast_off_temperature_save_data">Salvamento de dados de temperatura desligado</string>
+    <string name="toast_on_relative_humidity_save_data">Salvamento de dados de umidade relativa ligado</string>
+    <string name="toast_off_relative_humidity_save_data">Salvamento de dados de umidade relativa desligado</string>
+    <string name="toast_on_absolute_humidity_save_data">Salvamento de dados de umidade absoluta ligado</string>
+    <string name="toast_off_absolute_humidity_save_data">Salvamento de dados de umidade absoluta desligado</string>
+    <string name="toast_on_pressure_save_data">Salvamento de dados de pressão ligado</string>
+    <string name="toast_off_pressure_save_data">Salvamento de dados de pressão desligado</string>
+    <string name="toast_on_dew_point_save_data">Salvamento de dados de ponto de orvalho ligado</string>
+    <string name="toast_off_dew_point_save_data">Salvamento de dados de ponto de orvalho desligado</string>
+    <string name="toast_on_light_save_data">Salvamento de dados de luz ligado</string>
+    <string name="toast_off_light_save_data">Salvamento de dados de luz desligado</string>
+    <string name="toast_on_magnetic_field_save_data">Salvamento de dados de campo magnético ligado</string>
+    <string name="toast_off_magnetic_field_save_data">Salvamento de dados de campo magnético desligado</string>
+    <string name="save_data_switch">"Salvar dados"</string>
+    <string name="accuracy_high_toast_text">está relatando os dados com máxima precisão</string>
+    <string name="accuracy_medium_toast_text">está relatando os dados com precisão média</string>
+    <string name="accuracy_low_toast_text">está relatando os dados com precisão baixa</string>
+    <string name="accuracy_unreliable_toast_text_part_1">Os valores retornados por</string>
+    <string name="accuracy_unreliable_toast_text_part_2">não podem ser confiados</string>
+    <string name="out_of_memory_error_toast">Seu dispositivo está sem espaço para esta aplicação e os desenhos não puderam ser carregados. É melhor você definir o tema para \'Nenhum\'.</string>
+    <string name="title_activity_help">Ajuda</string>
+    <string name="help_text_source">Fonte: wikipedia.org</string>
+
+    <string-array name="help_details">
+        <item name="help_text_main">A janela principal mostra os indicadores de ambiente escolhidos nas configurações. Se a aplicação está recebendo dados de sensores particulares, eles são mostrados imediatamente, de outra forma você vê \'Sem Dados\'. A precisão dos dados depende da qualidade do hardware. A aplicação apenas mostra os dados recebidos. Outra possibilidade é que seu dispositivo simplesmente não suporte o sensor escolhido. Se for o caso, você recebe uma mensagem de \'Sensor indisponível\'.</item>
+        <item name="help_text_save_and_display_data">Para ver o gráfico do histórico de dados você deve ligar o salvamento de dados  para um sensor em particular em sua janela de gráfico. Entretanto esteja ciente de que isso mantém os sensores escolhidos ativos, mesmo que você feche o aplicativo. Isso pode drenar bateria rapidamente. Então sempre lembre-se de parar o salvamento de dados se você não precisar. Por padrão esta opção está desligada. Se um sensor em particular está trabalhando em modo de salvamento de dados o ícone dele fica azul. Caso contrário fica cinza.</item>
+        <item name="help_text_relative_humidity">Umidade relativa é a taxa da pressão parcial de vapor numa mistura ar-água para a pressão de vapor saturado de água a uma certa temperatura. A umidade relativa do ar depende da temperatura e perssão do sistema de interesse. Humanos são sensíveis ao ar úmido póis o corpo humano usa refrigeração por evaoporação (transpiração) como mecanismo primário para livrar-se do calor. Humanos podem ficar confortáveis diversas faixas de umidades, dependendo da temperatura — de trinta  setenta porcento - mas idealmente entre cinquenta e sessenta porcento.</item>
+        <item name="help_text_absolute_humidity">Umidade absoluta é a massa de vapor de água pelo volume total de mistura ar-água. Umidade absoluta na atmosfera varia de quase zero até perto de 30 gramas por metro cúbico quando o ar está saturado a 30 °C. A umidade absoluta muda com a mudança de temperatura ou pressão do ar. Isso não considera a temperatura.</item>
+        <item name="help_text_dew_point">O ponto de orvalho é a temperatura que abaixo dela o vapor de água no ar em pressão barométrica constante condensa em água líquida à mesma taxa que ela evapora. A água condensada é chamada de orvalho quando ela forma uma superfície sólida. O ponto de orvalho é uma temperatura de saturação de água no ar. O ponto de orvalho é associado com a umidade relativa. Uma umidade relativa alta indica que o ponto de orvalho está próximo à temperatura do ar atual. Umidade relativa de 100% indica que ponto de orvalho é igual à temperatuda atual e que o ar está na saturação máxima de água.</item>
+        <item name="help_text_light">Iluminação é uma medida de quanto fluxo luminoso está espalhado por uma dada área. Alguém pode pensar como fluxo de luminosidade (medido em lumens) como uma medida da "quantidade" total de luz visível presente, e a iluminação como uma medidade de intensidade de iluminação em uma superfície. Um lux é igual a um lumen por metro quadrado. Alcançar a iluminação de 500 lux pode ser possível em uma cozinha de casa com uma única lâmpada fluorescente com uma saída de 12000 lumens.</item>
+    </string-array>
+    <string-array name="help_titles">
+        <item name="help_text_main_header">Indicadores de condição do ambiente</item>
+        <item name="help_text_save_and_display_data_header">Salvamento de Dados</item>
+        <item name="help_text_relative_humidity_header">Umidade Relativa</item>
+        <item name="help_text_absolute_humidity_header">Umidade Absoluta</item>
+        <item name="help_text_dew_point_header">Ponto de Orvalho</item>
+        <item name="help_text_light_header">Luz</item>
+    </string-array>
+
+    <string name="action_help_title">Ajuda</string>
+    <string name="sensor_icon_description">Ícone do sensor</string>
+
+</resources>
